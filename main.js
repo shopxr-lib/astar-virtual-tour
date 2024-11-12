@@ -6,7 +6,7 @@ import { ShaderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/p
 import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 const panoramas = [
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-1.webp?v=1731400195055',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-1.jpg?v=1731418121903',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-2.webp?v=1731400195697',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-3.webp?v=1731400197351',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-4.webp?v=1731400199461',
