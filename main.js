@@ -424,6 +424,7 @@ function selectImage(image) {
   spheres.forEach(function (sphere) {
     sphere.visible = false;
   });
+  
   spheres[targetIndex].visible = true;
   currentSphere = spheres[targetIndex];
   nextSphere = spheres[(targetIndex + 1) % spheres.length];
