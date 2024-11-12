@@ -67,7 +67,7 @@ const hotSpotInfo = [
   },
   {
     spotIndex: 1,
-    visible: [0, 2],
+    visible: [0, 2], // on which panorama index, will this hotspot will be shown
     pos: { x: -200, y: -100, z: -150 },
   },
   {
