@@ -77,6 +77,14 @@ const hotSpotInfo = [
   },
 ];
 
+// hotspots = []
+
+// [
+//   {"panorama": "...png", hotspots: []},
+//   {"panorama": "...png", hotspots: []},
+// ]
+
+
 const TransitionShader = {
   uniforms: {
     tDiffuse1: { value: null }, // First texture (current panorama)
