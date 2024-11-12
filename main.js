@@ -7,26 +7,26 @@ import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/
 
 const panoramas = [
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-2.webp?v=1731400195697',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-3.webp?v=1731400197351',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-4.webp?v=1731400199461',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-5.webp?v=1731400201192',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-6.webp?v=1731400202755',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-7.webp?v=1731400207592',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-8.webp?v=1731400209419',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-9.webp?v=1731400211345',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-10.webp?v=1731400213053',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-11.webp?v=1731400219405',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-12.webp?v=1731400221057',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-13.webp?v=1731400222662',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-14.webp?v=1731400225525',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-15.webp?v=1731400227041',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-16.webp?v=1731400228731',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-17.webp?v=1731400230476',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-18.webp?v=1731400232447',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-19.webp?v=1731400234097',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-20.webp?v=1731400235626',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-21.webp?v=1731400237289',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-2.jpg?v=1731439302339',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-3.jpg?v=1731439302505',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-4.jpg?v=1731439303023',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-5.jpg?v=1731439303982',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-6.jpg?v=1731439307229',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-7.jpg?v=1731439307855',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-8.jpg?v=1731439310066',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-9.jpg?v=1731439311834',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-10.jpg?v=1731439313841',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-11.jpg?v=1731439316565',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-12.jpg?v=1731439317689',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-13.jpg?v=1731439319437',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-14.jpg?v=1731439321477',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-15.jpg?v=1731439323282',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-16.jpg?v=1731439325293',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-17.jpg?v=1731439326942',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-18.jpg?v=1731439329607',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-19.jpg?v=1731439331620',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-20.jpg?v=1731439343786',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-21.jpg?v=1731439344731',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-22.webp?v=1731400240094',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-23.webp?v=1731400242245',
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-24.webp?v=1731400243443',
@@ -229,7 +229,7 @@ function init() {
   composer.addPass(transitionPass);
 
   const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.85);
-  composer.addPass(bloomPass);
+  //composer.addPass(bloomPass);
 
   transitionProgress = 0.0;
   transitionSpeed = 0.01;
