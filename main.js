@@ -6,16 +6,16 @@ import { ShaderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/p
 import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 const panoramas = [
-  'assets/env/1.webp',
-  'assets/env/2.webp',
-  'assets/env/3.webp',
-  'assets/env/4.webp',
-  'assets/env/5.webp',
-  'assets/env/6.webp',
-  'assets/env/7.webp',
-  'assets/env/8.webp',
-  'assets/env/9.webp',
-  'assets/env/10.webp',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-1.webp?v=1731400195055',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-2.webp?v=1731400195697',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-3.webp?v=1731400197351',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-4.webp?v=1731400199461',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-5.webp?v=1731400201192',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-6.webp?v=1731400202755',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-7.webp?v=1731400207592',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-8.webp?v=1731400209419',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-9.webp?v=1731400211345',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-10.webp?v=1731400213053',
   'assets/env/11.webp',
   'assets/env/12.webp',
   'assets/env/13.webp',
@@ -164,7 +164,7 @@ function init() {
   currentSphere = spheres[0];
   nextSphere = spheres[1];
 
-  const hotspotTexture = new THREE.TextureLoader().load('assets/icons/hotspot-icon.png'); // Load the arrow image
+  const hotspotTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236'); // Load the arrow image
   const hotspotMaterial = new THREE.MeshBasicMaterial({ map: hotspotTexture, transparent: true });
   const hotspotGeometry = new THREE.PlaneGeometry(40, 20);
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
