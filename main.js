@@ -62,7 +62,7 @@ const panoramas = [
 const hotSpotInfo = [
   //hotspot index 0
   {
-    spotIndex: 1, // when clicked, goes back to this parorama image - index number
+    spotIndex: 1, // when clicked, goes to this parorama image - index number
     visible: [0], // on which panorama index, will this hotspot will be shown
     pos: { x: -220, y: -100, z: -150 },
   },
@@ -75,14 +75,14 @@ const hotSpotInfo = [
   {
     spotIndex: 2,
     visible: [1],
-    pos: { x: -400, y: -100, z: -150 },
+    pos: { x: -200, y: -100, z: -55 },
   },
   //hotspot index 2
-  // {
-  //   spotIndex: 0,
-  //   visible: [1],
-  //   pos: { x: 230, y: -100, z: -150 },
-  // },
+  {
+    spotIndex: 1,
+    visible: [2],
+    pos: { x: 270, y: -100, z: -120 },
+  },
   // {
   //   spotIndex: 2,
   //   visible: [1, 3],
@@ -182,7 +182,7 @@ function init() {
     spheres.push(sphere);
   });
 
-  currentSphere = spheres[0];
+  currentSphere = spheres[2];
   nextSphere = spheres[1];
 
   const hotspotTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236'); // Load the arrow image

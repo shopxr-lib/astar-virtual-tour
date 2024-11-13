@@ -45,12 +45,12 @@ const hostspotLocations = [
   },
   {
     tag: 13,
-    title: "Materials Lab",
+    title: "Material Lab",
     top: "1%",
     left: "28%",
     contents: [
       {
-        title: "Build Lab",
+        title: "Material Lab",
         subtitle: "",
         description:
           "We enable partners to explore a wealth of knowledge in materials. We hold space for creativity and interdisciplinary study, pushing the envelope in material exploration.",
