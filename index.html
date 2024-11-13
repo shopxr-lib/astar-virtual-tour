@@ -17,30 +17,33 @@
   <body>
     <div id="main-container">
       <div
-        class="logo z-3 position-fixed rounded-3"
-        style="
-          top: 1rem;
-          left: 2rem;
-          background-color: rgba(255, 255, 255, 0.3);
-          padding: 1rem;
-        "
+        class="d-flex position-absolute z-3 justify-content-between align-items-center"
+        style="padding: 1rem"
       >
-        <a href="http://www.a-star.edu.sg/" target="_blank" rel="noopener noreferrer">
+        <div class="col-4 col-md-2">
+          <div
+            class="rounded-3"
+            style="background-color: rgba(255, 255, 255, 0.3); padding: 0.5rem"
+          >
+            <a
+              href="http://www.a-star.edu.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img class="img-fluid" src="images/astar.png" alt="logo" />
+            </a>
+          </div>
+        </div>
+        <div class="col-4 col-md-3 floor-plan">
           <img
+            src="images/office-floor-plan.png"
+            alt="floor-plan"
             class="img-fluid"
-            src="images/astar.png"
-            alt="logo"
-            style="height: 4rem"
+            data-bs-toggle="modal"
+            data-bs-target="#floor-plan-modal"
+            style="cursor: pointer"
           />
-        </a>
-      </div>
-      <div class="floor-plan">
-        <img
-          src="images/office-floor-plan.png"
-          alt="floor-plan"
-          data-bs-toggle="modal"
-          data-bs-target="#floor-plan-modal"
-        />
+        </div>
       </div>
       <div
         class="modal fade"
