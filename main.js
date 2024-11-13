@@ -344,9 +344,9 @@ function animate() {
 
 function update(elapsedTime) {
 
-  hotspotMeshes.forEach((mesh) => {
-    mesh.visible = mesh.userData.visibleSpheres.includes(currentSphereIndex);
-  })
+  // hotspotMeshes.forEach((mesh) => {
+  //   mesh.visible = mesh.userData.visibleSpheres.includes(currentSphereIndex);
+  // })
 
   if (isUserInteracting === false && elapsedTime > 2) {
 
@@ -445,11 +445,33 @@ function selectImage(currentIndex) {
   
     
   
-    hotspotMeshes.forEach(allMesh => {
-        scene.remove(allMesh);
+    hotspotMeshes.forEach(mesh => {
+        scene.remove(mesh);
+        if (mesh.geometry) mesh.geometry.dispose();
+        if (mesh.material) mesh.material.dispose();
     });
+    hotspotMeshes.length = 0;
   
-  
+    
+    hotSpotInfo.forEach(e => {
+        // Check if the "visible" array includes the "currentIndex" value
+        if (e.visible.includes(currentIndex)) {
+            // Create a new mesh from your base hotspot mesh
+            const mesh = hotspotMesh.clone();
+            // Set position from the hotspot info
+            mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+            // Make the mesh face the camera
+            mesh.lookAt(camera.position);
+            // Assign any additional user data
+            mesh.userData.spotIndex = e.spotIndex;
+            mesh.userData.visibleSpheres = e.visible;
+            // Set visibility based on the current index
+            mesh.visible = true;
+            // Add the mesh to the scene and to hotspotMeshes array
+            scene.add(mesh);
+            hotspotMeshes.push(mesh);
+        }
+    });
   
     
   
