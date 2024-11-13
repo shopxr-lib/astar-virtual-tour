@@ -301,12 +301,28 @@ const hotSpotInfo = [
   {
     spotIndex: 19,
     visible: [12],
-    pos: { x: 20, y: -100, z: 20 },
+    pos: { x: 50, y: -100, z: 330 },
   },
   {
     spotIndex: 20,
     visible: [12],
-    pos: { x: 265, y: -100, z: 210 },
+    pos: { x: 235, y: -100, z: 230 },
+  },
+  //hotspot index 13
+  {
+    spotIndex: 9,
+    visible: [13],
+    pos: { x: 20, y: -100, z: -185 },
+  },
+  {
+    spotIndex: 12,
+    visible: [13],
+    pos: { x: 200, y: -100, z: -150 },
+  },
+  {
+    spotIndex: 14,
+    visible: [13],
+    pos: { x: -50, y: -100, z: 210 },
   },
 ];
 
