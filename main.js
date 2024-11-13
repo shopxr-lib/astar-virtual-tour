@@ -279,14 +279,34 @@ const hotSpotInfo = [
   },
   //hotspot index 12
   {
+    spotIndex: 7,
+    visible: [12],
+    pos: { x: -230, y: -100, z: -250 },
+  },
+  {
     spotIndex: 9,
     visible: [12],
-    pos: { x: -200, y: -100, z: -80 },
+    pos: { x: -190, y: -100, z: -35 },
   },
   {
     spotIndex: 10,
     visible: [12],
-    pos: { x: -200, y: -100, z: -35 },
+    pos: { x: -250, y: -100, z: -80 },
+  },
+  {
+    spotIndex: 13,
+    visible: [12],
+    pos: { x: -175, y: -100, z: 150 },
+  },
+  {
+    spotIndex: 19,
+    visible: [12],
+    pos: { x: 20, y: -100, z: 20 },
+  },
+  {
+    spotIndex: 20,
+    visible: [12],
+    pos: { x: 265, y: -100, z: 210 },
   },
 ];
 
