@@ -344,10 +344,6 @@ function animate() {
 
 function update(elapsedTime) {
 
-  // hotspotMeshes.forEach((mesh) => {
-  //   mesh.visible = mesh.userData.visibleSpheres.includes(currentSphereIndex);
-  // })
-
   if (isUserInteracting === false && elapsedTime > 2) {
 
     lon += 0.03;
@@ -365,6 +361,8 @@ function update(elapsedTime) {
   camera.lookAt(x, y, z);
 
   if (transitioning) {
+    hotspotMeshes.forEach(mesh => mesh.visible = false);
+    
     // Update the transition progress
     transitionProgress += transitionSpeed;
 
@@ -376,6 +374,10 @@ function update(elapsedTime) {
       nextSphere.visible = true;
 
       currentSphere = spheres[currentSphereIndex];
+      
+      hotspotMeshes.forEach(mesh => {
+        mesh.visible = mesh.userData.visibleSpheres.includes(currentSphereIndex);
+      });
     }
 
     // Set the progress of the transition in the shader
@@ -454,34 +456,17 @@ function selectImage(currentIndex) {
   
     
     hotSpotInfo.forEach(e => {
-        // Check if the "visible" array includes the "currentIndex" value
         if (e.visible.includes(currentIndex)) {
-            // Create a new mesh from your base hotspot mesh
             const mesh = hotspotMesh.clone();
-            // Set position from the hotspot info
             mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
-            // Make the mesh face the camera
             mesh.lookAt(camera.position);
-            // Assign any additional user data
             mesh.userData.spotIndex = e.spotIndex;
             mesh.userData.visibleSpheres = e.visible;
-            // Set visibility based on the current index
             mesh.visible = true;
-            // Add the mesh to the scene and to hotspotMeshes array
             scene.add(mesh);
             hotspotMeshes.push(mesh);
         }
     });
-  
-    
-  
-    // hotspotMeshes.forEach((mesh) => {
-    //   if(mesh.userData.visibleSpheres.includes(currentIndex)){
-    //     scene.add(mesh);
-    //     hotspotMeshes.push(mesh);
-    //     console.log();
-    //   }
-    // })
 }
 
 // Function to handle click events on the document
