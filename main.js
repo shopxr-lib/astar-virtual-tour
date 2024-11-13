@@ -317,12 +317,50 @@ const hotSpotInfo = [
   {
     spotIndex: 12,
     visible: [13],
-    pos: { x: 200, y: -100, z: -150 },
+    pos: { x: 200, y: -100, z: -80 },
   },
   {
     spotIndex: 14,
     visible: [13],
     pos: { x: -50, y: -100, z: 210 },
+  },
+  //hotspot index 14
+  {
+    spotIndex: 13,
+    visible: [14],
+    pos: { x: 10, y: -100, z: -190 },
+  },
+  {
+    spotIndex: 15,
+    visible: [14],
+    pos: { x: 0, y: -100, z: 190 },
+  },
+  //hotspot index 15
+  {
+    spotIndex: 14,
+    visible: [15],
+    pos: { x: 10, y: -100, z: -190 },
+  },
+  {
+    spotIndex: 16,
+    visible: [15],
+    pos: { x: 10, y: -100, z: 180 },
+  },
+  //hotspot index 16
+  {
+    spotIndex: 15,
+    visible: [16],
+    pos: { x: 10, y: -100, z: -190 },
+  },
+  {
+    spotIndex: 17,
+    visible: [16],
+    pos: { x: -120, y: -100, z: 0 },
+  },
+  {
+    spotIndex: 31,
+    visible: [16],
+    pos: { x: 50, y: -100, z: 180 },
   },
 ];
 
