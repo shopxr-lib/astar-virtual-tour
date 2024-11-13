@@ -468,7 +468,12 @@ const hotSpotInfo = [
   {
     spotIndex: 23,
     visible: [24],
-    pos: { x: 200, y: -100, z: -210 },
+    pos: { x: 150, y: -100, z: -150 },
+  },
+  {
+    spotIndex: 25,
+    visible: [24],
+    pos: { x: -210, y: -100, z: 0 },
   },
 ];
 
