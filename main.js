@@ -60,21 +60,34 @@ const panoramas = [
 ]
 
 const hotSpotInfo = [
+  //hotspot index 0
   {
-    spotIndex: 0, // when clicked, goes back to this parorama image - index number
-    visible: [1], // on which panorama index, will this hotspot will be shown
+    spotIndex: 1, // when clicked, goes back to this parorama image - index number
+    visible: [0], // on which panorama index, will this hotspot will be shown
+    pos: { x: -220, y: -100, z: -150 },
+  },
+  //hotspot index 1
+  {
+    spotIndex: 0,
+    visible: [1],
     pos: { x: 230, y: -100, z: -150 },
   },
   {
-    spotIndex: 1,
-    visible: [0], 
-    pos: { x: -220, y: -100, z: -150 },
-  },
-  {
     spotIndex: 2,
-    visible: [1, 3],
-    pos: { x: -300, y: -100, z: -150 },
+    visible: [1],
+    pos: { x: -400, y: -100, z: 150 },
   },
+  //hotspot index 2
+  // {
+  //   spotIndex: 0,
+  //   visible: [1],
+  //   pos: { x: 230, y: -100, z: -150 },
+  // },
+  // {
+  //   spotIndex: 2,
+  //   visible: [1, 3],
+  //   pos: { x: -300, y: -100, z: -150 },
+  // },
 ];
 
 // hotspots = []
@@ -181,12 +194,12 @@ function init() {
     const mesh = hotspotMesh.clone();
     mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
     mesh.lookAt(camera.position);
-    mesh.userData.spotIndex = index;
+    mesh.userData.spotIndex = e.spotIndex; //updated from index to e.spotIndex
     mesh.userData.visibleSpheres = e.visible;
     mesh.visible = e.visible.includes(currentSphereIndex);
     scene.add(mesh);
     hotspotMeshes.push(mesh);
-    console.log(index, "index")
+    console.log(e.spotIndex, "spotIndex")
   })
 
 
