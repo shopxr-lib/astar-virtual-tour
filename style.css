@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  font-family: Source Sans Pro, sans-serif;
+  --bs-body-font-family: "Source Sans Pro", sans-serif; /* Override Bootstrap's body font-family */
 }
 
 #main-container {
