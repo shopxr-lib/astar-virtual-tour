@@ -186,6 +186,7 @@ function init() {
     mesh.visible = e.visible.includes(currentSphereIndex);
     scene.add(mesh);
     hotspotMeshes.push(mesh);
+    console.log(index, "index")
   })
 
 
