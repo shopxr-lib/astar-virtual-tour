@@ -118,6 +118,9 @@ locationRelativePositions.forEach((position) => {
   img.src = "images/location-icon.png";
   img.classList.add("img-fluid", "position-absolute");
   img.dataset["bsDismiss"] = "modal";
+  img.dataset["bsToggle"] = "tooltip";
+  img.dataset["bsPlacement"] = "top";
+  img.dataset["bsTitle"] = position.title;
   img.style.cursor = "pointer";
   img.style.top = position.top;
   img.style.left = position.left;
@@ -132,3 +135,10 @@ locationRelativePositions.forEach((position) => {
 
   container.appendChild(img);
 });
+
+const tooltipTriggerList = document.querySelectorAll(
+  '[data-bs-toggle="tooltip"]'
+);
+const tooltipList = [...tooltipTriggerList].map(
+  (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+);
