@@ -110,7 +110,7 @@ const locationRelativePositions = [
 ];
 
 const container = document.querySelector('[data-container="floor-plan"]');
-locationRelativePositions.forEach((position, idx) => {
+locationRelativePositions.forEach((position) => {
   const img = document.createElement("img");
   img.alt = position.title;
   img.title = position.title;
@@ -121,8 +121,8 @@ locationRelativePositions.forEach((position, idx) => {
   img.style.cursor = "pointer";
   img.style.top = position.top;
   img.style.left = position.left;
-  img.style.width = "1.5rem";
-  img.style.height = "1.5rem";
+  img.style.width = "2%";
+  img.style.width = "2%";
 
   img.onclick = () => {
     const url = new URL(window.location);
