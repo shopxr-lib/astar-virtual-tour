@@ -199,7 +199,7 @@ function init() {
     mesh.visible = e.visible.includes(currentSphereIndex);
     scene.add(mesh);
     hotspotMeshes.push(mesh);
-    console.log(e.spotIndex, "spotIndex")
+    //console.log(e.spotIndex, "spotIndex")
   })
 
 
@@ -449,7 +449,7 @@ function selectImage(currentIndex) {
         scene.remove(allMesh);
     });
   
-  console.log(hotspotMeshes);
+  
   
     
   
