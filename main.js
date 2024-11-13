@@ -424,7 +424,7 @@ let selectedImageIndex;
 //   });
 // });
 
-// function selectImage(image) {
+function selectImage(currentIndex) {
 
 //   sliderImages.forEach(function (img) {
 //     img.classList.remove('selected');
@@ -434,7 +434,7 @@ let selectedImageIndex;
 
 //   const targetIndex = panoramas.findIndex(img => img === image.alt);
 
-//   //console.log(targetIndex, "plplplplp")
+  //console.log(targetIndex, "plplplplp")
 //   spheres.forEach(function (sphere) {
 //     sphere.visible = false;
 //   });
@@ -442,7 +442,9 @@ let selectedImageIndex;
 //   spheres[targetIndex].visible = true;
 //   currentSphere = spheres[targetIndex];
 //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
-// }
+  
+  console.log(currentIndex);
+}
 
 // Function to handle click events on the document
 function onDocumentClick(event) {
@@ -463,7 +465,9 @@ function onDocumentClick(event) {
     transitionProgress = 0.0;
     currentSphereIndex = intersectedMesh.userData.spotIndex;
     nextSphere = spheres[currentSphereIndex];
-    console.log(currentSphereIndex, "currentSphereIndex")
-
+    
+    //console.log(currentSphereIndex, "currentSphereIndex")
+    
+    selectImage(currentSphereIndex);
   }
 }
