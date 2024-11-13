@@ -443,7 +443,11 @@ function selectImage(currentIndex) {
 //   currentSphere = spheres[targetIndex];
 //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
   
-  console.log(currentIndex);
+    console.log(currentIndex);
+  
+    hotspotMeshes.forEach(allMesh => {
+        scene.remove(allMesh);
+    });
 }
 
 // Function to handle click events on the document
