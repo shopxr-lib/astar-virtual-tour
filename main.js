@@ -81,21 +81,14 @@ const hotSpotInfo = [
   {
     spotIndex: 1,
     visible: [2],
-    pos: { x: 270, y: -100, z: -120 },
+    pos: { x: 150, y: -100, z: -25 },
   },
-  // {
-  //   spotIndex: 2,
-  //   visible: [1, 3],
-  //   pos: { x: -300, y: -100, z: -150 },
-  // },
+  {
+    spotIndex: 2,
+    visible: [1, 3],
+    pos: { x: -300, y: -100, z: -150 },
+  },
 ];
-
-// hotspots = []
-
-// [
-//   {"panorama": "...png", hotspots: []},
-//   {"panorama": "...png", hotspots: []},
-// ]
 
 
 const TransitionShader = {
@@ -157,6 +150,7 @@ let isUserInteracting = false,
 init();
 animate();
 
+
 function init() {
 
   const container = document.getElementById('image-container');
@@ -182,7 +176,7 @@ function init() {
     spheres.push(sphere);
   });
 
-  currentSphere = spheres[2];
+  currentSphere = spheres[0];
   nextSphere = spheres[1];
 
   const hotspotTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236'); // Load the arrow image
@@ -247,8 +241,6 @@ function init() {
 
   transitionProgress = 0.0;
   transitionSpeed = 0.01;
-
-
 }
 
 function onTouchStart(event) {
