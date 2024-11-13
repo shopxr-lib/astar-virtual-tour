@@ -110,19 +110,25 @@ const locationRelativePositions = [
 ];
 
 const container = document.querySelector('[data-container="floor-plan"]');
-const locationSrc = "images/location-icon.png";
 locationRelativePositions.forEach((position, idx) => {
   const img = document.createElement("img");
   img.alt = position.title;
   img.title = position.title;
   img.dataset.tag = position.tag;
-  img.src = locationSrc;
+  img.src = "images/location-icon.png";
   img.classList.add("img-fluid", "position-absolute");
+  img.dataset["bsDismiss"] = "modal";
   img.style.cursor = "pointer";
   img.style.top = position.top;
   img.style.left = position.left;
   img.style.width = "1.5rem";
   img.style.height = "1.5rem";
+
+  img.onclick = () => {
+    const url = new URL(window.location);
+    url.searchParams.set("location", position.tag);
+    window.history.pushState({}, "", url);
+  };
 
   container.appendChild(img);
 });
