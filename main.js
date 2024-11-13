@@ -415,34 +415,34 @@ function update(elapsedTime) {
 var sliderImages = document.querySelectorAll('#image-slider img');
 let selectedImageIndex;
 
-document.addEventListener("DOMContentLoaded", function () {
-  sliderImages.forEach(function (img) {
-    img.addEventListener("click", function () {
-      // Call selectImage function and pass the clicked image
-      selectImage(img);
-    });
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   sliderImages.forEach(function (img) {
+//     img.addEventListener("click", function () {
+//       // Call selectImage function and pass the clicked image
+//       selectImage(img);
+//     });
+//   });
+// });
 
-function selectImage(image) {
+// function selectImage(image) {
 
-  sliderImages.forEach(function (img) {
-    img.classList.remove('selected');
-  });
+//   sliderImages.forEach(function (img) {
+//     img.classList.remove('selected');
+//   });
 
-  image.classList.add('selected');
+//   image.classList.add('selected');
 
-  const targetIndex = panoramas.findIndex(img => img === image.alt);
+//   const targetIndex = panoramas.findIndex(img => img === image.alt);
 
-  console.log(targetIndex, "plplplplp")
-  spheres.forEach(function (sphere) {
-    sphere.visible = false;
-  });
+//   //console.log(targetIndex, "plplplplp")
+//   spheres.forEach(function (sphere) {
+//     sphere.visible = false;
+//   });
   
-  spheres[targetIndex].visible = true;
-  currentSphere = spheres[targetIndex];
-  nextSphere = spheres[(targetIndex + 1) % spheres.length];
-}
+//   spheres[targetIndex].visible = true;
+//   currentSphere = spheres[targetIndex];
+//   nextSphere = spheres[(targetIndex + 1) % spheres.length];
+// }
 
 // Function to handle click events on the document
 function onDocumentClick(event) {
