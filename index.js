@@ -1,139 +1,340 @@
-const locationRelativePositions = [
+/**
+ * An array of objects representing the positions and details of various locations.
+ * Each object contains information about a specific location, including its tag, title,
+ * position (top and left), and contents.
+ *
+ * @constant {Array<Object>}
+ * @property {number} tag - The unique identifier for the location.
+ * @property {string} title - The title of the location.
+ * @property {string} top - The top position of the location as a percentage.
+ * @property {string} left - The left position of the location as a percentage.
+ * @property {Array<Object>} contents - An array of content objects related to the location.
+ * @property {string} contents.title - The title of the content.
+ * @property {string} contents.subtitle - The subtitle of the content.
+ * @property {string} contents.description - The description of the content.
+ * @property {string} contents.video - Youtube link
+ */
+const hostspotLocations = [
   {
     tag: 14,
     title: "RoPlus",
     top: "20%",
     left: "13.5%",
+    contents: [
+      {
+        title: "RoPlus Intelligent Hybrid Robotic Gripping Solution",
+        subtitle: "Engineering and Application",
+        description:
+          "Industrial-grade adaptive motor control box that can be communicated with most of the commercial robotic arms and interfaced to the versatile adaptive end-effector",
+      },
+    ],
   },
   {
     tag: 15,
     title: "Build Lab",
     top: "28%",
     left: "22%",
+    contents: [
+      {
+        title: "Build Lab",
+        subtitle: "",
+        description:
+          "We support Additive Manufacturing engineers in improving their manufacturing processes with top-tier 3D printers and simulation technology. Our experienced team minimise the runway to find build configurations that succeed and customise technology to integrate seamlessly into your process chain.",
+      },
+    ],
   },
   {
     tag: 13,
     title: "Materials Lab",
     top: "1%",
     left: "28%",
+    contents: [
+      {
+        title: "Build Lab",
+        subtitle: "",
+        description:
+          "We enable partners to explore a wealth of knowledge in materials. We hold space for creativity and interdisciplinary study, pushing the envelope in material exploration.",
+      },
+    ],
   },
   {
     tag: 12,
     title: "IFinity",
     top: "11%",
     left: "33%",
+    contents: [
+      {
+        title: "IFinity",
+        subtitle: "",
+        description:
+          "A premium private meeting space ideal for meetings, project discussions, and networking.  [Table 12 pax; Backbenchers 15 pax] ",
+      },
+    ],
   },
   {
     tag: 16,
     title: "EV Section",
     top: "38%",
     left: "38%",
+    contents: [
+      {
+        title: "Lamp Post EV Charger",
+        subtitle: "Ideation, Design, Engineering",
+        description:
+          "A built-in EV charging module for Singapore's lamp posts.",
+        video: "https://www.youtube.com/embed/KaxFRmfwSF8",
+      },
+      {
+        title: "Battery Swapping Station",
+        subtitle: "Ideation, Design, Engineering",
+        description:
+          "Battery Charging and Swapping Station (BCSS) that incorporate the use of solar power.",
+        video: "https://youtube.com/embed/13nHtDnlAag",
+      },
+    ],
   },
   {
     tag: 11,
     title: "Impression Sunrise",
     top: "25%",
     left: "39.5%",
+    contents: [
+      {
+        title: "Impression Sunrise",
+        subtitle: "",
+        description:
+          "A meeting space for casual discussions in the heart of IF. [10 pax]",
+      },
+    ],
   },
   {
     tag: 17,
     title: "Edible Innovations",
     top: "48%",
     left: "41%",
+    contents: [
+      {
+        title: "Crunch Cutlery",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "Edible fork and spoon that helps to reduce plastic waste.",
+        video: "https://youtube.com/embed/HWfLoyJQK5Y",
+      },
+      {
+        title: "Vertical Automation System",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "Automated machine that enables Crunch Cutlery to be freshly baked on-demand by the clients, further reducing plastic packaging waste",
+      },
+    ],
   },
   {
     tag: 18,
     top: "44%",
     left: "49%",
     title: "Smooder",
+    contents: [
+      {
+        title: "Smooder",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "Singapore’s first counter-top smoothie maker that blends fruits directly in a cup and self-cleans.",
+        video: "https://youtube.com/embed/2cH4qVf_V9g",
+      },
+    ],
   },
   {
     tag: 10,
     top: "35%",
     left: "50%",
-    title: "Airleo",
+    title: "Airleo Eco Air System",
+    contents: [
+      {
+        title: "Airleo Eco Air System",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "An air-cooling system that economically generates cold air, without producing hot exhaust air at the same time.",
+        video: "https://youtube.com/embed/cXOqrT-_Jlk",
+      },
+    ],
   },
   {
     tag: 9,
     top: "5%",
     left: "50.5%",
     title: "Design Lab 2",
+    contents: [
+      {
+        title: "Design Lab 2",
+        subtitle: "",
+        description:
+          "We specialize in customized solutions for product design and embedded systems, leveraging expertise in industrial design, electronics, mechanical development, simulation, firmware, and communication protocols. Our services encompass design, consulting, and engineering support, with flexible outsourcing and robust project management to meet partners' needs effectively.",
+      },
+    ],
   },
   {
     tag: 7,
     top: "39%",
     left: "59%",
-    title: "Rebee",
+    title: "Rebee Rehabilitation Wearable",
+    contents: [
+      {
+        title: "Rebee Rehabilitation Wearable",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "Wearable sensors to remotely detect and track patients doing physiotherapy.",
+        video: "https://www.youtube.com/embed/xMCh1L3MqCA?si=og5qK8XlpKpKiog1",
+      },
+    ],
   },
   {
     tag: 8,
     top: "18%",
     left: "59%",
     title: "Electronic Lab",
+    contents: [
+      {
+        title: "Electronic Lab",
+        subtitle: "",
+        description:
+          "Here, we empower engineers and designers to explore, prototype, and refine electronic solutions. Functionality and innovation converge, offering essential tools and technology needed for electronic projects.",
+      },
+    ],
   },
   {
     tag: 6,
     top: "42%",
     left: "61.5%",
-    title: "Milk Analyzer",
+    title: "I4DEAs Milk Analyzer",
+    contents: [
+      {
+        title: "I4DEAs Milk Analyzer",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "I4DEAs is an ABRAND spin off selling the milk analyzer which can identify the authenticity of baby formula through a smart optical technology developed by ABRAND.",
+        video: "https://www.youtube.com/embed/1VJdwHLbuGo?si=lYLTQyZM_sFqjolp",
+      },
+    ],
   },
   {
     tag: 5,
     top: "46%",
     left: "64.5%",
-    title: "SHRED-AM",
+    title: "SHRED-AM Plastic Recycler",
+    contents: [
+      {
+        title: "SHRED-AM Plastic Recycler",
+        subtitle: "Ideation, Design, Engineering, Application",
+        description:
+          "An all-in-one grinder, extruder and winder machine designed to turn Type 7 plastic waste and into 3D printing filaments.",
+      },
+    ],
   },
   {
     tag: 4,
     top: "28%",
     left: "68%",
     title: "Mechanical Lab",
+    contents: [
+      {
+        title: "Mechanical Lab",
+        description:
+          "We develop robotics and automation solutions, including 2D and 3D lidar navigation and vision-based lost recovery. We also explore robotic systems in manipulation, mobility, perception, intelligence, and mechatronics.",
+      },
+    ],
   },
   {
     tag: 3,
     top: "58%",
     left: "73%",
     title: "MedTech Lineup",
+    contents: [
+      {
+        title: "KKH In-Bed Child Cot Concept",
+        subtitle: "Ideation and Design",
+        description:
+          "PoC design reconfigure general hospital bed for adult or child use, saving space, and expanding hospital bed resources.",
+        video: "https://www.youtube.com/embed/rVH8JFZp1Pk?si=8Nxrr0xnELGbnij5",
+      },
+      {
+        title: "PARI Nebulizer",
+        subtitle: "Ideation and Design",
+        description:
+          "New generation portable nebulizer system with enhanced design and UIUX.",
+      },
+      {
+        title: "BTI Automated Aseptic Sampling Device",
+        subtitle: "Design and Engineering",
+        description:
+          "Device for aseptically and automatically extracting small volumes (below 1ml) of liquid samples for cell therapy manufacturing monitoring.",
+      },
+      {
+        title: "BTI Multi-Use Aseptic Connector",
+        subtitle: "Engineering",
+        description:
+          "A multiple-use aseptic connector technology to replace single-use sterile connectors in bioprocessing and cell manufacturing.",
+      },
+    ],
   },
   {
     tag: 2,
     top: "42%",
     left: "81%",
     title: "Design Lab 1",
+    contents: [
+      {
+        title: "Design Lab 1",
+        subtitle: "",
+        description:
+          "We specialize in customized solutions for product design and embedded systems, leveraging expertise in industrial design, electronics, mechanical development, simulation, firmware, and communication protocols. Our services encompass design, consulting, and engineering support, with flexible outsourcing and robust project management to meet partners' needs effectively.",
+      },
+    ],
   },
   {
     tag: 1,
     top: "68%",
     left: "79%",
     title: "Auditorium",
+    contents: [
+      {
+        title: "IF Auditorium",
+        description:
+          "An open concept meeting and event space that flows seamlessly into IF's showroom. [30 pax]",
+      },
+    ],
   },
 ];
 
-const container = document.querySelector('[data-container="floor-plan"]');
-locationRelativePositions.forEach((position) => {
+const floorPlanContainer = document.querySelector(
+  '[data-container="floor-plan"]'
+);
+hostspotLocations.forEach((hotspot) => {
   const img = document.createElement("img");
-  img.alt = position.title;
-  img.title = position.title;
-  img.dataset.tag = position.tag;
+  img.alt = hotspot.title;
+  img.title = hotspot.title;
+  img.dataset.tag = hotspot.tag;
   img.src = "images/location-icon.png";
   img.classList.add("img-fluid", "position-absolute");
   img.dataset["bsDismiss"] = "modal";
   img.dataset["bsToggle"] = "tooltip";
   img.dataset["bsPlacement"] = "top";
-  img.dataset["bsTitle"] = position.title;
+  img.dataset["bsTitle"] = hotspot.title;
   img.style.cursor = "pointer";
-  img.style.top = position.top;
-  img.style.left = position.left;
+  img.style.top = hotspot.top;
+  img.style.left = hotspot.left;
   img.style.width = "2%";
   img.style.width = "2%";
 
   img.onclick = () => {
     const url = new URL(window.location);
-    url.searchParams.set("location", position.tag);
-    window.history.pushState({}, "", url);
+    url.searchParams.set("location", hotspot.tag);
+    history.pushState({ tag: hotspot.tag }, "", url);
+    dispatchEvent(
+      new PopStateEvent("popstate", { state: { tag: hotspot.tag } })
+    );
   };
 
-  container.appendChild(img);
+  floorPlanContainer.appendChild(img);
 });
 
 function isMobile() {
@@ -148,3 +349,90 @@ if (!isMobile()) {
     new bootstrap.Tooltip(tooltipTriggerEl);
   });
 }
+
+function populateHotspotCard() {
+  const url = new URL(window.location);
+  const locationTag = url.searchParams.get("location");
+  const location = hostspotLocations.find((l) => l.tag == locationTag);
+  if (!location) {
+    return;
+  }
+
+  const contentIndexRaw = url.searchParams.get("contentIdx") || "0";
+  const contentIndex = Number(contentIndexRaw);
+  if (contentIndex >= location.contents.length) {
+    return;
+  }
+
+  const content = location.contents[Number(contentIndex)];
+
+  renderModal(content);
+
+  const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
+  const shouldShowInfoIcon = location.contents && location.contents.length == 1;
+
+  const infoIconImg = document.createElement("img");
+  infoIconImg.src = "images/information-icon.png";
+  infoIconImg.classList.add("img-fluid");
+  infoIconImg.style.width = "20px";
+  infoIconImg.style.height = "20px";
+  infoIconImg.style.cursor = "pointer";
+  infoIconImg.dataset["bsToggle"] = "modal";
+  infoIconImg.dataset["bsTarget"] = "#hotspot-detail-modal";
+
+  const card = `
+  <div class="card" style="max-width: 18rem;">
+    <div class="card-body">
+      <div class="d-flex align-items-center" style="gap:1rem;">
+        <p class="m-0">${location.title}</p>
+        ${shouldShowInfoIcon ? infoIconImg.outerHTML : ""}
+      </div>
+    </div>
+  </div>
+  `;
+  hotspotCard.innerHTML = card;
+}
+
+function renderModal(content) {
+  const modalHTML = `
+    <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true" data-bs-backdrop="false" style="top: 35%; width:auto;">
+      <div class="modal-dialog mx-3">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="hotspot-detail-modal-label">${
+              content.title
+            }</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ${
+              content.subtitle
+                ? `<h6 class="card-subtitle mb-2 text-body-secondary">${content.subtitle}</h6>`
+                : ""
+            }
+            <p class="card-text">${content.description}</p>
+            ${
+              content.video
+                ? `<div class="ratio ratio-16x9">
+                     <iframe src="${content.video}" title="YouTube video" allowfullscreen></iframe>
+                   </div>`
+                : ""
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const hotspotCardContainer = document.querySelector(
+    "[data-container='hotspot-card']"
+  );
+  hotspotCardContainer.insertAdjacentHTML("afterend", modalHTML);
+
+  const modalElement = document.getElementById("hotspot-detail-modal");
+  const modal = new bootstrap.Modal(modalElement);
+  return modal;
+}
+
+populateHotspotCard();
+window.addEventListener("popstate", populateHotspotCard);
