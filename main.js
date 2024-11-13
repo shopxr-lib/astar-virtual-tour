@@ -7,74 +7,87 @@ import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/
 
 const panoramas = [
   'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-2.webp?v=1731400195697',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-3.webp?v=1731400197351',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-4.webp?v=1731400199461',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-5.webp?v=1731400201192',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-6.webp?v=1731400202755',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-7.webp?v=1731400207592',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-8.webp?v=1731400209419',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-9.webp?v=1731400211345',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-10.webp?v=1731400213053',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-11.webp?v=1731400219405',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-12.webp?v=1731400221057',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-13.webp?v=1731400222662',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-14.webp?v=1731400225525',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-15.webp?v=1731400227041',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-16.webp?v=1731400228731',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-17.webp?v=1731400230476',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-18.webp?v=1731400232447',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-19.webp?v=1731400234097',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-20.webp?v=1731400235626',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-21.webp?v=1731400237289',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-22.webp?v=1731400240094',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-23.webp?v=1731400242245',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-24.webp?v=1731400243443',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-25.webp?v=1731400244935',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-26.webp?v=1731400246712',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-27.webp?v=1731400248086',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-28.webp?v=1731400249739',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-29.webp?v=1731400251425',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-30.webp?v=1731400252710',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-31.webp?v=1731400254081',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-32.webp?v=1731400255634',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-33.webp?v=1731400257670',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-34.webp?v=1731400260941',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-35.webp?v=1731400262569',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-36.webp?v=1731400264746',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-37.webp?v=1731400266806',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-38.webp?v=1731400268178',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-39.webp?v=1731400269689',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-40.webp?v=1731400271075',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-41.webp?v=1731400272482',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-42.webp?v=1731400274017',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-43.webp?v=1731400276629',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-44.webp?v=1731400278415',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-45.webp?v=1731400279823',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-46.webp?v=1731400281387',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-47.webp?v=1731400282664',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-48.webp?v=1731400283985',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-49.webp?v=1731400285541',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-50.webp?v=1731400287138',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-mini-51.webp?v=1731400288388',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-2.jpg?v=1731439302339',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-3.jpg?v=1731439302505',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-4.jpg?v=1731439303023',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-5.jpg?v=1731439303982',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-6.jpg?v=1731439307229',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-7.jpg?v=1731439307855',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-8.jpg?v=1731439310066',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-9.jpg?v=1731439311834',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-10.jpg?v=1731439313841',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-11.jpg?v=1731439316565',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-12.jpg?v=1731439317689',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-13.jpg?v=1731439319437',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-14.jpg?v=1731439321477',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-15.jpg?v=1731439323282',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-16.jpg?v=1731439325293',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-17.jpg?v=1731439326942',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-18.jpg?v=1731439329607',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-19.jpg?v=1731439331620',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-20.jpg?v=1731439343786',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-21.jpg?v=1731439344731',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-22.jpg?v=1731439362726',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-23.jpg?v=1731439364081',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-24.jpg?v=1731439365707',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-25.jpg?v=1731439367727',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-26.jpg?v=1731439368223',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-27.jpg?v=1731439370816',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-28.jpg?v=1731439373593',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-29.jpg?v=1731439375533',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-30.jpg?v=1731439377324',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-31.jpg?v=1731439394973',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-32.jpg?v=1731439395011',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-33.jpg?v=1731439397318',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-34.jpg?v=1731439397408',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-35.jpg?v=1731439399500',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-36.jpg?v=1731439402486',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-37.jpg?v=1731439403707',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-38.jpg?v=1731439406182',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-39.jpg?v=1731439407864',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-40.jpg?v=1731439409895',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-41.jpg?v=1731439411953',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-42.jpg?v=1731439414496',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-43.jpg?v=1731439416498',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-44.jpg?v=1731439418366',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-45.jpg?v=1731439419825',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-46.jpg?v=1731439422029',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-47.jpg?v=1731439431505',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-48.jpg?v=1731439432155',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-49.jpg?v=1731439433171',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-50.jpg?v=1731439435313',
+  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-51.jpg?v=1731439437458',
 ]
 
 const hotSpotInfo = [
+  //hotspot index 0
+  {
+    spotIndex: 1, // when clicked, goes back to this parorama image - index number
+    visible: [0], // on which panorama index, will this hotspot will be shown
+    pos: { x: -220, y: -100, z: -150 },
+  },
+  //hotspot index 1
   {
     spotIndex: 0,
     visible: [1],
-    pos: { x: 250, y: -100, z: -180 },
-  },
-  {
-    spotIndex: 1,
-    visible: [0, 2], // on which panorama index, will this hotspot will be shown
-    pos: { x: -200, y: -100, z: -150 },
+    pos: { x: 230, y: -100, z: -150 },
   },
   {
     spotIndex: 2,
-    visible: [1, 3],
-    pos: { x: -300, y: -100, z: -150 },
+    visible: [1],
+    pos: { x: -400, y: -100, z: -150 },
   },
+  //hotspot index 2
+  // {
+  //   spotIndex: 0,
+  //   visible: [1],
+  //   pos: { x: 230, y: -100, z: -150 },
+  // },
+  // {
+  //   spotIndex: 2,
+  //   visible: [1, 3],
+  //   pos: { x: -300, y: -100, z: -150 },
+  // },
 ];
 
 // hotspots = []
@@ -181,11 +194,12 @@ function init() {
     const mesh = hotspotMesh.clone();
     mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
     mesh.lookAt(camera.position);
-    mesh.userData.spotIndex = index;
+    mesh.userData.spotIndex = e.spotIndex; //updated from index to e.spotIndex
     mesh.userData.visibleSpheres = e.visible;
     mesh.visible = e.visible.includes(currentSphereIndex);
     scene.add(mesh);
     hotspotMeshes.push(mesh);
+    console.log(e.spotIndex, "spotIndex")
   })
 
 
@@ -229,7 +243,7 @@ function init() {
   composer.addPass(transitionPass);
 
   const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.85);
-  composer.addPass(bloomPass);
+  //composer.addPass(bloomPass);
 
   transitionProgress = 0.0;
   transitionSpeed = 0.01;
@@ -401,33 +415,39 @@ function update(elapsedTime) {
 var sliderImages = document.querySelectorAll('#image-slider img');
 let selectedImageIndex;
 
-document.addEventListener("DOMContentLoaded", function () {
-  sliderImages.forEach(function (img) {
-    img.addEventListener("click", function () {
-      // Call selectImage function and pass the clicked image
-      selectImage(img);
-    });
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   sliderImages.forEach(function (img) {
+//     img.addEventListener("click", function () {
+//       // Call selectImage function and pass the clicked image
+//       selectImage(img);
+//     });
+//   });
+// });
 
-function selectImage(image) {
+function selectImage(currentIndex) {
 
-  sliderImages.forEach(function (img) {
-    img.classList.remove('selected');
-  });
+//   sliderImages.forEach(function (img) {
+//     img.classList.remove('selected');
+//   });
 
-  image.classList.add('selected');
+//   image.classList.add('selected');
 
-  const targetIndex = panoramas.findIndex(img => img === image.alt);
+//   const targetIndex = panoramas.findIndex(img => img === image.alt);
 
-  console.log(targetIndex, "plplplplp")
-  spheres.forEach(function (sphere) {
-    sphere.visible = false;
-  });
+  //console.log(targetIndex, "plplplplp")
+//   spheres.forEach(function (sphere) {
+//     sphere.visible = false;
+//   });
   
-  spheres[targetIndex].visible = true;
-  currentSphere = spheres[targetIndex];
-  nextSphere = spheres[(targetIndex + 1) % spheres.length];
+//   spheres[targetIndex].visible = true;
+//   currentSphere = spheres[targetIndex];
+//   nextSphere = spheres[(targetIndex + 1) % spheres.length];
+  
+    console.log(currentIndex);
+  
+    hotspotMeshes.forEach(allMesh => {
+        scene.remove(allMesh);
+    });
 }
 
 // Function to handle click events on the document
@@ -449,7 +469,9 @@ function onDocumentClick(event) {
     transitionProgress = 0.0;
     currentSphereIndex = intersectedMesh.userData.spotIndex;
     nextSphere = spheres[currentSphereIndex];
-    console.log(currentSphereIndex, "currentSphereIndex")
-
+    
+    //console.log(currentSphereIndex, "currentSphereIndex")
+    
+    selectImage(currentSphereIndex);
   }
 }
