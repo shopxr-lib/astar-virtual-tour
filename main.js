@@ -443,19 +443,23 @@ function selectImage(currentIndex) {
 //   currentSphere = spheres[targetIndex];
 //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
   
-    console.log(currentIndex);
+    
   
     hotspotMeshes.forEach(allMesh => {
         scene.remove(allMesh);
     });
   
-    hotspotMeshes.forEach((mesh) => {
-      if(mesh.userData.visibleSpheres.includes(currentIndex)){
-        scene.add(mesh);
-        hotspotMeshes.push(mesh);
-        console.log();
-      }
-    })
+  console.log(hotspotMeshes);
+  
+    
+  
+    // hotspotMeshes.forEach((mesh) => {
+    //   if(mesh.userData.visibleSpheres.includes(currentIndex)){
+    //     scene.add(mesh);
+    //     hotspotMeshes.push(mesh);
+    //     console.log();
+    //   }
+    // })
 }
 
 // Function to handle click events on the document
