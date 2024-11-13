@@ -448,6 +448,14 @@ function selectImage(currentIndex) {
     hotspotMeshes.forEach(allMesh => {
         scene.remove(allMesh);
     });
+  
+    hotspotMeshes.forEach((mesh) => {
+      if(mesh.userData.visibleSpheres.includes(currentIndex)){
+        scene.add(mesh);
+        hotspotMeshes.push(mesh);
+        console.log();
+      }
+    })
 }
 
 // Function to handle click events on the document
