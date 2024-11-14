@@ -932,17 +932,27 @@ function init() {
   const hotspotGeometry = new THREE.PlaneGeometry(40, 20);
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
 
-  hotSpotInfo.forEach((e, index) => {
-    const mesh = hotspotMesh.clone();
-    mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
-    mesh.lookAt(camera.position);
-    mesh.userData.spotIndex = e.spotIndex; //updated from index to e.spotIndex
-    mesh.userData.visibleSpheres = e.visible;
-    mesh.visible = e.visible.includes(currentSphereIndex);
-    scene.add(mesh);
-    hotspotMeshes.push(mesh);
-    //console.log(e.spotIndex, "spotIndex")
-  })
+  // hotSpotInfo.forEach((e, index) => {
+  //   const mesh = hotspotMesh.clone();
+  //   mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+  //   mesh.lookAt(camera.position);
+  //   mesh.userData.spotIndex = e.spotIndex; //updated from index to e.spotIndex
+  //   mesh.userData.visibleSpheres = e.visible;
+  //   mesh.visible = e.visible.includes(currentSphereIndex);
+  //   scene.add(mesh);
+  //   hotspotMeshes.push(mesh);
+  //   //console.log(e.spotIndex, "spotIndex")
+  // })
+  
+  const e = hotSpotInfo[0]; // Directly access the hotspot at index 0
+  const mesh = hotspotMesh.clone();
+  mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+  mesh.lookAt(camera.position);
+  mesh.userData.spotIndex = e.spotIndex;
+  mesh.userData.visibleSpheres = e.visible;
+  mesh.visible = e.visible.includes(currentSphereIndex);
+  scene.add(mesh);
+  hotspotMeshes.push(mesh);
 
 
   renderer = new THREE.WebGLRenderer();
@@ -1185,9 +1195,10 @@ function selectImage(currentIndex) {
 //   currentSphere = spheres[targetIndex];
 //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
   
+    nextSphere = spheres[currentIndex];
     transitioning = true;
     transitionProgress = 0.0;
-    nextSphere = spheres[currentIndex];
+    
   
     hotspotMeshes.forEach(mesh => {
         scene.remove(mesh);
