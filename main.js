@@ -65,776 +65,921 @@ const hotSpotInfo = [
     spotIndex: 1, // when clicked, goes to this parorama image - index number
     visible: [0], // on which panorama index, will this hotspot will be shown
     pos: { x: -220, y: -100, z: -150 },
+    iconType: "hotspot",
   },
   //hotspot index 1
   {
     spotIndex: 0,
     visible: [1],
     pos: { x: 230, y: -100, z: -150 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 2,
     visible: [1],
     pos: { x: -200, y: -100, z: -55 },
+    iconType: "hotspot",
   },
   //hotspot index 2
   {
     spotIndex: 1,
     visible: [2],
     pos: { x: 150, y: -100, z: -25 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 3,
     visible: [2],
     pos: { x: -220, y: -100, z: 100 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 4,
     visible: [2],
     pos: { x: -260, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   //hotspot index 3
   {
     spotIndex: 2,
     visible: [3],
     pos: { x: 220, y: -100, z: -45 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 4,
     visible: [3],
     pos: { x: -10, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 5,
     visible: [3],
     pos: { x: -210, y: -80, z: -410 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 6,
     visible: [3],
     pos: { x: -260, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 7,
     visible: [3],
     pos: { x: -350, y: -100, z: -20 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 10,
     visible: [3],
     pos: { x: -380, y: -100, z: 120 },
+    iconType: "hotspot",
   },
   //hotspot index 4
   {
     spotIndex: 2,
     visible: [4],
     pos: { x: 270, y: -100, z: 120 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 3,
     visible: [4],
     pos: { x: 60, y: -100, z: 245 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 5,
     visible: [4],
     pos: { x: -265, y: -100, z: -140 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 6,
     visible: [4],
     pos: { x: -220, y: -100, z: 115 },
+    iconType: "hotspot",
   },
   //hotspot index 5
   {
     spotIndex: 3,
     visible: [5],
     pos: { x: 250, y: -100, z: 340 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 4,
     visible: [5],
     pos: { x: 270, y: -100, z: 190 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 6,
     visible: [5],
     pos: { x: -5, y: -100, z: 270 },
+    iconType: "hotspot",
   },
   //hotspot index 6
   {
     spotIndex: 3,
     visible: [6],
     pos: { x: 270, y: -100, z: 120 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 4,
     visible: [6],
     pos: { x: 240, y: -100, z: -130 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 5,
     visible: [6],
     pos: { x: -50, y: -100, z: -250 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 7,
     visible: [6],
     pos: { x: -50, y: -100, z: 150 },
+    iconType: "hotspot",
   },
   //hotspot index 7
   {
     spotIndex: 3,
     visible: [7],
     pos: { x: 310, y: -100, z: -35 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 4,
     visible: [7],
     pos: { x: 300, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 6,
     visible: [7],
     pos: { x: 30, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 8,
     visible: [7],
     pos: { x: -200, y: -100, z: -10 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 9,
     visible: [7],
     pos: { x: 30, y: -100, z: 220 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 10,
     visible: [7],
     pos: { x: -60, y: -100, z: 160 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 12,
     visible: [7],
     pos: { x: 160, y: -100, z: 250 },
+    iconType: "hotspot",
   },
   //hotspot index 8
   {
     spotIndex: 7,
     visible: [8],
     pos: { x: 200, y: -100, z: 30 },
+    iconType: "hotspot",
   },
   //hotspot index 9
   {
     spotIndex: 7,
     visible: [9],
     pos: { x: -40, y: -100, z: -230 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 10,
     visible: [9],
     pos: { x: -80, y: -100, z: -80 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 12,
     visible: [9],
     pos: { x: 150, y: -100, z: 80 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 13,
     visible: [9],
     pos: { x: -10, y: -100, z: 180 },
+    iconType: "hotspot",
   },
   //hotspot index 10
   {
     spotIndex: 3,
     visible: [10],
     pos: { x: 330, y: -100, z: -235 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 7,
     visible: [10],
     pos: { x: 10, y: -100, z: -180 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 9,
     visible: [10],
     pos: { x: 100, y: -100, z: 80 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 11,
     visible: [10],
     pos: { x: -200, y: -100, z: 30 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 12,
     visible: [10],
     pos: { x: 230, y: -100, z: 80 },
+    iconType: "hotspot",
   },
   //hotspot index 11
   {
     spotIndex: 10,
     visible: [11],
     pos: { x: 200, y: -100, z: -35 },
+    iconType: "hotspot",
   },
   //hotspot index 12
   {
     spotIndex: 7,
     visible: [12],
     pos: { x: -230, y: -100, z: -250 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 9,
     visible: [12],
     pos: { x: -190, y: -100, z: -35 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 10,
     visible: [12],
     pos: { x: -250, y: -100, z: -80 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 13,
     visible: [12],
     pos: { x: -175, y: -100, z: 150 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 19,
     visible: [12],
     pos: { x: 50, y: -100, z: 330 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 20,
     visible: [12],
     pos: { x: 235, y: -100, z: 230 },
+    iconType: "hotspot",
   },
   //hotspot index 13
   {
     spotIndex: 9,
     visible: [13],
     pos: { x: 20, y: -100, z: -185 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 12,
     visible: [13],
     pos: { x: 200, y: -100, z: -80 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 14,
     visible: [13],
     pos: { x: -50, y: -100, z: 210 },
+    iconType: "hotspot",
   },
   //hotspot index 14
   {
     spotIndex: 13,
     visible: [14],
     pos: { x: 10, y: -100, z: -190 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 15,
     visible: [14],
     pos: { x: 0, y: -100, z: 190 },
+    iconType: "hotspot",
   },
   //hotspot index 15
   {
     spotIndex: 14,
     visible: [15],
     pos: { x: 10, y: -100, z: -190 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 16,
     visible: [15],
     pos: { x: 10, y: -100, z: 180 },
+    iconType: "hotspot",
   },
   //hotspot index 16
   {
     spotIndex: 15,
     visible: [16],
     pos: { x: 10, y: -100, z: -190 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 17,
     visible: [16],
     pos: { x: 180, y: -100, z: 10 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 30,
     visible: [16],
     pos: { x: -80, y: -100, z: 180 },
+    iconType: "hotspot",
   },
   //hotspot index 17
   {
     spotIndex: 16,
     visible: [17],
     pos: { x: -180, y: -100, z: -10 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 18,
     visible: [17],
     pos: { x: 180, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 18
   {
     spotIndex: 17,
     visible: [18],
     pos: { x: -180, y: -100, z: -20 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 19,
     visible: [18],
     pos: { x: -90, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 26,
     visible: [18],
     pos: { x: 110, y: -100, z: 250 },
+    iconType: "hotspot",
   },
   //hotspot index 19
   {
     spotIndex: 18,
     visible: [19],
     pos: { x: 140, y: -100, z: 300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 12,
     visible: [19],
     pos: { x: -80, y: -100, z: -350 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 20,
     visible: [19],
     pos: { x: 190, y: -100, z: -180 },
+    iconType: "hotspot",
   },
   //hotspot index 20
   {
     spotIndex: 12,
     visible: [20],
     pos: { x: -200, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 19,
     visible: [20],
     pos: { x: -200, y: -100, z: 140 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 21,
     visible: [20],
     pos: { x: 20, y: -100, z: 160 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 22,
     visible: [20],
     pos: { x: 200, y: -100, z: 80 },
+    iconType: "hotspot",
   },
   //hotspot index 21
   {
     spotIndex: 20,
     visible: [21],
     pos: { x: -20, y: -100, z: -160 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 22,
     visible: [21],
     pos: { x: 190, y: -100, z: -80 },
+    iconType: "hotspot",
   },
   //hotspot index 22
   {
     spotIndex: 21,
     visible: [22],
     pos: { x: -190, y: -100, z: 30 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 20,
     visible: [22],
     pos: { x: -200, y: -100, z: -120 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 23,
     visible: [22],
     pos: { x: -50, y: -100, z: 300 },
+    iconType: "hotspot",
   },
   //hotspot index 23
   {
     spotIndex: 22,
     visible: [23],
     pos: { x: -100, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 24,
     visible: [23],
     pos: { x: -50, y: -100, z: 210 },
+    iconType: "hotspot",
   },
   //hotspot index 24
   {
     spotIndex: 23,
     visible: [24],
     pos: { x: 150, y: -100, z: -150 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 25,
     visible: [24],
     pos: { x: -210, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 25
   {
     spotIndex: 24,
     visible: [25],
     pos: { x: 180, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 26,
     visible: [25],
     pos: { x: -210, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 34,
     visible: [25],
     pos: { x: -180, y: -100, z: 250 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 35,
     visible: [25],
     pos: { x: 30, y: -100, z: 380 },
+    iconType: "hotspot",
   },
   //hotspot index 26
   {
     spotIndex: 18,
     visible: [26],
     pos: { x: -50, y: -100, z: -280 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 25,
     visible: [26],
     pos: { x: 150, y: -100, z: -60 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 27,
     visible: [26],
     pos: { x: -260, y: -100, z: -50 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 34,
     visible: [26],
     pos: { x: 30, y: -100, z: 230 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 35,
     visible: [26],
     pos: { x: 220, y: -100, z: 230 },
+    iconType: "hotspot",
   },
   //hotspot index 27
   {
     spotIndex: 26,
     visible: [27],
     pos: { x: 260, y: -100, z: 20 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 28,
     visible: [27],
     pos: { x: -260, y: -100, z: -40 },
+    iconType: "hotspot",
   },
   //hotspot index 28
   {
     spotIndex: 27,
     visible: [28],
     pos: { x: 270, y: -100, z: -20 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 29,
     visible: [28],
     pos: { x: -60, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 30,
     visible: [28],
     pos: { x: 0, y: -100, z: -130 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 32,
     visible: [28],
     pos: { x: 120, y: -100, z: 260 },
+    iconType: "hotspot",
   },
   //hotspot index 29
   {
     spotIndex: 28,
     visible: [29],
     pos: { x: 60, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 30
   {
     spotIndex: 16,
     visible: [30],
     pos: { x: 90, y: -100, z: -150 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 28,
     visible: [30],
     pos: { x: 0, y: -100, z: 130 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 31,
     visible: [30],
     pos: { x: -60, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 31
   {
     spotIndex: 30,
     visible: [31],
     pos: { x: 60, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 32
   {
     spotIndex: 28,
     visible: [32],
     pos: { x: 120, y: -100, z: 260 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 33,
     visible: [32],
     pos: { x: -230, y: -100, z: 65 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 50,
     visible: [32],
     pos: { x: -20, y: -100, z: -80 },
+    iconType: "hotspot",
   },
   //hotspot index 33
   {
     spotIndex: 32,
     visible: [33],
     pos: { x: -230, y: -100, z: 50 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 34,
     visible: [33],
     pos: { x: 280, y: -100, z: -50 },
+    iconType: "hotspot",
   },
   //hotspot index 34
   {
     spotIndex: 25,
     visible: [34],
     pos: { x: 20, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 26,
     visible: [34],
     pos: { x: -120, y: -100, z: -250 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 33,
     visible: [34],
     pos: { x: -280, y: -100, z: 50 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 35,
     visible: [34],
     pos: { x: 220, y: -100, z: 10 },
+    iconType: "hotspot",
   },
   //hotspot index 35
   {
     spotIndex: 25,
     visible: [35],
     pos: { x: -40, y: -100, z: -360 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 26,
     visible: [35],
     pos: { x: -240, y: -100, z: -350 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 34,
     visible: [35],
     pos: { x: -280, y: -100, z: -125 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 36,
     visible: [35],
     pos: { x: 20, y: -100, z: 230 },
+    iconType: "hotspot",
   },
   //hotspot index 36
   {
     spotIndex: 35,
     visible: [36],
     pos: { x: -80, y: -100, z: -250 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 37,
     visible: [36],
     pos: { x: 70, y: -100, z: 180 },
+    iconType: "hotspot",
   },
   //hotspot index 37
   {
     spotIndex: 36,
     visible: [37],
     pos: { x: 50, y: -100, z: -260 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 38,
     visible: [37],
     pos: { x: 10, y: -100, z: 270 },
+    iconType: "hotspot",
   },
   //hotspot index 38
   {
     spotIndex: 37,
     visible: [38],
     pos: { x: 0, y: -100, z: -300 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 39,
     visible: [38],
     pos: { x: -180, y: -100, z: 120 },
+    iconType: "hotspot",
   },
   //hotspot index 39
   {
     spotIndex: 38,
     visible: [39],
     pos: { x: 150, y: -100, z: -180 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 40,
     visible: [39],
     pos: { x: -265, y: -100, z: -25 },
+    iconType: "hotspot",
   },
   //hotspot index 40
   {
     spotIndex: 39,
     visible: [40],
     pos: { x: 260, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 41,
     visible: [40],
     pos: { x: -275, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   //hotspot index 41
   {
     spotIndex: 40,
     visible: [41],
     pos: { x: 290, y: -100, z: -15 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 42,
     visible: [41],
     pos: { x: -150, y: -100, z: 15 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 47,
     visible: [41],
     pos: { x: -160, y: -100, z: -75 },
+    iconType: "hotspot",
   },
   //hotspot index 42
   {
     spotIndex: 41,
     visible: [42],
     pos: { x: 170, y: -100, z: -30 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 43,
     visible: [42],
     pos: { x: -140, y: -100, z: -20 },
+    iconType: "hotspot",
   },
   //hotspot index 43
   {
     spotIndex: 42,
     visible: [43],
     pos: { x: 140, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 44,
     visible: [43],
     pos: { x: -135, y: -100, z: 0 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 47,
     visible: [42],
     pos: { x: 20, y: -100, z: -125 },
+    iconType: "hotspot",
   },
   //hotspot index 44
   {
     spotIndex: 43,
     visible: [44],
     pos: { x: 130, y: -100, z: -10 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 45,
     visible: [44],
     pos: { x: 0, y: -100, z: -125 },
+    iconType: "hotspot",
   },
   //hotspot index 45
   {
     spotIndex: 44,
     visible: [45],
     pos: { x: 10, y: -100, z: 110 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 46,
     visible: [45],
     pos: { x: 130, y: -100, z: -10 },
+    iconType: "hotspot",
   },
   //hotspot index 46
   {
     spotIndex: 45,
     visible: [46],
     pos: { x: -115, y: -100, z: -15 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 47,
     visible: [46],
     pos: { x: 130, y: -100, z: 15 },
+    iconType: "hotspot",
   },
   //hotspot index 47
   {
     spotIndex: 41,
     visible: [47],
     pos: { x: 160, y: -100, z: 75 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 42,
     visible: [47],
     pos: { x: 0, y: -100, z: 125 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 46,
     visible: [47],
     pos: { x: -150, y: -100, z: 20 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 48,
     visible: [47],
     pos: { x: -60, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   //hotspot index 48
   {
     spotIndex: 47,
     visible: [48],
     pos: { x: -60, y: -100, z: -200 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 49,
     visible: [48],
     pos: { x: 255, y: -100, z: 35 },
+    iconType: "hotspot",
   },
   //hotspot index 49
   {
     spotIndex: 48,
     visible: [49],
     pos: { x: -310, y: -100, z: 30 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 50,
     visible: [49],
     pos: { x: 50, y: -100, z: 320 },
+    iconType: "hotspot",
   },
   //hotspot index 50
   {
     spotIndex: 32,
     visible: [50],
     pos: { x: 5, y: -100, z: 75 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 49,
     visible: [50],
     pos: { x: 0, y: -100, z: -335 },
+    iconType: "hotspot",
   },
 ];
 
