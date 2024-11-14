@@ -885,7 +885,7 @@ let transitioning = false;
 
 let clock = new THREE.Clock();
 let elapsedTime = 0;
-let hotspotMesh, hotspotMesh1, hotspotMesh2;
+let hotspotMesh, infoIconMesh, videoIconMesh;
 
 let isUserInteracting = false,
   onPointerDownMouseX = 0, onPointerDownMouseY = 0,
@@ -931,6 +931,16 @@ function init() {
   const hotspotMaterial = new THREE.MeshBasicMaterial({ map: hotspotTexture, transparent: true });
   const hotspotGeometry = new THREE.PlaneGeometry(40, 20);
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
+  
+  const infoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/information-icon.png?v=1731401321964');
+  const infoIconMaterial = new THREE.MeshBasicMaterial({ map: infoIconTexture, transparent: true });
+  const infoIconGeometry = new THREE.PlaneGeometry(12, 12);
+  infoIconMesh = new THREE.Mesh(infoIconGeometry, infoIconMaterial);
+  
+  const videoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686');
+  const videoIconMaterial = new THREE.MeshBasicMaterial({ map: videoIconTexture, transparent: true });
+  const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
+  videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
 
   // hotSpotInfo.forEach((e, index) => {
   //   const mesh = hotspotMesh.clone();
