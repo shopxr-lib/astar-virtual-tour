@@ -944,13 +944,13 @@ function init() {
   //   //console.log(e.spotIndex, "spotIndex")
   // })
   
-  const e = hotSpotInfo[0]; // Directly access the hotspot at index 0
+  const firstHotspot = hotSpotInfo[0]; // Directly access the hotspot at index 0
   const mesh = hotspotMesh.clone();
-  mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+  mesh.position.set(firstHotspot.pos.x, firstHotspot.pos.y, firstHotspot.pos.z);
   mesh.lookAt(camera.position);
-  mesh.userData.spotIndex = e.spotIndex;
-  mesh.userData.visibleSpheres = e.visible;
-  mesh.visible = e.visible.includes(currentSphereIndex);
+  mesh.userData.spotIndex = firstHotspot.spotIndex;
+  mesh.userData.visibleSpheres = firstHotspot.visible;
+  mesh.visible = firstHotspot.visible.includes(currentSphereIndex);
   scene.add(mesh);
   hotspotMeshes.push(mesh);
 
