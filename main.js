@@ -1185,6 +1185,8 @@ function selectImage(currentIndex) {
 //   currentSphere = spheres[targetIndex];
 //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
   
+    transitioning = true;
+    transitionProgress = 0.0;
     
   
     hotspotMeshes.forEach(mesh => {
@@ -1224,8 +1226,6 @@ function onDocumentClick(event) {
   // If there are intersections, execute your function or code
   if (intersectsHotspotMesh.length > 0) {
     let intersectedMesh = intersectsHotspotMesh[0].object;
-    transitioning = true;
-    transitionProgress = 0.0;
     currentSphereIndex = intersectedMesh.userData.spotIndex;
     nextSphere = spheres[currentSphereIndex];
     
