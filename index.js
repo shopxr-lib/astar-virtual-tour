@@ -354,7 +354,9 @@ function populateHotspotCard() {
   const url = new URL(window.location);
   const locationTag = url.searchParams.get("location");
   const location = hostspotLocations.find((l) => l.tag == locationTag);
+  const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
   if (!location) {
+    hotspotCard.innerHTML = "";
     return;
   }
 
@@ -368,7 +370,6 @@ function populateHotspotCard() {
 
   renderModal(content);
 
-  const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
   const shouldShowInfoIcon = location.contents && location.contents.length == 1;
 
   const infoIconImg = document.createElement("img");
