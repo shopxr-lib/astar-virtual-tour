@@ -208,16 +208,37 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -10, z: 20 },
+    pos: { x: -20, y: -10, z: 21 },
     iconType: "infoIcon",
     tag: "KKH",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -15, z: 20 },
+    pos: { x: -20, y: -15, z: 21 },
     iconType: "videoIcon",
     tag: "KKH",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -20, y: -10, z: 5 },
+    iconType: "infoIcon",
+    tag: "PARI",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -20, y: -10, z: 5 },
+    iconType: "infoIcon",
+    tag: "AASD",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -20, y: -10, z: 5 },
+    iconType: "infoIcon",
+    tag: "PARI",
   },
   //hotspot index 7
   {
