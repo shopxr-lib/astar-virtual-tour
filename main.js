@@ -315,6 +315,13 @@ const hotSpotInfo = [
     pos: { x: -10, y: -100, z: 180 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 9,
+    visible: [9],
+    pos: { x: -30, y: 3, z: -6 },
+    iconType: "infoIcon",
+    tag: "SHRED",
+  },
   //hotspot index 10
   {
     spotIndex: 3,
@@ -408,6 +415,20 @@ const hotSpotInfo = [
     visible: [13],
     pos: { x: -50, y: -100, z: 210 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 13,
+    visible: [13],
+    pos: { x: -30, y: 0, z: 5 },
+    iconType: "infoIcon",
+    tag: "ANALYSER",
+  },
+  {
+    spotIndex: 13,
+    visible: [13],
+    pos: { x: -30, y: -5, z: 5 },
+    iconType: "videoIcon",
+    tag: "ANALYSER",
   },
   //hotspot index 14
   {
