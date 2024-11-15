@@ -206,8 +206,9 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
+    spotIndex: 6,
     visible: [6],
-    pos: { x: -50, y: 0, z: 150 },
+    pos: { x: -20, y: 0, z: 50 },
     iconType: "infoIcon",
     tag: 3,
   },
@@ -1405,16 +1406,13 @@ function onDocumentClick(event) {
   // If there are intersections, execute your function or code
   if (intersectsHotspotMesh.length > 0) {
     let intersectedMesh = intersectsHotspotMesh[0].object;
-    // transitioning = true;
-    // transitionProgress = 0.0;
-    currentSphereIndex = intersectedMesh.userData.spotIndex;
-    //nextSphere = spheres[currentSphereIndex];
-    
-    //console.log(currentSphereIndex, "currentSphereIndex")
-    if (currentSphereIndex !== undefined) {
+
+    if (intersectedMesh.userData.spotIndex !== currentSphereIndex) {
+      currentSphereIndex = intersectedMesh.userData.spotIndex;
       selectImage(currentSphereIndex);
     } else {
-      selectImage(currentSphereIndex);
+      //function for showing respective tag content
+      console.log("clicking on ");
     }
   }
 }
