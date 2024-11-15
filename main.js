@@ -1365,7 +1365,14 @@ function selectImage(currentIndex) {
     
     hotSpotInfo.forEach(e => {
         if (e.visible.includes(currentIndex)) {
-            const mesh = hotspotMesh.clone();
+            let mesh;
+            if (e.iconType === "hotspot") {
+              mesh = hotspotMesh.clone();
+            } else if (e.iconType === "infoIcon") {
+              mesh = infoIconMesh.clone();
+            } else if (e.iconType === "videoIcon") {
+              mesh = videoIconMesh.clone();
+            }
             mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
             mesh.lookAt(camera.position);
             mesh.userData.spotIndex = e.spotIndex;
