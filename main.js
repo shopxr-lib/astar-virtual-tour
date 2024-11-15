@@ -99,6 +99,12 @@ const hotSpotInfo = [
     pos: { x: -260, y: -100, z: -200 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 6,
+    visible: [2],
+    pos: { x: -350, y: -80, z: -20 },
+    iconType: "hotspot",
+  },
   //hotspot index 3
   {
     spotIndex: 2,
@@ -238,7 +244,7 @@ const hotSpotInfo = [
     visible: [6],
     pos: { x: -30, y: 0, z: -25 },
     iconType: "infoIcon",
-    tag: "Connector",
+    tag: "CONNECTOR",
   },
   //hotspot index 7
   {
