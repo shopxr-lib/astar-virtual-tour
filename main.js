@@ -1091,7 +1091,7 @@ function init() {
   
   const videoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686');
   const videoIconMaterial = new THREE.MeshBasicMaterial({ map: videoIconTexture, transparent: true });
-  const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
+  const videoIconGeometry = new THREE.PlaneGeometry(10, 10);
   videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
 
   // hotSpotInfo.forEach((e, index) => {
@@ -1411,8 +1411,7 @@ function onDocumentClick(event) {
       currentSphereIndex = intersectedMesh.userData.spotIndex;
       selectImage(currentSphereIndex);
     } else {
-      //function for showing respective tag content
-      console.log("clicking on ");
+      //function for showing respective info / video content
     }
   }
 }
