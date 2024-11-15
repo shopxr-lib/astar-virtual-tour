@@ -1,5 +1,4 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.123.0';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/controls/OrbitControls.js';
 import { EffectComposer } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js';
