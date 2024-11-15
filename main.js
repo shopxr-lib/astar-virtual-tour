@@ -419,14 +419,14 @@ const hotSpotInfo = [
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -30, y: 0, z: -16 },
+    pos: { x: -30, y: 0, z: -20 },
     iconType: "infoIcon",
     tag: "ANALYSER",
   },
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -30, y: -5, z: -16 },
+    pos: { x: -30, y: -5, z: -20 },
     iconType: "videoIcon",
     tag: "ANALYSER",
   },
@@ -446,14 +446,14 @@ const hotSpotInfo = [
   {
     spotIndex: 14,
     visible: [14],
-    pos: { x: -30, y: 0, z: -18 },
+    pos: { x: -30, y: 0, z: -16 },
     iconType: "infoIcon",
     tag: "REBEE",
   },
   {
     spotIndex: 14,
     visible: [14],
-    pos: { x: -30, y: -5, z: -18 },
+    pos: { x: -30, y: -5, z: -16 },
     iconType: "videoIcon",
     tag: "REBEE",
   },
@@ -501,6 +501,20 @@ const hotSpotInfo = [
     visible: [17],
     pos: { x: 180, y: -100, z: 0 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 17,
+    visible: [17],
+    pos: { x: -8, y: 6, z: 30 },
+    iconType: "infoIcon",
+    tag: "AIRLEO",
+  },
+  {
+    spotIndex: 17,
+    visible: [17],
+    pos: { x: -8, y: 1, z: 30 },
+    iconType: "videoIcon",
+    tag: "AIRLEO",
   },
   //hotspot index 18
   {
