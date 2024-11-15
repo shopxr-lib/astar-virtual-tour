@@ -208,8 +208,15 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -20, z: 25 },
+    pos: { x: -20, y: -10, z: 20 },
     iconType: "infoIcon",
+    tag: "KKH",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -20, y: -15, z: 20 },
+    iconType: "videoIcon",
     tag: "KKH",
   },
   //hotspot index 7
@@ -1377,8 +1384,10 @@ function selectImage(currentIndex) {
               mesh = hotspotMesh.clone();
             } else if (e.iconType === "infoIcon") {
               mesh = infoIconMesh.clone();
+              mesh.scale.set(0.4, 0.4, 0.4);
             } else if (e.iconType === "videoIcon") {
               mesh = videoIconMesh.clone();
+              mesh.scale.set(0.4, 0.4, 0.4);
             }
             mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
             mesh.lookAt(camera.position);
@@ -1386,9 +1395,6 @@ function selectImage(currentIndex) {
             mesh.userData.visibleSpheres = e.visible;
             mesh.visible = true;          
             scene.add(mesh);
-          if (e.iconType === "infoIcon" || e.iconType === "videoIcon") {
-              mesh.scale(0.5, 0.5, 0.5);
-            }
             hotspotMeshes.push(mesh);
         }
     });
