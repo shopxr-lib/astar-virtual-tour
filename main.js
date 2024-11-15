@@ -98,6 +98,12 @@ const hotSpotInfo = [
     pos: { x: -260, y: -100, z: -200 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 6,
+    visible: [2],
+    pos: { x: -350, y: -75, z: -35 },
+    iconType: "hotspot",
+  },
   //hotspot index 3
   {
     spotIndex: 2,
@@ -204,6 +210,53 @@ const hotSpotInfo = [
     pos: { x: -50, y: -100, z: 150 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 9,
+    visible: [6],
+    pos: { x: 10, y: -100, z: 360 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 12,
+    visible: [6],
+    pos: { x: 140, y: -100, z: 390 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -30, y: 0, z: 37 },
+    iconType: "infoIcon",
+    tag: "KKH",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -30, y: -5, z: 37 },
+    iconType: "videoIcon",
+    tag: "KKH",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -30, y: 0, z: 5 },
+    iconType: "infoIcon",
+    tag: "PARI",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -30, y: 0, z: -10 },
+    iconType: "infoIcon",
+    tag: "AASD",
+  },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -30, y: 0, z: -25 },
+    iconType: "infoIcon",
+    tag: "CONNECTOR",
+  },
   //hotspot index 7
   {
     spotIndex: 3,
@@ -256,6 +309,12 @@ const hotSpotInfo = [
   },
   //hotspot index 9
   {
+    spotIndex: 6,
+    visible: [9],
+    pos: { x: 30, y: -90, z: -360 },
+    iconType: "hotspot",
+  },
+  {
     spotIndex: 7,
     visible: [9],
     pos: { x: -40, y: -100, z: -230 },
@@ -278,6 +337,13 @@ const hotSpotInfo = [
     visible: [9],
     pos: { x: -10, y: -100, z: 180 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 9,
+    visible: [9],
+    pos: { x: -30, y: 3, z: -6 },
+    iconType: "infoIcon",
+    tag: "SHRED",
   },
   //hotspot index 10
   {
@@ -318,6 +384,12 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   //hotspot index 12
+  {
+    spotIndex: 6,
+    visible: [12],
+    pos: { x: -165, y: -90, z: -390 },
+    iconType: "hotspot",
+  },
   {
     spotIndex: 7,
     visible: [12],
@@ -373,6 +445,20 @@ const hotSpotInfo = [
     pos: { x: -50, y: -100, z: 210 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 13,
+    visible: [13],
+    pos: { x: -30, y: 0, z: -20 },
+    iconType: "infoIcon",
+    tag: "ANALYSER",
+  },
+  {
+    spotIndex: 13,
+    visible: [13],
+    pos: { x: -30, y: -5, z: -20 },
+    iconType: "videoIcon",
+    tag: "ANALYSER",
+  },
   //hotspot index 14
   {
     spotIndex: 13,
@@ -385,6 +471,20 @@ const hotSpotInfo = [
     visible: [14],
     pos: { x: 0, y: -100, z: 190 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 14,
+    visible: [14],
+    pos: { x: -30, y: 0, z: -16 },
+    iconType: "infoIcon",
+    tag: "REBEE",
+  },
+  {
+    spotIndex: 14,
+    visible: [14],
+    pos: { x: -30, y: -5, z: -16 },
+    iconType: "videoIcon",
+    tag: "REBEE",
   },
   //hotspot index 15
   {
@@ -431,6 +531,20 @@ const hotSpotInfo = [
     pos: { x: 180, y: -100, z: 0 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 17,
+    visible: [17],
+    pos: { x: -8, y: 6, z: 30 },
+    iconType: "infoIcon",
+    tag: "AIRLEO",
+  },
+  {
+    spotIndex: 17,
+    visible: [17],
+    pos: { x: -8, y: 1, z: 30 },
+    iconType: "videoIcon",
+    tag: "AIRLEO",
+  },
   //hotspot index 18
   {
     spotIndex: 17,
@@ -448,6 +562,12 @@ const hotSpotInfo = [
     spotIndex: 26,
     visible: [18],
     pos: { x: 110, y: -100, z: 250 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 35,
+    visible: [18],
+    pos: { x: 270, y: -80, z: 330 },
     iconType: "hotspot",
   },
   //hotspot index 19
@@ -507,6 +627,20 @@ const hotSpotInfo = [
     pos: { x: 190, y: -100, z: -80 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 21,
+    visible: [21],
+    pos: { x: 25, y: 5, z: 20 },
+    iconType: "infoIcon",
+    tag: "SMOODER",
+  },
+  {
+    spotIndex: 21,
+    visible: [21],
+    pos: { x: 25, y: 0, z: 20 },
+    iconType: "videoIcon",
+    tag: "SMOODER",
+  },
   //hotspot index 22
   {
     spotIndex: 21,
@@ -538,6 +672,27 @@ const hotSpotInfo = [
     visible: [23],
     pos: { x: -50, y: -100, z: 210 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: -30, y: 5, z: -33 },
+    iconType: "infoIcon",
+    tag: "CRUNCH",
+  },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: -30, y: 0, z: -33 },
+    iconType: "videoIcon",
+    tag: "CRUNCH",
+  },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: -30, y: -10, z: 0 },
+    iconType: "infoIcon",
+    tag: "VERTICALAUTOMATION",
   },
   //hotspot index 24
   {
@@ -576,6 +731,34 @@ const hotSpotInfo = [
     visible: [25],
     pos: { x: 30, y: -100, z: 380 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 10, y: -8, z: -30 },
+    iconType: "infoIcon",
+    tag: "BATTERYSWAP",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 10, y: -13, z: -30 },
+    iconType: "videoIcon",
+    tag: "BATTERYSWAP",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 30, y: 1, z: -40 },
+    iconType: "infoIcon",
+    tag: "LAMPPOST",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 30, y: -4, z: -40 },
+    iconType: "videoIcon",
+    tag: "LAMPPOST",
   },
   //hotspot index 26
   {
@@ -618,7 +801,13 @@ const hotSpotInfo = [
   {
     spotIndex: 28,
     visible: [27],
-    pos: { x: -260, y: -100, z: -40 },
+    pos: { x: -280, y: -100, z: -40 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 30,
+    visible: [27],
+    pos: { x: -280, y: -100, z: -150 },
     iconType: "hotspot",
   },
   //hotspot index 28
@@ -661,6 +850,12 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
+    spotIndex: 27,
+    visible: [30],
+    pos: { x: 280, y: -100, z: 130 },
+    iconType: "hotspot",
+  },
+  {
     spotIndex: 28,
     visible: [30],
     pos: { x: 0, y: -100, z: 130 },
@@ -670,6 +865,12 @@ const hotSpotInfo = [
     spotIndex: 31,
     visible: [30],
     pos: { x: -60, y: -100, z: 0 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 32,
+    visible: [30],
+    pos: { x: 100, y: -100, z: 390 },
     iconType: "hotspot",
   },
   //hotspot index 31
@@ -799,6 +1000,13 @@ const hotSpotInfo = [
     visible: [38],
     pos: { x: -180, y: -100, z: 120 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 38,
+    visible: [38],
+    pos: { x: 30, y: 0, z: -15 },
+    iconType: "infoIcon",
+    tag: "ROPLUS",
   },
   //hotspot index 39
   {
@@ -1386,16 +1594,43 @@ function selectImage(currentIndex) {
 
   hotSpotInfo.forEach((e) => {
     if (e.visible.includes(currentIndex)) {
-      const mesh = hotspotMesh.clone();
+      let mesh;
+      if (e.iconType === "hotspot") {
+        mesh = hotspotMesh.clone();
+      } else if (e.iconType === "infoIcon") {
+        mesh = infoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      } else if (e.iconType === "videoIcon") {
+        mesh = videoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
       mesh.userData.spotIndex = e.spotIndex;
       mesh.userData.visibleSpheres = e.visible;
+      mesh.userData.iconType = e.iconType;
+      mesh.userData.tag = e.tag;
       mesh.visible = true;
       scene.add(mesh);
       hotspotMeshes.push(mesh);
     }
   });
+
+  showLocationContent(currentIndex);
+}
+
+//Function for showing the content of the respective locations
+function showLocationContent(locationIndex) {
+  //add code
+}
+
+//Function for showing respective info / video content
+function showIconContent(intersectedMesh) {
+  if (intersectedMesh.userData.iconType === "infoIcon") {
+    //info icon is clicked
+  } else if (intersectedMesh.userData.iconType === "videoIcon") {
+    //video icon is clicked
+  }
 }
 
 // Function to handle click events on the document
@@ -1413,13 +1648,18 @@ function onDocumentClick(event) {
   // If there are intersections, execute your function or code
   if (intersectsHotspotMesh.length > 0) {
     let intersectedMesh = intersectsHotspotMesh[0].object;
-    // transitioning = true;
-    // transitionProgress = 0.0;
-    currentSphereIndex = intersectedMesh.userData.spotIndex;
-    //nextSphere = spheres[currentSphereIndex];
 
-    //console.log(currentSphereIndex, "currentSphereIndex")
-
-    selectImage(currentSphereIndex);
+    if (
+      intersectedMesh.userData.spotIndex !== currentSphereIndex &&
+      intersectedMesh.visible !== false
+    ) {
+      //Logic when clicking on hotspots only
+      //ensures that hotspots are not clickable when still in the midst of transitioning
+      currentSphereIndex = intersectedMesh.userData.spotIndex;
+      selectImage(currentSphereIndex);
+    } else {
+      //function for showing respective info / video content
+      showIconContent(intersectedMesh);
+    }
   }
 }
