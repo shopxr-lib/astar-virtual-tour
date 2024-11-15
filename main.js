@@ -624,6 +624,27 @@ const hotSpotInfo = [
     pos: { x: -50, y: -100, z: 210 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: 30, y: 5, z: -40 },
+    iconType: "infoIcon",
+    tag: "CRUNCH",
+  },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: 30, y: 0, z: -40 },
+    iconType: "videoIcon",
+    tag: "CRUNCH",
+  },
+  {
+    spotIndex: 23,
+    visible: [23],
+    pos: { x: 0, y: -5, z: -40 },
+    iconType: "infoIcon",
+    tag: "VERTICALAUTOMATION",
+  },
   //hotspot index 24
   {
     spotIndex: 23,
@@ -665,30 +686,30 @@ const hotSpotInfo = [
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 0, y: -5, z: 30 },
+    pos: { x: 10, y: -8, z: -30 },
     iconType: "infoIcon",
     tag: "BATTERYSWAP",
   },
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 0, y: -10, z: 30 },
+    pos: { x: 10, y: -13, z: -30 },
     iconType: "videoIcon",
     tag: "BATTERYSWAP",
   },
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 0, y: -5, z: 30 },
+    pos: { x: 30, y: 1, z: -40 },
     iconType: "infoIcon",
-    tag: "LAMP",
+    tag: "LAMPPOST",
   },
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 0, y: -10, z: 30 },
+    pos: { x: 30, y: -4, z: -40 },
     iconType: "videoIcon",
-    tag: "BATTERYSWAP",
+    tag: "LAMPPOST",
   },
   //hotspot index 26
   {
