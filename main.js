@@ -208,37 +208,37 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -10, z: 21 },
+    pos: { x: -30, y: 0, z: 21 },
     iconType: "infoIcon",
     tag: "KKH",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -15, z: 21 },
+    pos: { x: -30, y: -5, z: 21 },
     iconType: "videoIcon",
     tag: "KKH",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -10, z: 5 },
+    pos: { x: -30, y: -5, z: 5 },
     iconType: "infoIcon",
     tag: "PARI",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -10, z: 5 },
+    pos: { x: -30, y: -5, z: -7 },
     iconType: "infoIcon",
     tag: "AASD",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: -10, z: 5 },
+    pos: { x: -30, y: -5, z: -20 },
     iconType: "infoIcon",
-    tag: "PARI",
+    tag: "Connector",
   },
   //hotspot index 7
   {
@@ -1119,7 +1119,7 @@ function init() {
   
   const videoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686');
   const videoIconMaterial = new THREE.MeshBasicMaterial({ map: videoIconTexture, transparent: true });
-  const videoIconGeometry = new THREE.PlaneGeometry(10, 10);
+  const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
   videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
 
   // hotSpotInfo.forEach((e, index) => {
