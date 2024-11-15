@@ -206,10 +206,10 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 6,
     visible: [6],
     pos: { x: -50, y: 0, z: 150 },
     iconType: "infoIcon",
+    tag: 3,
   },
   //hotspot index 7
   {
@@ -1411,7 +1411,10 @@ function onDocumentClick(event) {
     //nextSphere = spheres[currentSphereIndex];
     
     //console.log(currentSphereIndex, "currentSphereIndex")
-    
-    selectImage(currentSphereIndex);
+    if (currentSphereIndex !== undefined) {
+      selectImage(currentSphereIndex);
+    } else {
+      selectImage(currentSphereIndex);
+    }
   }
 }
