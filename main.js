@@ -1587,6 +1587,8 @@ function selectImage(currentIndex) {
             mesh.lookAt(camera.position);
             mesh.userData.spotIndex = e.spotIndex;
             mesh.userData.visibleSpheres = e.visible;
+            mesh.userData.iconType = e.iconType;
+            mesh.userData.tag = e.tag;
             mesh.visible = true;          
             scene.add(mesh);
             hotspotMeshes.push(mesh);
@@ -1594,7 +1596,18 @@ function selectImage(currentIndex) {
     });
 }
 
-//
+//Function for showing respective info / video content
+function showContent(intersectedMesh) {
+  if (intersectedMesh.userData.iconType === "infoIcon"){
+    //info icon is clicked
+    console.log("info icon is clicked");
+    
+  } else if (intersectedMesh.userData.iconType === "videoIcon"){
+    //video icon is clicked
+    console.log("video icon is clicked");
+  }
+}
+
 
 // Function to handle click events on the document
 function onDocumentClick(event) {
@@ -1619,6 +1632,8 @@ function onDocumentClick(event) {
       selectImage(currentSphereIndex);
     } else {
       //function for showing respective info / video content
+      console.log("icon clicked")
+      console.log(intersectedMesh)
       showContent(intersectedMesh);
     }
   }
