@@ -662,6 +662,34 @@ const hotSpotInfo = [
     pos: { x: 30, y: -100, z: 380 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 0, y: -5, z: 30 },
+    iconType: "infoIcon",
+    tag: "BATTERYSWAP",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 0, y: -10, z: 30 },
+    iconType: "videoIcon",
+    tag: "BATTERYSWAP",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 0, y: -5, z: 30 },
+    iconType: "infoIcon",
+    tag: "LAMP",
+  },
+  {
+    spotIndex: 25,
+    visible: [25],
+    pos: { x: 0, y: -10, z: 30 },
+    iconType: "videoIcon",
+    tag: "BATTERYSWAP",
+  },
   //hotspot index 26
   {
     spotIndex: 18,
@@ -884,6 +912,13 @@ const hotSpotInfo = [
     visible: [38],
     pos: { x: -180, y: -100, z: 120 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 38,
+    visible: [38],
+    pos: { x: 30, y: 0, z: -15 },
+    iconType: "infoIcon",
+    tag: "ROPLUS",
   },
   //hotspot index 39
   {
