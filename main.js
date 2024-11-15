@@ -595,14 +595,14 @@ const hotSpotInfo = [
   {
     spotIndex: 21,
     visible: [21],
-    pos: { x: 30, y: 5, z: 30 },
+    pos: { x: 25, y: 5, z: 20 },
     iconType: "infoIcon",
     tag: "SMOODER",
   },
   {
     spotIndex: 21,
     visible: [21],
-    pos: { x: 30, y: 0, z: 30 },
+    pos: { x: 25, y: 0, z: 20 },
     iconType: "videoIcon",
     tag: "SMOODER",
   },
