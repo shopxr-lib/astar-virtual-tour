@@ -102,7 +102,7 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [2],
-    pos: { x: -350, y: -80, z: -20 },
+    pos: { x: -350, y: -75, z: -35 },
     iconType: "hotspot",
   },
   //hotspot index 3
@@ -209,6 +209,12 @@ const hotSpotInfo = [
     spotIndex: 7,
     visible: [6],
     pos: { x: -50, y: -100, z: 150 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 12,
+    visible: [6],
+    pos: { x: 140, y: -100, z: 390 },
     iconType: "hotspot",
   },
   {
@@ -367,6 +373,12 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   //hotspot index 12
+  {
+    spotIndex: 6,
+    visible: [12],
+    pos: { x: -165, y: -90, z: -390 },
+    iconType: "hotspot",
+  },
   {
     spotIndex: 7,
     visible: [12],
@@ -772,7 +784,13 @@ const hotSpotInfo = [
   {
     spotIndex: 28,
     visible: [27],
-    pos: { x: -260, y: -100, z: -40 },
+    pos: { x: -280, y: -100, z: -40 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 30,
+    visible: [27],
+    pos: { x: -280, y: -100, z: -150 },
     iconType: "hotspot",
   },
   //hotspot index 28
