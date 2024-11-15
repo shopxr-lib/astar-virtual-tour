@@ -1,62 +1,62 @@
-import * as THREE from 'https://cdn.skypack.dev/three@0.123.0';
-import { EffectComposer } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js';
-import { UnrealBloomPass } from 'https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/UnrealBloomPass.js';
+import * as THREE from "https://cdn.skypack.dev/three@0.123.0";
+import { EffectComposer } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js";
+import { ShaderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js";
+import { UnrealBloomPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/UnrealBloomPass.js";
 
 const panoramas = [
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-2.jpg?v=1731439302339',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-3.jpg?v=1731439302505',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-4.jpg?v=1731439303023',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-5.jpg?v=1731439303982',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-6.jpg?v=1731439307229',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-7.jpg?v=1731439307855',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-8.jpg?v=1731439310066',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-9.jpg?v=1731439311834',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-10.jpg?v=1731439313841',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-11.jpg?v=1731439316565',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-12.jpg?v=1731439317689',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-13.jpg?v=1731439319437',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-14.jpg?v=1731439321477',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-15.jpg?v=1731439323282',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-16.jpg?v=1731439325293',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-17.jpg?v=1731439326942',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-18.jpg?v=1731439329607',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-19.jpg?v=1731439331620',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-20.jpg?v=1731439343786',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-21.jpg?v=1731439344731',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-22.jpg?v=1731439362726',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-23.jpg?v=1731439364081',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-24.jpg?v=1731439365707',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-25.jpg?v=1731439367727',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-26.jpg?v=1731439368223',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-27.jpg?v=1731439370816',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-28.jpg?v=1731439373593',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-29.jpg?v=1731439375533',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-30.jpg?v=1731439377324',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-31.jpg?v=1731439394973',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-32.jpg?v=1731439395011',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-33.jpg?v=1731439397318',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-34.jpg?v=1731439397408',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-35.jpg?v=1731439399500',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-36.jpg?v=1731439402486',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-37.jpg?v=1731439403707',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-38.jpg?v=1731439406182',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-39.jpg?v=1731439407864',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-40.jpg?v=1731439409895',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-41.jpg?v=1731439411953',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-42.jpg?v=1731439414496',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-43.jpg?v=1731439416498',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-44.jpg?v=1731439418366',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-45.jpg?v=1731439419825',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-46.jpg?v=1731439422029',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-47.jpg?v=1731439431505',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-48.jpg?v=1731439432155',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-49.jpg?v=1731439433171',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-50.jpg?v=1731439435313',
-  'https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-51.jpg?v=1731439437458',
-]
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-2.jpg?v=1731439302339",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-3.jpg?v=1731439302505",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-4.jpg?v=1731439303023",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-5.jpg?v=1731439303982",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-6.jpg?v=1731439307229",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-7.jpg?v=1731439307855",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-8.jpg?v=1731439310066",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-9.jpg?v=1731439311834",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-10.jpg?v=1731439313841",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-11.jpg?v=1731439316565",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-12.jpg?v=1731439317689",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-13.jpg?v=1731439319437",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-14.jpg?v=1731439321477",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-15.jpg?v=1731439323282",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-16.jpg?v=1731439325293",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-17.jpg?v=1731439326942",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-18.jpg?v=1731439329607",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-19.jpg?v=1731439331620",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-20.jpg?v=1731439343786",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-21.jpg?v=1731439344731",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-22.jpg?v=1731439362726",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-23.jpg?v=1731439364081",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-24.jpg?v=1731439365707",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-25.jpg?v=1731439367727",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-26.jpg?v=1731439368223",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-27.jpg?v=1731439370816",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-28.jpg?v=1731439373593",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-29.jpg?v=1731439375533",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-30.jpg?v=1731439377324",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-31.jpg?v=1731439394973",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-32.jpg?v=1731439395011",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-33.jpg?v=1731439397318",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-34.jpg?v=1731439397408",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-35.jpg?v=1731439399500",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-36.jpg?v=1731439402486",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-37.jpg?v=1731439403707",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-38.jpg?v=1731439406182",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-39.jpg?v=1731439407864",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-40.jpg?v=1731439409895",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-41.jpg?v=1731439411953",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-42.jpg?v=1731439414496",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-43.jpg?v=1731439416498",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-44.jpg?v=1731439418366",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-45.jpg?v=1731439419825",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-46.jpg?v=1731439422029",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-47.jpg?v=1731439431505",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-48.jpg?v=1731439432155",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-49.jpg?v=1731439433171",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-50.jpg?v=1731439435313",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-51.jpg?v=1731439437458",
+];
 
 const hotSpotInfo = [
   //hotspot index 0
@@ -982,12 +982,11 @@ const hotSpotInfo = [
   },
 ];
 
-
 const TransitionShader = {
   uniforms: {
     tDiffuse1: { value: null }, // First texture (current panorama)
     tDiffuse2: { value: null }, // Second texture (target panorama)
-    progress: { value: 0.0 },   // Progress value for blending
+    progress: { value: 0.0 }, // Progress value for blending
   },
   vertexShader: `
       varying vec2 vUv;
@@ -1010,9 +1009,14 @@ const TransitionShader = {
   `,
 };
 
-
 let camera, scene, renderer;
-let composer, renderTarget1, renderTarget2, renderPass1, renderPass2, transitionPass, bloomPass;
+let composer,
+  renderTarget1,
+  renderTarget2,
+  renderPass1,
+  renderPass2,
+  transitionPass,
+  bloomPass;
 let currentPos2;
 let spheres = [];
 let hotspotMeshes = [];
@@ -1032,22 +1036,29 @@ let elapsedTime = 0;
 let hotspotMesh, infoIconMesh, videoIconMesh;
 
 let isUserInteracting = false,
-  onPointerDownMouseX = 0, onPointerDownMouseY = 0,
-  lon = 220, onPointerDownLon = 0,
-  lat = 0, onPointerDownLat = 0,
-  phi = 0, theta = 0,
+  onPointerDownMouseX = 0,
+  onPointerDownMouseY = 0,
+  lon = 220,
+  onPointerDownLon = 0,
+  lat = 0,
+  onPointerDownLat = 0,
+  phi = 0,
+  theta = 0,
   pinchStartDistance = 0,
   pinchStartFov = 0;
 
 init();
 animate();
 
-
 function init() {
+  const container = document.getElementById("image-container");
 
-  const container = document.getElementById('image-container');
-
-  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1100);
+  camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    1,
+    1100
+  );
   scene = new THREE.Scene();
 
   // Geometry for panorama spheres
@@ -1071,18 +1082,33 @@ function init() {
   currentSphere = spheres[0];
   nextSphere = spheres[1];
 
-  const hotspotTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236'); // Load the arrow image
-  const hotspotMaterial = new THREE.MeshBasicMaterial({ map: hotspotTexture, transparent: true });
+  const hotspotTexture = new THREE.TextureLoader().load(
+    "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236"
+  ); // Load the arrow image
+  const hotspotMaterial = new THREE.MeshBasicMaterial({
+    map: hotspotTexture,
+    transparent: true,
+  });
   const hotspotGeometry = new THREE.PlaneGeometry(40, 20);
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
-  
-  const infoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/information-icon.png?v=1731401321964');
-  const infoIconMaterial = new THREE.MeshBasicMaterial({ map: infoIconTexture, transparent: true });
+
+  const infoIconTexture = new THREE.TextureLoader().load(
+    "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/information-icon.png?v=1731401321964"
+  );
+  const infoIconMaterial = new THREE.MeshBasicMaterial({
+    map: infoIconTexture,
+    transparent: true,
+  });
   const infoIconGeometry = new THREE.PlaneGeometry(12, 12);
   infoIconMesh = new THREE.Mesh(infoIconGeometry, infoIconMaterial);
-  
-  const videoIconTexture = new THREE.TextureLoader().load('https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686');
-  const videoIconMaterial = new THREE.MeshBasicMaterial({ map: videoIconTexture, transparent: true });
+
+  const videoIconTexture = new THREE.TextureLoader().load(
+    "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686"
+  );
+  const videoIconMaterial = new THREE.MeshBasicMaterial({
+    map: videoIconTexture,
+    transparent: true,
+  });
   const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
   videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
 
@@ -1097,7 +1123,7 @@ function init() {
   //   hotspotMeshes.push(mesh);
   //   //console.log(e.spotIndex, "spotIndex")
   // })
-  
+
   const firstHotspot = hotSpotInfo[0]; // Directly access the hotspot at index 0
   const mesh = hotspotMesh.clone();
   mesh.position.set(firstHotspot.pos.x, firstHotspot.pos.y, firstHotspot.pos.z);
@@ -1108,31 +1134,34 @@ function init() {
   scene.add(mesh);
   hotspotMeshes.push(mesh);
 
-
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  container.style.touchAction = 'none';
-  container.addEventListener('pointerdown', onPointerDown);
+  container.style.touchAction = "none";
+  container.addEventListener("pointerdown", onPointerDown);
 
-  document.addEventListener('wheel', onDocumentMouseWheel);
+  document.addEventListener("wheel", onDocumentMouseWheel);
 
-  container.addEventListener('touchstart', onTouchStart);
-  container.addEventListener('touchmove', onTouchMove);
-  container.addEventListener('touchend', onTouchEnd);
+  container.addEventListener("touchstart", onTouchStart);
+  container.addEventListener("touchmove", onTouchMove);
+  container.addEventListener("touchend", onTouchEnd);
 
-  window.addEventListener('resize', onWindowResize);
+  window.addEventListener("resize", onWindowResize);
 
   //Handles mesh clicks
-  renderer.domElement.addEventListener('click', onDocumentClick);
-
+  renderer.domElement.addEventListener("click", onDocumentClick);
 
   composer = new EffectComposer(renderer);
-  renderTarget1 = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
-  renderTarget2 = new THREE.WebGLRenderTarget(window.innerWidth, window.innerHeight);
-
+  renderTarget1 = new THREE.WebGLRenderTarget(
+    window.innerWidth,
+    window.innerHeight
+  );
+  renderTarget2 = new THREE.WebGLRenderTarget(
+    window.innerWidth,
+    window.innerHeight
+  );
 
   // Set up render passes for each panorama
   renderPass1 = new RenderPass(scene, camera);
@@ -1148,7 +1177,12 @@ function init() {
   transitionPass.uniforms.progress.value = 0.0;
   composer.addPass(transitionPass);
 
-  const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.5, 0.4, 0.85);
+  const bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    0.5,
+    0.4,
+    0.85
+  );
   //composer.addPass(bloomPass);
 
   transitionProgress = 0.0;
@@ -1160,7 +1194,10 @@ function onTouchStart(event) {
     isUserInteracting = true;
     let touch1 = event.touches[0];
     let touch2 = event.touches[1];
-    pinchStartDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+    pinchStartDistance = Math.hypot(
+      touch2.clientX - touch1.clientX,
+      touch2.clientY - touch1.clientY
+    );
     pinchStartFov = camera.fov;
   }
 }
@@ -1169,7 +1206,10 @@ function onTouchMove(event) {
   if (event.touches.length === 2 && isUserInteracting) {
     let touch1 = event.touches[0];
     let touch2 = event.touches[1];
-    let pinchCurrentDistance = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+    let pinchCurrentDistance = Math.hypot(
+      touch2.clientX - touch1.clientX,
+      touch2.clientY - touch1.clientY
+    );
     let pinchScale = pinchStartDistance / pinchCurrentDistance;
     camera.fov = THREE.MathUtils.clamp(pinchStartFov * pinchScale, 30, 75);
     camera.updateProjectionMatrix();
@@ -1183,16 +1223,13 @@ function onTouchEnd(event) {
 }
 
 function onWindowResize() {
-
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 
   renderer.setSize(window.innerWidth, window.innerHeight);
-
 }
 
 function onPointerDown(event) {
-
   if (event.isPrimary === false) return;
 
   isUserInteracting = true;
@@ -1203,55 +1240,44 @@ function onPointerDown(event) {
   onPointerDownLon = lon;
   onPointerDownLat = lat;
 
-  document.addEventListener('pointermove', onPointerMove);
-  document.addEventListener('pointerup', onPointerUp);
-
+  document.addEventListener("pointermove", onPointerMove);
+  document.addEventListener("pointerup", onPointerUp);
 }
 
 function onPointerMove(event) {
-
   if (event.isPrimary === false) return;
 
   lon = (onPointerDownMouseX - event.clientX) * 0.1 + onPointerDownLon;
   lat = (event.clientY - onPointerDownMouseY) * 0.1 + onPointerDownLat;
-
 }
 
 function onPointerUp() {
-
   if (event.isPrimary === false) return;
 
   isUserInteracting = false;
 
-  document.removeEventListener('pointermove', onPointerMove);
-  document.removeEventListener('pointerup', onPointerUp);
+  document.removeEventListener("pointermove", onPointerMove);
+  document.removeEventListener("pointerup", onPointerUp);
 
   clock.elapsedTime = 0;
-
 }
 
 function onDocumentMouseWheel(event) {
-
   const fov = camera.fov + event.deltaY * 0.05;
 
   camera.fov = THREE.MathUtils.clamp(fov, 10, 75);
 
   camera.updateProjectionMatrix();
-
 }
 
 function animate() {
-
   requestAnimationFrame(animate);
   update(clock.getElapsedTime());
 }
 
 function update(elapsedTime) {
-
   if (isUserInteracting === false && elapsedTime > 2) {
-
     lon += 0.03;
-
   }
 
   lat = Math.max(-85, Math.min(85, lat));
@@ -1265,8 +1291,8 @@ function update(elapsedTime) {
   camera.lookAt(x, y, z);
 
   if (transitioning) {
-    hotspotMeshes.forEach(mesh => mesh.visible = false);
-    
+    hotspotMeshes.forEach((mesh) => (mesh.visible = false));
+
     // Update the transition progress
     transitionProgress += transitionSpeed;
 
@@ -1278,9 +1304,10 @@ function update(elapsedTime) {
       nextSphere.visible = true;
 
       currentSphere = spheres[currentSphereIndex];
-      
-      hotspotMeshes.forEach(mesh => {
-        mesh.visible = mesh.userData.visibleSpheres.includes(currentSphereIndex);
+
+      hotspotMeshes.forEach((mesh) => {
+        mesh.visible =
+          mesh.userData.visibleSpheres.includes(currentSphereIndex);
       });
     }
 
@@ -1308,17 +1335,15 @@ function update(elapsedTime) {
   renderer.setRenderTarget(renderTarget2);
   renderer.render(scene, camera);
 
-
   // Reset render target and update transition progress
   renderer.setRenderTarget(null);
 
   // Render final effect
   composer.render();
-
 }
 
 //Handling image click events
-var sliderImages = document.querySelectorAll('#image-slider img');
+var sliderImages = document.querySelectorAll("#image-slider img");
 let selectedImageIndex;
 
 // document.addEventListener("DOMContentLoaded", function () {
@@ -1331,49 +1356,46 @@ let selectedImageIndex;
 // });
 
 function selectImage(currentIndex) {
+  //   sliderImages.forEach(function (img) {
+  //     img.classList.remove('selected');
+  //   });
 
-//   sliderImages.forEach(function (img) {
-//     img.classList.remove('selected');
-//   });
+  //   image.classList.add('selected');
 
-//   image.classList.add('selected');
-
-//   const targetIndex = panoramas.findIndex(img => img === image.alt);
+  //   const targetIndex = panoramas.findIndex(img => img === image.alt);
 
   //console.log(targetIndex, "plplplplp")
-//   spheres.forEach(function (sphere) {
-//     sphere.visible = false;
-//   });
-  
-//   spheres[targetIndex].visible = true;
-//   currentSphere = spheres[targetIndex];
-//   nextSphere = spheres[(targetIndex + 1) % spheres.length];
-  
-    nextSphere = spheres[currentIndex];
-    transitioning = true;
-    transitionProgress = 0.0;
-    
-  
-    hotspotMeshes.forEach(mesh => {
-        scene.remove(mesh);
-        if (mesh.geometry) mesh.geometry.dispose();
-        if (mesh.material) mesh.material.dispose();
-    });
-    hotspotMeshes.length = 0;
-  
-    
-    hotSpotInfo.forEach(e => {
-        if (e.visible.includes(currentIndex)) {
-            const mesh = hotspotMesh.clone();
-            mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
-            mesh.lookAt(camera.position);
-            mesh.userData.spotIndex = e.spotIndex;
-            mesh.userData.visibleSpheres = e.visible;
-            mesh.visible = true;
-            scene.add(mesh);
-            hotspotMeshes.push(mesh);
-        }
-    });
+  //   spheres.forEach(function (sphere) {
+  //     sphere.visible = false;
+  //   });
+
+  //   spheres[targetIndex].visible = true;
+  //   currentSphere = spheres[targetIndex];
+  //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
+
+  nextSphere = spheres[currentIndex];
+  transitioning = true;
+  transitionProgress = 0.0;
+
+  hotspotMeshes.forEach((mesh) => {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+  });
+  hotspotMeshes.length = 0;
+
+  hotSpotInfo.forEach((e) => {
+    if (e.visible.includes(currentIndex)) {
+      const mesh = hotspotMesh.clone();
+      mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+      mesh.lookAt(camera.position);
+      mesh.userData.spotIndex = e.spotIndex;
+      mesh.userData.visibleSpheres = e.visible;
+      mesh.visible = true;
+      scene.add(mesh);
+      hotspotMeshes.push(mesh);
+    }
+  });
 }
 
 // Function to handle click events on the document
@@ -1395,9 +1417,9 @@ function onDocumentClick(event) {
     // transitionProgress = 0.0;
     currentSphereIndex = intersectedMesh.userData.spotIndex;
     //nextSphere = spheres[currentSphereIndex];
-    
+
     //console.log(currentSphereIndex, "currentSphereIndex")
-    
+
     selectImage(currentSphereIndex);
   }
 }
