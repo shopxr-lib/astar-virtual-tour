@@ -592,6 +592,20 @@ const hotSpotInfo = [
     pos: { x: 190, y: -100, z: -80 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 21,
+    visible: [21],
+    pos: { x: 30, y: 5, z: 30 },
+    iconType: "infoIcon",
+    tag: "SMOODER",
+  },
+  {
+    spotIndex: 21,
+    visible: [21],
+    pos: { x: 30, y: 0, z: 30 },
+    iconType: "videoIcon",
+    tag: "SMOODER",
+  },
   //hotspot index 22
   {
     spotIndex: 21,
@@ -627,21 +641,21 @@ const hotSpotInfo = [
   {
     spotIndex: 23,
     visible: [23],
-    pos: { x: 30, y: 5, z: -40 },
+    pos: { x: -30, y: 5, z: -33 },
     iconType: "infoIcon",
     tag: "CRUNCH",
   },
   {
     spotIndex: 23,
     visible: [23],
-    pos: { x: 30, y: 0, z: -40 },
+    pos: { x: -30, y: 0, z: -33 },
     iconType: "videoIcon",
     tag: "CRUNCH",
   },
   {
     spotIndex: 23,
     visible: [23],
-    pos: { x: 0, y: -5, z: -40 },
+    pos: { x: -30, y: -10, z: 0 },
     iconType: "infoIcon",
     tag: "VERTICALAUTOMATION",
   },
