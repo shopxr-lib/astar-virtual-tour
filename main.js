@@ -310,9 +310,9 @@ const hotSpotInfo = [
   },
   //hotspot index 9
   {
-    spotIndex: 9,
-    visible: [6],
-    pos: { x: -10, y: -100, z: -360 },
+    spotIndex: 6,
+    visible: [9],
+    pos: { x: 30, y: -90, z: -360 },
     iconType: "hotspot",
   },
   {
@@ -1594,6 +1594,8 @@ function selectImage(currentIndex) {
     });
 }
 
+//
+
 // Function to handle click events on the document
 function onDocumentClick(event) {
   const mouse = new THREE.Vector2();
@@ -1610,11 +1612,14 @@ function onDocumentClick(event) {
   if (intersectsHotspotMesh.length > 0) {
     let intersectedMesh = intersectsHotspotMesh[0].object;
 
-    if (intersectedMesh.userData.spotIndex !== currentSphereIndex) {
+    if (intersectedMesh.userData.spotIndex !== currentSphereIndex && intersectedMesh.visible !== false) {
+      //Logic when clicking on hotspots only
+      //ensures that hotspots are not clickable when still in the midst of transitioning
       currentSphereIndex = intersectedMesh.userData.spotIndex;
       selectImage(currentSphereIndex);
     } else {
       //function for showing respective info / video content
+      showContent(intersectedMesh);
     }
   }
 }
