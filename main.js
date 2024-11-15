@@ -1594,17 +1594,27 @@ function selectImage(currentIndex) {
             hotspotMeshes.push(mesh);
         }
     });
+  
+    showLocationContent(currentIndex);
 }
 
+
+//Function for showing the content of the respective locations
+function showLocationContent(locationIndex) {
+  //add code
+  
+}
+
+
 //Function for showing respective info / video content
-function showContent(intersectedMesh) {
+function showIconContent(intersectedMesh) {
   if (intersectedMesh.userData.iconType === "infoIcon"){
     //info icon is clicked
-    console.log("info icon is clicked");
+    
     
   } else if (intersectedMesh.userData.iconType === "videoIcon"){
     //video icon is clicked
-    console.log("video icon is clicked");
+    
   }
 }
 
@@ -1632,9 +1642,7 @@ function onDocumentClick(event) {
       selectImage(currentSphereIndex);
     } else {
       //function for showing respective info / video content
-      console.log("icon clicked")
-      console.log(intersectedMesh)
-      showContent(intersectedMesh);
+      showIconContent(intersectedMesh);
     }
   }
 }
