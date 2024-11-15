@@ -205,6 +205,12 @@ const hotSpotInfo = [
     pos: { x: -50, y: -100, z: 150 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 6,
+    visible: [6],
+    pos: { x: -50, y: 0, z: 150 },
+    iconType: "infoIcon",
+  },
   //hotspot index 7
   {
     spotIndex: 3,
