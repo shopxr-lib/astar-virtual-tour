@@ -419,14 +419,14 @@ const hotSpotInfo = [
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -30, y: 0, z: 5 },
+    pos: { x: -30, y: 0, z: -16 },
     iconType: "infoIcon",
     tag: "ANALYSER",
   },
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -30, y: -5, z: 5 },
+    pos: { x: -30, y: -5, z: -16 },
     iconType: "videoIcon",
     tag: "ANALYSER",
   },
@@ -442,6 +442,20 @@ const hotSpotInfo = [
     visible: [14],
     pos: { x: 0, y: -100, z: 190 },
     iconType: "hotspot",
+  },
+  {
+    spotIndex: 14,
+    visible: [14],
+    pos: { x: -30, y: 0, z: -18 },
+    iconType: "infoIcon",
+    tag: "REBEE",
+  },
+  {
+    spotIndex: 14,
+    visible: [14],
+    pos: { x: -30, y: -5, z: -18 },
+    iconType: "videoIcon",
+    tag: "REBEE",
   },
   //hotspot index 15
   {
