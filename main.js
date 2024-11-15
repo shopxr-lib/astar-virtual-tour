@@ -208,9 +208,9 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -20, y: 0, z: 50 },
+    pos: { x: -20, y: -20, z: 25 },
     iconType: "infoIcon",
-    tag: 3,
+    tag: "KKH",
   },
   //hotspot index 7
   {
@@ -1384,8 +1384,11 @@ function selectImage(currentIndex) {
             mesh.lookAt(camera.position);
             mesh.userData.spotIndex = e.spotIndex;
             mesh.userData.visibleSpheres = e.visible;
-            mesh.visible = true;
+            mesh.visible = true;          
             scene.add(mesh);
+          if (e.iconType === "infoIcon" || e.iconType === "videoIcon") {
+              mesh.scale(0.5, 0.5, 0.5);
+            }
             hotspotMeshes.push(mesh);
         }
     });
