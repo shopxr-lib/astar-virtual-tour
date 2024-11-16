@@ -222,7 +222,7 @@ const hostspotLocations = [
         title: "I4DEAs Milk Analyzer",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "I4DEAs is an ABRAND spin off selling the milk analyzer which can identify the authenticity of baby formula through a smart optical technology developed by ABRAND.",
+          "I4DEAs is an A*STAR spin off selling the milk analyzer which can identify the authenticity of baby formula through a smart optical technology developed by A*STAR.",
         video: "https://www.youtube.com/embed/1VJdwHLbuGo?si=lYLTQyZM_sFqjolp",
       },
     ],
