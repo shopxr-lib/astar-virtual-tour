@@ -1666,54 +1666,50 @@ function onDocumentClick(event) {
 }
 
 // for handling floorplan clicks
-// window.addEventListener("popstate", (event) => {
-//   if (!event.state) {
-//     return;
-//   }
+window.addEventListener("popstate", (event) => {
+  if (!event.state) {
+    return;
+  }
 
-//   console.log(event.state);
-//   if (event.state.source !== "floor-plan") {
-//     return;
-//   }
+  if (event.state.source !== "floor-plan") {
+    return;
+  }
 
-//   console.log("floor plan event");
+  hotspotMeshes.forEach((mesh) => {
+    scene.remove(mesh);
+  });
 
-//   hotspotMeshes.forEach((mesh) => {
-//     scene.remove(mesh);
-//   });
+  const url = new URL(window.location.href);
+  const sphereRaw = url.searchParams.get("sphere") || "0";
+  currentSphereIndex = parseInt(sphereRaw);
 
-//   const url = new URL(window.location.href);
-//   const sphereRaw = url.searchParams.get("sphere") || "0";
-//   currentSphereIndex = parseInt(sphereRaw);
+  if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
+    nextSphere = spheres[currentSphereIndex];
+    transitioning = true;
+    transitionProgress = 0.0;
+  }
 
-//   if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
-//     nextSphere = spheres[currentSphereIndex];
-//   }
-
-//   hotSpotInfo.forEach((e) => {
-//     if (e.visible.includes(currentSphereIndex)) {
-//       let mesh;
-//       if (e.iconType === "hotspot") {
-//         mesh = hotspotMesh.clone();
-//       } else if (e.iconType === "infoIcon") {
-//         mesh = infoIconMesh.clone();
-//         mesh.scale.set(0.4, 0.4, 0.4);
-//       } else if (e.iconType === "videoIcon") {
-//         mesh = videoIconMesh.clone();
-//         mesh.scale.set(0.4, 0.4, 0.4);
-//       }
-//       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
-//       mesh.lookAt(camera.position);
-//       mesh.userData.spotIndex = e.spotIndex;
-//       mesh.userData.visibleSpheres = e.visible;
-//       mesh.userData.iconType = e.iconType;
-//       mesh.userData.tag = e.tag;
-//       mesh.visible = true;
-//       scene.add(mesh);
-//       hotspotMeshes.push(mesh);
-//     }
-//   });
-
-//   transitionProgress = 0.0;
-//   transitionSpeed = 0.01;
-// });
+  hotSpotInfo.forEach((e) => {
+    if (e.visible.includes(currentSphereIndex)) {
+      let mesh;
+      if (e.iconType === "hotspot") {
+        mesh = hotspotMesh.clone();
+      } else if (e.iconType === "infoIcon") {
+        mesh = infoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      } else if (e.iconType === "videoIcon") {
+        mesh = videoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      }
+      mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+      mesh.lookAt(camera.position);
+      mesh.userData.spotIndex = e.spotIndex;
+      mesh.userData.visibleSpheres = e.visible;
+      mesh.userData.iconType = e.iconType;
+      mesh.userData.tag = e.tag;
+      mesh.visible = true;
+      scene.add(mesh);
+      hotspotMeshes.push(mesh);
+    }
+  });
+});
