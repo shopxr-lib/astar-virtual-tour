@@ -1,3 +1,5 @@
+import { locationToSphere, sphereToLocation } from "./constants.js";
+
 /**
  * An array of objects representing the positions and details of various locations.
  * Each object contains information about a specific location, including its tag, title,
@@ -327,10 +329,19 @@ hostspotLocations.forEach((hotspot) => {
 
   img.onclick = () => {
     const url = new URL(window.location);
-    url.searchParams.set("location", hotspot.tag);
-    history.pushState({ tag: hotspot.tag }, "", url);
+    const sphereIndexes = locationToSphere[hotspot.tag];
+    if (!sphereIndexes || sphereIndexes.length == 0) {
+      return;
+    }
+    const sphereIndex = sphereIndexes[0];
+    url.searchParams.set("sphere", sphereIndex);
+    history.pushState({}, "", url);
     dispatchEvent(
-      new PopStateEvent("popstate", { state: { tag: hotspot.tag } })
+      new PopStateEvent("popstate", {
+        state: {
+          source: "floor-plan",
+        },
+      })
     );
   };
 
@@ -352,7 +363,8 @@ if (!isMobile()) {
 
 function populateHotspotCard() {
   const url = new URL(window.location);
-  const locationTag = url.searchParams.get("location");
+  const sphereRaw = url.searchParams.get("sphere") || "0";
+  const locationTag = sphereToLocation[Number(sphereRaw)];
   const location = hostspotLocations.find((l) => l.tag == locationTag);
   const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
   if (!location) {

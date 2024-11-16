@@ -2,7 +2,7 @@ import * as THREE from "https://cdn.skypack.dev/three@0.123.0";
 import { EffectComposer } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js";
-import { UnrealBloomPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { sphereToLocation } from "./constants.js";
 
 const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481",
@@ -1276,19 +1276,25 @@ function init() {
 
   // Load all textures and create spheres
   const textureLoader = new THREE.TextureLoader();
+
+  const url = new URL(window.location.href);
+  const sphereRaw = url.searchParams.get("sphere") || "0";
+  currentSphereIndex = parseInt(sphereRaw);
+
   panoramas.forEach((image, index) => {
     const texture = textureLoader.load(image);
     texture.colorSpace = THREE.SRGBColorSpace;
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const sphere = new THREE.Mesh(geometry, material);
     sphere.userData.index = index;
-    sphere.visible = index === 0;
+    sphere.visible = index === currentSphereIndex;
     scene.add(sphere);
     spheres.push(sphere);
   });
 
-  currentSphere = spheres[0];
-  nextSphere = spheres[1];
+  if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
+    currentSphere = spheres[currentSphereIndex];
+  }
 
   const hotspotTexture = new THREE.TextureLoader().load(
     "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/hotspot-icon.png?v=1731393671236"
@@ -1320,27 +1326,29 @@ function init() {
   const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
   videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
 
-  // hotSpotInfo.forEach((e, index) => {
-  //   const mesh = hotspotMesh.clone();
-  //   mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
-  //   mesh.lookAt(camera.position);
-  //   mesh.userData.spotIndex = e.spotIndex; //updated from index to e.spotIndex
-  //   mesh.userData.visibleSpheres = e.visible;
-  //   mesh.visible = e.visible.includes(currentSphereIndex);
-  //   scene.add(mesh);
-  //   hotspotMeshes.push(mesh);
-  //   //console.log(e.spotIndex, "spotIndex")
-  // })
-
-  const firstHotspot = hotSpotInfo[0]; // Directly access the hotspot at index 0
-  const mesh = hotspotMesh.clone();
-  mesh.position.set(firstHotspot.pos.x, firstHotspot.pos.y, firstHotspot.pos.z);
-  mesh.lookAt(camera.position);
-  mesh.userData.spotIndex = firstHotspot.spotIndex;
-  mesh.userData.visibleSpheres = firstHotspot.visible;
-  mesh.visible = firstHotspot.visible.includes(currentSphereIndex);
-  scene.add(mesh);
-  hotspotMeshes.push(mesh);
+  hotSpotInfo.forEach((e) => {
+    if (e.visible.includes(currentSphereIndex)) {
+      let mesh;
+      if (e.iconType === "hotspot") {
+        mesh = hotspotMesh.clone();
+      } else if (e.iconType === "infoIcon") {
+        mesh = infoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      } else if (e.iconType === "videoIcon") {
+        mesh = videoIconMesh.clone();
+        mesh.scale.set(0.4, 0.4, 0.4);
+      }
+      mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+      mesh.lookAt(camera.position);
+      mesh.userData.spotIndex = e.spotIndex;
+      mesh.userData.visibleSpheres = e.visible;
+      mesh.userData.iconType = e.iconType;
+      mesh.userData.tag = e.tag;
+      mesh.visible = true;
+      scene.add(mesh);
+      hotspotMeshes.push(mesh);
+    }
+  });
 
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -1385,12 +1393,6 @@ function init() {
   transitionPass.uniforms.progress.value = 0.0;
   composer.addPass(transitionPass);
 
-  const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    0.5,
-    0.4,
-    0.85
-  );
   //composer.addPass(bloomPass);
 
   transitionProgress = 0.0;
@@ -1531,14 +1533,19 @@ function update(elapsedTime) {
   }
 
   currentSphere.visible = true;
-  nextSphere.visible = false;
+  if (nextSphere) {
+    nextSphere.visible = false;
+  }
 
   // Render the first panorama to its render target
   renderer.setRenderTarget(renderTarget1);
   renderer.render(scene, camera);
 
   currentSphere.visible = false;
-  nextSphere.visible = true;
+  if (nextSphere) {
+    nextSphere.visible = true;
+  }
+
   // Render the second panorama to its render target
   renderer.setRenderTarget(renderTarget2);
   renderer.render(scene, camera);
@@ -1550,36 +1557,10 @@ function update(elapsedTime) {
   composer.render();
 }
 
-//Handling image click events
-var sliderImages = document.querySelectorAll("#image-slider img");
-let selectedImageIndex;
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   sliderImages.forEach(function (img) {
-//     img.addEventListener("click", function () {
-//       // Call selectImage function and pass the clicked image
-//       selectImage(img);
-//     });
-//   });
-// });
-
 function selectImage(currentIndex) {
-  //   sliderImages.forEach(function (img) {
-  //     img.classList.remove('selected');
-  //   });
-
-  //   image.classList.add('selected');
-
-  //   const targetIndex = panoramas.findIndex(img => img === image.alt);
-
-  //console.log(targetIndex, "plplplplp")
-  //   spheres.forEach(function (sphere) {
-  //     sphere.visible = false;
-  //   });
-
-  //   spheres[targetIndex].visible = true;
-  //   currentSphere = spheres[targetIndex];
-  //   nextSphere = spheres[(targetIndex + 1) % spheres.length];
+  const url = new URL(window.location.href);
+  url.searchParams.set("sphere", currentIndex);
+  history.pushState({}, "", url);
 
   nextSphere = spheres[currentIndex];
   transitioning = true;
@@ -1621,7 +1602,18 @@ function selectImage(currentIndex) {
 
 //Function for showing the content of the respective locations
 function showLocationContent(locationIndex) {
-  //add code
+  let tag;
+  const url = new URL(window.location);
+
+  if (locationIndex in sphereToLocation) {
+    tag = sphereToLocation[locationIndex];
+    url.searchParams.set("location", tag);
+  } else {
+    url.searchParams.delete("location");
+  }
+
+  history.pushState({ tag: tag }, "", url);
+  dispatchEvent(new PopStateEvent("popstate", { state: { tag: tag } }));
 }
 
 //Function for showing respective info / video content
@@ -1663,3 +1655,56 @@ function onDocumentClick(event) {
     }
   }
 }
+
+// for handling floorplan clicks
+// window.addEventListener("popstate", (event) => {
+//   if (!event.state) {
+//     return;
+//   }
+
+//   console.log(event.state);
+//   if (event.state.source !== "floor-plan") {
+//     return;
+//   }
+
+//   console.log("floor plan event");
+
+//   hotspotMeshes.forEach((mesh) => {
+//     scene.remove(mesh);
+//   });
+
+//   const url = new URL(window.location.href);
+//   const sphereRaw = url.searchParams.get("sphere") || "0";
+//   currentSphereIndex = parseInt(sphereRaw);
+
+//   if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
+//     nextSphere = spheres[currentSphereIndex];
+//   }
+
+//   hotSpotInfo.forEach((e) => {
+//     if (e.visible.includes(currentSphereIndex)) {
+//       let mesh;
+//       if (e.iconType === "hotspot") {
+//         mesh = hotspotMesh.clone();
+//       } else if (e.iconType === "infoIcon") {
+//         mesh = infoIconMesh.clone();
+//         mesh.scale.set(0.4, 0.4, 0.4);
+//       } else if (e.iconType === "videoIcon") {
+//         mesh = videoIconMesh.clone();
+//         mesh.scale.set(0.4, 0.4, 0.4);
+//       }
+//       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+//       mesh.lookAt(camera.position);
+//       mesh.userData.spotIndex = e.spotIndex;
+//       mesh.userData.visibleSpheres = e.visible;
+//       mesh.userData.iconType = e.iconType;
+//       mesh.userData.tag = e.tag;
+//       mesh.visible = true;
+//       scene.add(mesh);
+//       hotspotMeshes.push(mesh);
+//     }
+//   });
+
+//   transitionProgress = 0.0;
+//   transitionSpeed = 0.01;
+// });
