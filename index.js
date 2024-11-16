@@ -24,6 +24,7 @@ const hostspotLocations = [
     left: "13.5%",
     contents: [
       {
+        id: "ROPLUS",
         title: "RoPlus Intelligent Hybrid Robotic Gripping Solution",
         subtitle: "Engineering and Application",
         description:
@@ -80,6 +81,7 @@ const hostspotLocations = [
     left: "38%",
     contents: [
       {
+        id: "LAMPPOST",
         title: "Lamp Post EV Charger",
         subtitle: "Ideation, Design, Engineering",
         description:
@@ -87,6 +89,7 @@ const hostspotLocations = [
         video: "https://www.youtube.com/embed/KaxFRmfwSF8",
       },
       {
+        id: "BATTERYSWAP",
         title: "Battery Swapping Station",
         subtitle: "Ideation, Design, Engineering",
         description:
@@ -116,6 +119,7 @@ const hostspotLocations = [
     left: "41%",
     contents: [
       {
+        id: "CRUNCH",
         title: "Crunch Cutlery",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -123,6 +127,7 @@ const hostspotLocations = [
         video: "https://youtube.com/embed/HWfLoyJQK5Y",
       },
       {
+        id: "VERTICALAUTOMATION",
         title: "Vertical Automation System",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -137,10 +142,11 @@ const hostspotLocations = [
     title: "Smooder",
     contents: [
       {
+        id: "SMOODER",
         title: "Smooder",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "Singapore’s first counter-top smoothie maker that blends fruits directly in a cup and self-cleans.",
+          "Singapore's first counter-top smoothie maker that blends fruits directly in a cup and self-cleans.",
         video: "https://youtube.com/embed/2cH4qVf_V9g",
       },
     ],
@@ -152,6 +158,7 @@ const hostspotLocations = [
     title: "Airleo Eco Air System",
     contents: [
       {
+        id: "AIRLEO",
         title: "Airleo Eco Air System",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -181,6 +188,7 @@ const hostspotLocations = [
     title: "Rebee Rehabilitation Wearable",
     contents: [
       {
+        id: "REBEE",
         title: "Rebee Rehabilitation Wearable",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -210,6 +218,7 @@ const hostspotLocations = [
     title: "I4DEAs Milk Analyzer",
     contents: [
       {
+        id: "ANALYSER",
         title: "I4DEAs Milk Analyzer",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -225,6 +234,7 @@ const hostspotLocations = [
     title: "SHRED-AM Plastic Recycler",
     contents: [
       {
+        id: "SHRED",
         title: "SHRED-AM Plastic Recycler",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
@@ -252,6 +262,7 @@ const hostspotLocations = [
     title: "MedTech Lineup",
     contents: [
       {
+        id: "KKH",
         title: "KKH In-Bed Child Cot Concept",
         subtitle: "Ideation and Design",
         description:
@@ -259,18 +270,21 @@ const hostspotLocations = [
         video: "https://www.youtube.com/embed/rVH8JFZp1Pk?si=8Nxrr0xnELGbnij5",
       },
       {
+        id: "PARI",
         title: "PARI Nebulizer",
         subtitle: "Ideation and Design",
         description:
           "New generation portable nebulizer system with enhanced design and UIUX.",
       },
       {
+        id: "AASD",
         title: "BTI Automated Aseptic Sampling Device",
         subtitle: "Design and Engineering",
         description:
           "Device for aseptically and automatically extracting small volumes (below 1ml) of liquid samples for cell therapy manufacturing monitoring.",
       },
       {
+        id: "CONNECTOR",
         title: "BTI Multi-Use Aseptic Connector",
         subtitle: "Engineering",
         description:
@@ -361,7 +375,7 @@ if (!isMobile()) {
   });
 }
 
-function populateHotspotCard() {
+function populateHotspotCard(event) {
   const url = new URL(window.location);
   const sphereRaw = url.searchParams.get("sphere") || "0";
   const locationTag = sphereToLocation[Number(sphereRaw)];
@@ -372,15 +386,17 @@ function populateHotspotCard() {
     return;
   }
 
-  const contentIndexRaw = url.searchParams.get("contentIdx") || "0";
-  const contentIndex = Number(contentIndexRaw);
-  if (contentIndex >= location.contents.length) {
+  const contentId = url.searchParams.get("contentId");
+
+  let content = location.contents.find((content) => content.id === contentId);
+  if (!content) {
     return;
   }
 
-  const content = location.contents[Number(contentIndex)];
-
-  renderModal(content);
+  const modal = renderModal(content);
+  if (contentId) {
+    modal.show();
+  }
 
   const shouldShowInfoIcon = location.contents && location.contents.length == 1;
 
@@ -407,6 +423,11 @@ function populateHotspotCard() {
 }
 
 function renderModal(content) {
+  const existingModal = document.getElementById("hotspot-detail-modal");
+  if (existingModal) {
+    existingModal.remove();
+  }
+
   const modalHTML = `
     <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true" data-bs-backdrop="false" style="top: 35%; width:auto;">
       <div class="modal-dialog mx-3">

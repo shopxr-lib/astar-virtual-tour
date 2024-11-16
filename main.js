@@ -1618,6 +1618,14 @@ function showLocationContent(locationIndex) {
 
 //Function for showing respective info / video content
 function showIconContent(intersectedMesh) {
+  const url = new URL(window.location);
+
+  url.searchParams.set("contentId", intersectedMesh.userData.tag);
+  history.pushState({}, "", url);
+  dispatchEvent(
+    new PopStateEvent("popstate", { state: { source: "show-icon-content" } })
+  );
+
   if (intersectedMesh.userData.iconType === "infoIcon") {
     //info icon is clicked
   } else if (intersectedMesh.userData.iconType === "videoIcon") {
