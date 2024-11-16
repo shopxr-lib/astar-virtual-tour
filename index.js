@@ -391,11 +391,10 @@ function populateHotspotCard(event) {
 
   if (contentId) {
     content = location.contents.find((content) => content.id === contentId);
-    if (!content) {
-      return;
+    if (content) {
+      const modal = renderModal(content);
+      modal.show();
     }
-    const modal = renderModal(content);
-    modal.show();
   } else {
     content = location.contents[0];
     renderModal(content);
