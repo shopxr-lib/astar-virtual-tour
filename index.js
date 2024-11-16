@@ -387,15 +387,18 @@ function populateHotspotCard(event) {
   }
 
   const contentId = url.searchParams.get("contentId");
+  let content;
 
-  let content = location.contents.find((content) => content.id === contentId);
-  if (!content) {
-    return;
-  }
-
-  const modal = renderModal(content);
   if (contentId) {
+    content = location.contents.find((content) => content.id === contentId);
+    if (!content) {
+      return;
+    }
+    const modal = renderModal(content);
     modal.show();
+  } else {
+    content = location.contents[0];
+    renderModal(content);
   }
 
   const shouldShowInfoIcon = location.contents && location.contents.length == 1;
@@ -465,6 +468,12 @@ function renderModal(content) {
 
   const modalElement = document.getElementById("hotspot-detail-modal");
   const modal = new bootstrap.Modal(modalElement);
+
+  modalElement.addEventListener("hidden.bs.modal", () => {
+    const url = new URL(window.location);
+    url.searchParams.delete("contentId");
+    history.pushState({}, "", url);
+  });
   return modal;
 }
 
