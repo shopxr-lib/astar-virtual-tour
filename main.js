@@ -232,13 +232,6 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: -5, z: 37 },
-    iconType: "videoIcon",
-    tag: "KKH",
-  },
-  {
-    spotIndex: 6,
-    visible: [6],
     pos: { x: -30, y: 0, z: 5 },
     iconType: "infoIcon",
     tag: "PARI",
@@ -452,13 +445,6 @@ const hotSpotInfo = [
     iconType: "infoIcon",
     tag: "ANALYSER",
   },
-  {
-    spotIndex: 13,
-    visible: [13],
-    pos: { x: -30, y: -5, z: -20 },
-    iconType: "videoIcon",
-    tag: "ANALYSER",
-  },
   //hotspot index 14
   {
     spotIndex: 13,
@@ -477,13 +463,6 @@ const hotSpotInfo = [
     visible: [14],
     pos: { x: -30, y: 0, z: -16 },
     iconType: "infoIcon",
-    tag: "REBEE",
-  },
-  {
-    spotIndex: 14,
-    visible: [14],
-    pos: { x: -30, y: -5, z: -16 },
-    iconType: "videoIcon",
     tag: "REBEE",
   },
   //hotspot index 15
@@ -536,13 +515,6 @@ const hotSpotInfo = [
     visible: [17],
     pos: { x: -8, y: 6, z: 30 },
     iconType: "infoIcon",
-    tag: "AIRLEO",
-  },
-  {
-    spotIndex: 17,
-    visible: [17],
-    pos: { x: -8, y: 1, z: 30 },
-    iconType: "videoIcon",
     tag: "AIRLEO",
   },
   //hotspot index 18
@@ -634,13 +606,6 @@ const hotSpotInfo = [
     iconType: "infoIcon",
     tag: "SMOODER",
   },
-  {
-    spotIndex: 21,
-    visible: [21],
-    pos: { x: 25, y: 0, z: 20 },
-    iconType: "videoIcon",
-    tag: "SMOODER",
-  },
   //hotspot index 22
   {
     spotIndex: 21,
@@ -678,13 +643,6 @@ const hotSpotInfo = [
     visible: [23],
     pos: { x: -30, y: 5, z: -33 },
     iconType: "infoIcon",
-    tag: "CRUNCH",
-  },
-  {
-    spotIndex: 23,
-    visible: [23],
-    pos: { x: -30, y: 0, z: -33 },
-    iconType: "videoIcon",
     tag: "CRUNCH",
   },
   {
@@ -742,22 +700,8 @@ const hotSpotInfo = [
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 10, y: -13, z: -30 },
-    iconType: "videoIcon",
-    tag: "BATTERYSWAP",
-  },
-  {
-    spotIndex: 25,
-    visible: [25],
     pos: { x: 30, y: 1, z: -40 },
     iconType: "infoIcon",
-    tag: "LAMPPOST",
-  },
-  {
-    spotIndex: 25,
-    visible: [25],
-    pos: { x: 30, y: -4, z: -40 },
-    iconType: "videoIcon",
     tag: "LAMPPOST",
   },
   //hotspot index 26
@@ -1241,7 +1185,7 @@ let transitioning = false;
 
 let clock = new THREE.Clock();
 let elapsedTime = 0;
-let hotspotMesh, infoIconMesh, videoIconMesh;
+let hotspotMesh, infoIconMesh;
 
 let isUserInteracting = false,
   onPointerDownMouseX = 0,
@@ -1316,16 +1260,6 @@ function init() {
   const infoIconGeometry = new THREE.PlaneGeometry(12, 12);
   infoIconMesh = new THREE.Mesh(infoIconGeometry, infoIconMaterial);
 
-  const videoIconTexture = new THREE.TextureLoader().load(
-    "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/video-icon.png?v=1731401327686"
-  );
-  const videoIconMaterial = new THREE.MeshBasicMaterial({
-    map: videoIconTexture,
-    transparent: true,
-  });
-  const videoIconGeometry = new THREE.PlaneGeometry(12, 12);
-  videoIconMesh = new THREE.Mesh(videoIconGeometry, videoIconMaterial);
-
   hotSpotInfo.forEach((e) => {
     if (e.visible.includes(currentSphereIndex)) {
       let mesh;
@@ -1333,9 +1267,6 @@ function init() {
         mesh = hotspotMesh.clone();
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.4, 0.4, 0.4);
-      } else if (e.iconType === "videoIcon") {
-        mesh = videoIconMesh.clone();
         mesh.scale.set(0.4, 0.4, 0.4);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
@@ -1577,9 +1508,6 @@ function selectImage(currentIndex) {
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
         mesh.scale.set(0.4, 0.4, 0.4);
-      } else if (e.iconType === "videoIcon") {
-        mesh = videoIconMesh.clone();
-        mesh.scale.set(0.4, 0.4, 0.4);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
@@ -1617,7 +1545,6 @@ function showLocationContent(sphereIndex) {
   );
 }
 
-//Function for showing respective info / video content
 function showIconContent(intersectedMesh) {
   const url = new URL(window.location);
 
@@ -1626,12 +1553,6 @@ function showIconContent(intersectedMesh) {
   dispatchEvent(
     new PopStateEvent("popstate", { state: { source: "show-icon-content" } })
   );
-
-  if (intersectedMesh.userData.iconType === "infoIcon") {
-    //info icon is clicked
-  } else if (intersectedMesh.userData.iconType === "videoIcon") {
-    //video icon is clicked
-  }
 }
 
 // Function to handle click events on the document
@@ -1659,7 +1580,6 @@ function onDocumentClick(event) {
       currentSphereIndex = intersectedMesh.userData.spotIndex;
       selectImage(currentSphereIndex);
     } else {
-      //function for showing respective info / video content
       showIconContent(intersectedMesh);
     }
   }
@@ -1696,9 +1616,6 @@ window.addEventListener("popstate", (event) => {
         mesh = hotspotMesh.clone();
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.4, 0.4, 0.4);
-      } else if (e.iconType === "videoIcon") {
-        mesh = videoIconMesh.clone();
         mesh.scale.set(0.4, 0.4, 0.4);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
