@@ -1558,10 +1558,6 @@ function update(elapsedTime) {
 }
 
 function selectImage(currentIndex) {
-  const url = new URL(window.location.href);
-  url.searchParams.set("sphere", currentIndex);
-  history.pushState({}, "", url);
-
   nextSphere = spheres[currentIndex];
   transitioning = true;
   transitionProgress = 0.0;
@@ -1601,26 +1597,24 @@ function selectImage(currentIndex) {
 
   // remove modal if any is shown
   const modalElement = document.getElementById("hotspot-detail-modal");
-  if (!modalElement) {
-    return;
+  if (modalElement) {
+    const modalInstance = bootstrap.Modal.getInstance(modalElement);
+    if (modalInstance) {
+      modalInstance.hide();
+    }
   }
-  modalElement.remove();
 }
 
 //Function for showing the content of the respective locations
-function showLocationContent(locationIndex) {
-  let tag;
-  const url = new URL(window.location);
-
-  if (locationIndex in sphereToLocation) {
-    tag = sphereToLocation[locationIndex];
-    url.searchParams.set("location", tag);
-  } else {
-    url.searchParams.delete("location");
-  }
-
-  history.pushState({ tag: tag }, "", url);
-  dispatchEvent(new PopStateEvent("popstate", { state: { tag: tag } }));
+function showLocationContent(sphereIndex) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("sphere", sphereIndex);
+  history.pushState({}, "", url);
+  dispatchEvent(
+    new PopStateEvent("popstate", {
+      state: { source: "hotspot-change-location" },
+    })
+  );
 }
 
 //Function for showing respective info / video content
