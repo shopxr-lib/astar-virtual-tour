@@ -1598,6 +1598,13 @@ function selectImage(currentIndex) {
   });
 
   showLocationContent(currentIndex);
+
+  // remove modal if any is shown
+  const modalElement = document.getElementById("hotspot-detail-modal");
+  if (!modalElement) {
+    return;
+  }
+  modalElement.remove();
 }
 
 //Function for showing the content of the respective locations
