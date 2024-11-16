@@ -339,7 +339,6 @@ hostspotLocations.forEach((hotspot) => {
   img.style.top = hotspot.top;
   img.style.left = hotspot.left;
   img.style.width = "2%";
-  img.style.width = "2%";
 
   img.onclick = () => {
     const url = new URL(window.location);
