@@ -1,47 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A*Star Innovation Factory Virtual Tour</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>360 Home Tour</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div id="main-container">
-    <div id="image-container"></div>
-  </div>
-
-  <!-- <div id="scene-slider" loading="lazy">
-    <div id="image-slider">
-      <img class="selected" src="assets/env/6.webp" alt="assets/env/6.webp" />
-      <img src="assets/env/9.webp" alt="assets/env/9.webp" loading="lazy" />
-      <img src="assets/env/7.webp" alt="assets/env/7.webp" loading="lazy" />
-      <img src="assets/env/12.webp" alt="assets/env/12.webp" loading="lazy" />
-      <img src="assets/env/10.webp" alt="assets/env/10.webp" loading="lazy" />
-      <img src="assets/env/14.webp" alt="assets/env/14.webp" loading="lazy" />
-      <img src="assets/env/15.webp" alt="assets/env/15.webp" loading="lazy" />
-      <img src="assets/env/32.png" alt="assets/env/32.png" loading="lazy" />
-      <img src="assets/env/3.webp" alt="assets/env/3.webp" loading="lazy" />
-      <img src="assets/env/18.webp" alt="assets/env/18.webp" loading="lazy" />
-      <img src="assets/env/28.webp" alt="assets/env/28.webp" loading="lazy" />
-      <img src="assets/env/49.png" alt="assets/env/49.png" loading="lazy" />
-      <img src="assets/env/43.png" alt="assets/env/43.png" loading="lazy" />
-      <img src="assets/env/39.png" alt="assets/env/39.png" loading="lazy" />
-      <img src="assets/env/36.png" alt="assets/env/36.png" loading="lazy" />
-      <img src="assets/env/26.webp" alt="assets/env/26.webp" loading="lazy" />
-      <img src="assets/env/24.webp" alt="assets/env/24.webp" loading="lazy" />
-      <img src="assets/env/22.webp" alt="assets/env/22.webp" loading="lazy" />
+  <body>
+    <div id="main-container">
+      <div
+        class="w-100 d-flex position-absolute z-3 justify-content-between align-items-center"
+        style="padding: 1rem"
+      >
+        <div class="col-4 col-md-2">
+          <div
+            class="rounded-3"
+            style="background-color: rgba(255, 255, 255, 0.3); padding: 0.5rem"
+          >
+            <a
+              href="http://www.a-star.edu.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img class="img-fluid" src="images/astar.png" alt="logo" />
+            </a>
+          </div>
+        </div>
+        <div class="col-4 col-md-3 floor-plan">
+          <img
+            src="images/office-floor-plan.png"
+            alt="floor-plan"
+            class="img-fluid"
+            data-bs-toggle="modal"
+            data-bs-target="#floor-plan-modal"
+            style="cursor: pointer"
+          />
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="floor-plan-modal"
+        tabindex="-1"
+        aria-labelledby="floor-plan-modal"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-md-down"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="floor-plan-modal">Floor Plan</h3>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div
+              class="modal-body d-flex flex-column-reverse justify-content-center"
+            >
+              <div class="position-relative" data-container="floor-plan">
+                <img
+                  src="images/office-floor-plan.png"
+                  alt="floor-plan"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        data-container="hotspot-card"
+        class="position-fixed z-3 mx-2"
+        style="top: 25%"
+      ></div>
+      <div id="image-container"></div>
     </div>
-  </div> -->
 
-<!--   <div id="poweredbyShopXR">
-    <p>Powered by ShopXR Pte Ltd</p>
-  </div> -->
-
-  <script src="main.js" type="module"></script>
-</body>
-
+    <script src="main.js" type="module"></script>
+    <script src="index.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
