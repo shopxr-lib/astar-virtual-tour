@@ -431,8 +431,8 @@ function renderModal(content) {
   }
 
   const modalHTML = `
-    <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true" data-bs-backdrop="false" style="top: 35%; width:auto;">
-      <div class="modal-dialog mx-3">
+    <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true" data-bs-backdrop="false" style="top: 35%; width:auto; height:auto;">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="hotspot-detail-modal-label">${
