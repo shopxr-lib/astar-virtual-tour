@@ -324,12 +324,24 @@ const hostspotLocations = [
 const floorPlanContainer = document.querySelector(
   '[data-container="floor-plan"]'
 );
+
+const url = new URL(window.location);
+const sphereRaw = url.searchParams.get("sphere") || "0";
+const locationTag = sphereToLocation[Number(sphereRaw)];
+
 hostspotLocations.forEach((hotspot) => {
   const img = document.createElement("img");
+  const isActive = hotspot.tag == locationTag;
   img.alt = hotspot.title;
   img.title = hotspot.title;
   img.dataset.tag = hotspot.tag;
-  img.src = "images/location-icon.png";
+  img.src = isActive
+    ? "images/location-icon-active.png"
+    : "images/location-icon.png";
+
+  if (isActive) {
+    img.classList.add("location-icon-active");
+  }
   img.classList.add("img-fluid", "position-absolute");
   img.dataset["bsDismiss"] = "modal";
   img.dataset["bsToggle"] = "tooltip";
@@ -492,9 +504,11 @@ window.addEventListener("popstate", function () {
 
   this.document.querySelectorAll('[data-id="location-icon"]').forEach((img) => {
     if (img.dataset.tag == locationTag) {
-      img.style.border = "2px solid red";
+      img.classList.add("location-icon-active");
+      img.src = "images/location-icon-active.png";
     } else {
-      img.style.border = "none";
+      img.classList.remove("location-icon-active");
+      img.src = "images/location-icon.png";
     }
   });
 });
