@@ -225,7 +225,7 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: 0, z: 37 },
+    pos: { x: -30, y: 0, z: 24 },
     iconType: "infoIcon",
     tag: "KKH",
   },
