@@ -335,6 +335,7 @@ hostspotLocations.forEach((hotspot) => {
   img.dataset["bsToggle"] = "tooltip";
   img.dataset["bsPlacement"] = "top";
   img.dataset["bsTitle"] = hotspot.title;
+  img.dataset["id"] = "location-icon";
   img.style.cursor = "pointer";
   img.style.top = hotspot.top;
   img.style.left = hotspot.left;
@@ -449,7 +450,7 @@ function renderModal(content) {
             ${
               content.video
                 ? `<div class="ratio ratio-16x9">
-                     <iframe src="${content.video}" title="YouTube video" allowfullscreen></iframe>
+                     <iframe data-container="youtube-embed" src="${content.video}" title="YouTube video" allowfullscreen></iframe>
                    </div>`
                 : ""
             }
@@ -471,9 +472,29 @@ function renderModal(content) {
     const url = new URL(window.location);
     url.searchParams.delete("contentId");
     history.pushState({}, "", url);
+
+    const iframe = document.querySelector("[data-container='youtube-embed']");
+    if (iframe) {
+      // Reset the iframe src to stop the video from playing
+      const temp = iframe.src;
+      iframe.src = temp;
+    }
   });
   return modal;
 }
 
 populateHotspotCard();
 window.addEventListener("popstate", populateHotspotCard);
+window.addEventListener("popstate", function () {
+  const url = new URL(window.location);
+  const sphereRaw = url.searchParams.get("sphere") || "0";
+  const locationTag = sphereToLocation[Number(sphereRaw)];
+
+  this.document.querySelectorAll('[data-id="location-icon"]').forEach((img) => {
+    if (img.dataset.tag == locationTag) {
+      img.style.border = "2px solid red";
+    } else {
+      img.style.border = "none";
+    }
+  });
+});
