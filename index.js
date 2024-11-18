@@ -398,7 +398,19 @@ function populateHotspotCard(event) {
     return;
   }
 
-  const contentId = url.searchParams.get("contentId");
+  // if the event is triggered by hotspot change location, then do not respect the contentId in the url yet.
+  // The contentId is only respected when the user clicks on the (i) icon.
+  // Although contentId is deleted when location is changed (using hidden.bs.modal event listener),
+  // the old contentId is still in the url.
+  let contentId;
+  if (
+    event &&
+    event.state &&
+    event.state.source !== "hotspot-change-location"
+  ) {
+    contentId = url.searchParams.get("contentId");
+  }
+
   let content;
 
   if (contentId) {
