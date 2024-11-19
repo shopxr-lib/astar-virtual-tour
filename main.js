@@ -1166,15 +1166,12 @@ let composer,
   renderTarget2,
   renderPass1,
   renderPass2,
-  transitionPass,
-  bloomPass;
-let currentPos2;
+  transitionPass;
 let spheres = {};
 let hotspotMeshes = [];
 
 let currentSphere;
 let nextSphere;
-let transitioningToSphere2 = true;
 
 let currentSphereIndex = 0;
 let transitionProgress = 0;
@@ -1183,7 +1180,6 @@ let transitionSpeed = 0.01;
 let transitioning = false;
 
 let clock = new THREE.Clock();
-let elapsedTime = 0;
 let hotspotMesh, infoIconMesh;
 
 let isUserInteracting = false,
