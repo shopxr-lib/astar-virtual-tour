@@ -1169,7 +1169,7 @@ let composer,
   transitionPass,
   bloomPass;
 let currentPos2;
-let spheres = [];
+let spheres = {};
 let hotspotMeshes = [];
 
 let currentSphere;
@@ -1212,34 +1212,16 @@ function init() {
   );
   scene = new THREE.Scene();
 
-  // Geometry for panorama spheres
-  const geometry = new THREE.SphereGeometry(500, 60, 40);
-  // invert the geometry on the x-axis so that all of the faces point inward
-  geometry.scale(-1, 1, 1);
-
-  // Load all textures and create spheres
-  const textureLoader = new THREE.TextureLoader();
-
   const url = new URL(window.location.href);
   const sphereRaw = url.searchParams.get("sphere") || "0";
   currentSphereIndex = parseInt(sphereRaw);
 
-  panoramas.forEach((image, index) => {
-    const texture = textureLoader.load(image);
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.minFilter = THREE.LinearFilter; // Use linear filtering for minification
-    texture.magFilter = THREE.LinearFilter; // Use linear filtering for magnification
-    texture.generateMipmaps = true; // Generate mipmaps for better quality at different scales
-    const material = new THREE.MeshBasicMaterial({ map: texture });
-    const sphere = new THREE.Mesh(geometry, material);
-    sphere.userData.index = index;
-    sphere.visible = index === currentSphereIndex;
-    scene.add(sphere);
-    spheres.push(sphere);
-  });
-
-  if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
-    currentSphere = spheres[currentSphereIndex];
+  if (currentSphereIndex >= 0 && currentSphereIndex < panoramas.length) {
+    const sphere = loadSphere(
+      panoramas[currentSphereIndex],
+      currentSphereIndex
+    );
+    currentSphere = sphere;
   }
 
   const hotspotTexture = new THREE.TextureLoader().load(
@@ -1491,7 +1473,7 @@ function update(elapsedTime) {
 }
 
 function selectImage(currentIndex) {
-  nextSphere = spheres[currentIndex];
+  nextSphere = loadSphere(panoramas[currentIndex], currentIndex);
   transitioning = true;
   transitionProgress = 0.0;
 
@@ -1605,8 +1587,8 @@ window.addEventListener("popstate", (event) => {
   const sphereRaw = url.searchParams.get("sphere") || "0";
   currentSphereIndex = parseInt(sphereRaw);
 
-  if (currentSphereIndex >= 0 && currentSphereIndex < spheres.length) {
-    nextSphere = spheres[currentSphereIndex];
+  if (currentSphereIndex >= 0 && currentSphereIndex < panoramas.length) {
+    nextSphere = loadSphere(panoramas[currentSphereIndex], currentSphereIndex);
     transitioning = true;
     transitionProgress = 0.0;
   }
@@ -1632,3 +1614,29 @@ window.addEventListener("popstate", (event) => {
     }
   });
 });
+
+function loadSphere(image, index) {
+  if (spheres[index]) {
+    return spheres[index];
+  }
+
+  // Geometry for panorama spheres
+  const geometry = new THREE.SphereGeometry(500, 60, 40);
+  // invert the geometry on the x-axis so that all of the faces point inward
+  geometry.scale(-1, 1, 1);
+  const textureLoader = new THREE.TextureLoader();
+  const texture = textureLoader.load(image);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.minFilter = THREE.LinearFilter; // Use linear filtering for minification
+  texture.magFilter = THREE.LinearFilter; // Use linear filtering for magnification
+  texture.generateMipmaps = true; // Generate mipmaps for better quality at different scales
+  const material = new THREE.MeshBasicMaterial({ map: texture });
+  const sphere = new THREE.Mesh(geometry, material);
+
+  sphere.userData.index = index;
+  sphere.visible = true;
+  spheres[index] = sphere;
+  scene.add(sphere);
+
+  return sphere;
+}
