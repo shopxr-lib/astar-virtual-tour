@@ -2,7 +2,6 @@ import * as THREE from "https://cdn.skypack.dev/three@0.123.0";
 import { EffectComposer } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js";
-import { sphereToLocation } from "./constants.js";
 
 const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481",
@@ -1228,6 +1227,9 @@ function init() {
   panoramas.forEach((image, index) => {
     const texture = textureLoader.load(image);
     texture.colorSpace = THREE.SRGBColorSpace;
+    texture.minFilter = THREE.LinearFilter; // Use linear filtering for minification
+    texture.magFilter = THREE.LinearFilter; // Use linear filtering for magnification
+    texture.generateMipmaps = true; // Generate mipmaps for better quality at different scales
     const material = new THREE.MeshBasicMaterial({ map: texture });
     const sphere = new THREE.Mesh(geometry, material);
     sphere.userData.index = index;
