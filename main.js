@@ -1269,7 +1269,7 @@ function init() {
   container.style.touchAction = "none";
   container.addEventListener("pointerdown", onPointerDown);
 
-  document.addEventListener("wheel", onDocumentMouseWheel);
+  container.addEventListener("wheel", onDocumentMouseWheel);
 
   container.addEventListener("touchstart", onTouchStart);
   container.addEventListener("touchmove", onTouchMove);
