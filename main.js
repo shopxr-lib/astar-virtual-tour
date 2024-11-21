@@ -1194,6 +1194,10 @@ let isUserInteracting = false,
   pinchStartDistance = 0,
   pinchStartFov = 0;
 
+const MIN_ZOOM = 60;
+const MAX_ZOOM = 85;
+const DEFAULT_ZOOM = MAX_ZOOM;
+
 init();
 animate();
 
@@ -1201,7 +1205,7 @@ function init() {
   const container = document.getElementById("image-container");
 
   camera = new THREE.PerspectiveCamera(
-    75,
+    DEFAULT_ZOOM,
     window.innerWidth / window.innerHeight,
     1,
     1100
@@ -1332,7 +1336,11 @@ function onTouchMove(event) {
       touch2.clientY - touch1.clientY
     );
     let pinchScale = pinchStartDistance / pinchCurrentDistance;
-    camera.fov = THREE.MathUtils.clamp(pinchStartFov * pinchScale, 30, 75);
+    camera.fov = THREE.MathUtils.clamp(
+      pinchStartFov * pinchScale,
+      30,
+      MAX_ZOOM
+    );
     camera.updateProjectionMatrix();
   }
 }
@@ -1386,7 +1394,7 @@ function onPointerUp() {
 function onDocumentMouseWheel(event) {
   const fov = camera.fov + event.deltaY * 0.05;
 
-  camera.fov = THREE.MathUtils.clamp(fov, 10, 75);
+  camera.fov = THREE.MathUtils.clamp(fov, MIN_ZOOM, MAX_ZOOM);
 
   camera.updateProjectionMatrix();
 }
@@ -1435,9 +1443,9 @@ function update(elapsedTime) {
     // Set the progress of the transition in the shader
     transitionPass.uniforms.progress.value = transitionProgress;
     if (transitionProgress < 0.5) {
-      camera.fov = THREE.MathUtils.lerp(75, 50, transitionProgress); // From 75 (default) to 50 (zoomed in)
+      camera.fov = THREE.MathUtils.lerp(MAX_ZOOM, MIN_ZOOM, transitionProgress);
     } else {
-      camera.fov = THREE.MathUtils.lerp(50, 75, transitionProgress); // From 75 (default) to 50 (zoomed in)
+      camera.fov = THREE.MathUtils.lerp(MIN_ZOOM, MAX_ZOOM, transitionProgress);
     }
 
     camera.updateProjectionMatrix();
@@ -1617,7 +1625,7 @@ function loadSphere(image, index) {
   }
 
   // Geometry for panorama spheres
-  const geometry = new THREE.SphereGeometry(500, 60, 40);
+  const geometry = new THREE.SphereGeometry(500, 64, 64);
   // invert the geometry on the x-axis so that all of the faces point inward
   geometry.scale(-1, 1, 1);
   const textureLoader = new THREE.TextureLoader();
