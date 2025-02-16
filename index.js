@@ -526,17 +526,19 @@ function renderModal(content) {
       <div class="modal-dialog" style="overflow-y:scroll;max-height:60vh;">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="hotspot-detail-modal-label">${
-              content.title
-            }</h5>
+            <div class="d-flex flex-column" style="gap:1rem;">
+              <h5 class="modal-title" id="hotspot-detail-modal-label">${
+                content.title
+              }</h5>
+              ${
+                content.subtitle
+                  ? `<h6 class="card-subtitle mb-2 text-body-secondary">${content.subtitle}</h6>`
+                  : ""
+              }
+            </div>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ${
-              content.subtitle
-                ? `<h6 class="card-subtitle mb-2 text-body-secondary">${content.subtitle}</h6>`
-                : ""
-            }
             <p class="card-text">${content.description}</p>
             ${
               content.video
