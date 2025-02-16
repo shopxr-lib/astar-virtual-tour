@@ -101,3 +101,9 @@ body {
 .location-icon-active {
   animation: upDown 2s infinite;
 }
+
+.modal-dialog {
+  @media screen and (min-width: 768px) {
+    min-width: 30vw;
+  }
+}
