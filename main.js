@@ -68,7 +68,7 @@ const hotSpotInfo = [
   {
     spotIndex: 0,
     visible: [0],
-    pos: { x: -200, y: 40, z: 90 },
+    pos: { x: -65, y: 12, z: 30 },
     iconType: "infoIcon",
     tag: "IF",
   },
