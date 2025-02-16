@@ -334,6 +334,14 @@ const hostspotLocations = [
     left: "58%",
     title: "Entrance",
     showInFloating: true,
+    contents: [
+      {
+        id: "IF",
+        title: "Innovation Factory",
+        description: "Welcome to Innovation Factory!",
+        video: "https://www.youtube.com/embed/OvBqZ_b3yXE?si=k3hW4JbBjpY3qOkv",
+      },
+    ],
   },
 ];
 
