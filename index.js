@@ -10,6 +10,7 @@ import { locationToSphere, sphereToLocation } from "./constants.js";
  * @property {string} title - The title of the location.
  * @property {string} top - The top position of the location as a percentage.
  * @property {string} left - The left position of the location as a percentage.
+ * @property {Boolean} showInFloating - Whether the location should be shown in the floating container.
  * @property {Array<Object>} contents - An array of content objects related to the location.
  * @property {string} contents.title - The title of the content.
  * @property {string} contents.subtitle - The subtitle of the content.
@@ -45,6 +46,7 @@ const hostspotLocations = [
           "We support Additive Manufacturing engineers in improving their manufacturing processes with top-tier 3D printers and simulation technology. Our experienced team minimise the runway to find build configurations that succeed and customise technology to integrate seamlessly into your process chain.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 13,
@@ -59,6 +61,7 @@ const hostspotLocations = [
           "We enable partners to explore a wealth of knowledge in materials. We hold space for creativity and interdisciplinary study, pushing the envelope in material exploration.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 12,
@@ -73,6 +76,7 @@ const hostspotLocations = [
           "A premium private meeting space ideal for meetings, project discussions, and networking.  [Table 12 pax; Backbenchers 15 pax] ",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 16,
@@ -180,6 +184,7 @@ const hostspotLocations = [
           "We specialize in customized solutions for product design and embedded systems, leveraging expertise in industrial design, electronics, mechanical development, simulation, firmware, and communication protocols. Our services encompass design, consulting, and engineering support, with flexible outsourcing and robust project management to meet partners' needs effectively.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 7,
@@ -210,6 +215,7 @@ const hostspotLocations = [
           "Here, we empower engineers and designers to explore, prototype, and refine electronic solutions. Functionality and innovation converge, offering essential tools and technology needed for electronic projects.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 6,
@@ -254,6 +260,7 @@ const hostspotLocations = [
           "We develop robotics and automation solutions, including 2D and 3D lidar navigation and vision-based lost recovery. We also explore robotic systems in manipulation, mobility, perception, intelligence, and mechatronics.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 3,
@@ -305,6 +312,7 @@ const hostspotLocations = [
           "We specialize in customized solutions for product design and embedded systems, leveraging expertise in industrial design, electronics, mechanical development, simulation, firmware, and communication protocols. Our services encompass design, consulting, and engineering support, with flexible outsourcing and robust project management to meet partners' needs effectively.",
       },
     ],
+    showInFloating: true,
   },
   {
     tag: 1,
@@ -318,11 +326,22 @@ const hostspotLocations = [
           "An open concept meeting and event space that flows seamlessly into IF's showroom. [30 pax]",
       },
     ],
+    showInFloating: true,
+  },
+  {
+    tag: 19,
+    top: "72%",
+    left: "58%",
+    title: "Entrance",
+    showInFloating: true,
   },
 ];
 
 const floorPlanContainer = document.querySelector(
   '[data-container="floor-plan"]'
+);
+const floorPlanFloatingContainer = document.querySelector(
+  '[data-container="floor-plan-floating"]'
 );
 
 const url = new URL(window.location);
@@ -343,7 +362,10 @@ hostspotLocations.forEach((hotspot) => {
     img.classList.add("location-icon-active");
   }
   img.classList.add("img-fluid", "position-absolute");
+
+  // close the modal when clicked on the location icon
   img.dataset["bsDismiss"] = "modal";
+
   img.dataset["bsToggle"] = "tooltip";
   img.dataset["bsPlacement"] = "top";
   img.dataset["bsTitle"] = hotspot.title;
@@ -353,7 +375,7 @@ hostspotLocations.forEach((hotspot) => {
   img.style.left = hotspot.left;
   img.style.width = "2%";
 
-  img.onclick = () => {
+  const onclick = () => {
     const url = new URL(window.location);
     const sphereIndexes = locationToSphere[hotspot.tag];
     if (!sphereIndexes || sphereIndexes.length == 0) {
@@ -370,8 +392,23 @@ hostspotLocations.forEach((hotspot) => {
       })
     );
   };
+  img.onclick = onclick;
 
   floorPlanContainer.appendChild(img);
+
+  if (hotspot.showInFloating) {
+    const cloneImg = img.cloneNode();
+    cloneImg.style.top = `${0.9 * parseFloat(hotspot.top)}%`;
+    cloneImg.style.left = `${0.97 * parseFloat(hotspot.left)}%`;
+    cloneImg.style.width = "5%";
+    cloneImg.onclick = onclick;
+
+    // No modal needs to be displayed when clicked on the floating container
+    // this prevents the annoying undefined error when because it's trying to remove a modal that doesn't exist
+    delete cloneImg.dataset["bsDismiss"];
+
+    floorPlanFloatingContainer.appendChild(cloneImg);
+  }
 });
 
 function isMobile() {
@@ -419,7 +456,7 @@ function populateHotspotCard(event) {
       const modal = renderModal(content);
       modal.show();
     }
-  } else {
+  } else if (location.contents) {
     content = location.contents[0];
     renderModal(content);
   }
