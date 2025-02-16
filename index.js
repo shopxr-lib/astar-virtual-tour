@@ -10,6 +10,7 @@ import { locationToSphere, sphereToLocation } from "./constants.js";
  * @property {string} title - The title of the location.
  * @property {string} top - The top position of the location as a percentage.
  * @property {string} left - The left position of the location as a percentage.
+ * @property {Boolean} hideLocationIcon - Whether the location icon should be hidden.
  * @property {Boolean} showInFloating - Whether the location should be shown in the floating container.
  * @property {Array<Object>} contents - An array of content objects related to the location.
  * @property {string} contents.title - The title of the content.
@@ -344,6 +345,19 @@ const hostspotLocations = [
       },
     ],
   },
+  {
+    tag: 20,
+    title: "Innovation Factory Booklet",
+    hideLocationIcon: true,
+    hideInfoIcon: true,
+    contents: [
+      {
+        id: "IFBOOKLET",
+        title: "Innovation Factory Booklet",
+        description: `<p><a href="https://drive.google.com/file/d/18-xOQfBjuMXS4tn6SsZn7PYbS6jm7GvB/view?usp=sharing" target="_blank">Download</a></p>`,
+      },
+    ],
+  },
 ];
 
 const floorPlanContainer = document.querySelector(
@@ -358,6 +372,10 @@ const sphereRaw = url.searchParams.get("sphere") || "0";
 const locationTag = sphereToLocation[Number(sphereRaw)];
 
 hostspotLocations.forEach((hotspot) => {
+  if (hotspot.hideLocationIcon) {
+    return;
+  }
+
   const img = document.createElement("img");
   const isActive = hotspot.tag == locationTag;
   img.alt = hotspot.title;

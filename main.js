@@ -147,6 +147,13 @@ const hotSpotInfo = [
     pos: { x: -380, y: -100, z: 120 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 3,
+    visible: [3],
+    pos: { x: -20, y: -3, z: 20 },
+    iconType: "infoIcon",
+    tag: "IFBOOKLET",
+  },
   //hotspot index 4
   {
     spotIndex: 2,
