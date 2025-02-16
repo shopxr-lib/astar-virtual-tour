@@ -334,6 +334,7 @@ const hostspotLocations = [
     left: "58%",
     title: "Entrance",
     showInFloating: true,
+    hideInfoIcon: true,
     contents: [
       {
         id: "IF",
@@ -469,7 +470,10 @@ function populateHotspotCard(event) {
     renderModal(content);
   }
 
-  const shouldShowInfoIcon = location.contents && location.contents.length == 1;
+  const shouldShowInfoIcon =
+    location.contents &&
+    location.contents.length == 1 &&
+    !location.hideInfoIcon;
 
   const infoIconImg = document.createElement("img");
   infoIconImg.src = "images/information-icon.png";
