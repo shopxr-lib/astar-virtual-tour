@@ -1415,14 +1415,10 @@ function onDocumentMouseWheel(event) {
 
 function animate() {
   requestAnimationFrame(animate);
-  update(clock.getElapsedTime());
+  update();
 }
 
-function update(elapsedTime) {
-  if (isUserInteracting === false && elapsedTime > 2) {
-    lon += 0.03;
-  }
-
+function update() {
   lat = Math.max(-85, Math.min(85, lat));
   phi = THREE.MathUtils.degToRad(90 - lat);
   theta = THREE.MathUtils.degToRad(lon);
