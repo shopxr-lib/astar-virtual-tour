@@ -1209,7 +1209,7 @@ let isUserInteracting = false,
   pinchStartFov = 0;
 
 const MIN_ZOOM = 60;
-const MAX_ZOOM = 85;
+const MAX_ZOOM = 65;
 const DEFAULT_ZOOM = MAX_ZOOM;
 
 init();
@@ -1452,10 +1452,11 @@ function update() {
 
     // Set the progress of the transition in the shader
     transitionPass.uniforms.progress.value = transitionProgress;
+    console.log(transitionProgress);
     if (transitionProgress < 0.5) {
       camera.fov = THREE.MathUtils.lerp(MAX_ZOOM, MIN_ZOOM, transitionProgress);
     } else {
-      camera.fov = THREE.MathUtils.lerp(MIN_ZOOM, MAX_ZOOM, transitionProgress);
+      camera.fov = DEFAULT_ZOOM;
     }
 
     camera.updateProjectionMatrix();
