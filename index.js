@@ -93,14 +93,6 @@ const hostspotLocations = [
           "A built-in EV charging module for Singapore's lamp posts.",
         video: "https://www.youtube.com/embed/KaxFRmfwSF8",
       },
-      {
-        id: "BATTERYSWAP",
-        title: "Battery Swapping Station",
-        subtitle: "Ideation, Design, Engineering",
-        description:
-          "Battery Charging and Swapping Station (BCSS) that incorporate the use of solar power.",
-        video: "https://youtube.com/embed/13nHtDnlAag",
-      },
     ],
   },
   {
@@ -374,6 +366,7 @@ const hostspotLocations = [
         video: "https://youtube.com/embed/13nHtDnlAag",
       },
     ],
+    hideLocationIcon: true,
   },
 ];
 
