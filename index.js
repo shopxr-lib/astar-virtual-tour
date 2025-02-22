@@ -482,7 +482,6 @@ function populateHotspotCard(event) {
   const locationTag = sphereToLocation[Number(sphereRaw)];
   const location = hostspotLocations.find((l) => l.tag == locationTag);
   const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
-  console.log("location", location);
   if (!location) {
     hotspotCard.innerHTML = "";
     return;
@@ -500,8 +499,6 @@ function populateHotspotCard(event) {
   ) {
     contentId = url.searchParams.get("contentId");
   }
-
-  console.log("contentId", contentId);
 
   let content;
 
