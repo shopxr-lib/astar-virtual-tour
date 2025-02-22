@@ -1549,7 +1549,7 @@ function selectImage(currentIndex) {
     if (mesh.geometry) mesh.geometry.dispose();
     if (mesh.material) mesh.material.dispose();
   });
-  hotspotMeshes.length = 0;
+  hotspotMeshes = [];
 
   hotSpotInfo.forEach((e) => {
     if (e.visible.includes(currentIndex)) {
@@ -1649,6 +1649,7 @@ window.addEventListener("popstate", (event) => {
   hotspotMeshes.forEach((mesh) => {
     scene.remove(mesh);
   });
+  hotspotMeshes = [];
 
   const url = new URL(window.location.href);
   const sphereRaw = url.searchParams.get("sphere") || "0";
