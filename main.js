@@ -1211,6 +1211,7 @@ let transitioning = false;
 
 let clock = new THREE.Clock();
 let hotspotMesh, infoIconMesh;
+let intersectedInfoIcon;
 
 let isUserInteracting = false,
   onPointerDownMouseX = 0,
@@ -1265,12 +1266,21 @@ function init() {
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
 
   const infoIconTexture = new THREE.TextureLoader().load(
-    "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/information-icon.png?v=1731401321964"
+    "/images/information-icon.png"
+  );
+  const infoIconHoverTexture = new THREE.TextureLoader().load(
+    "/images/information-icon-hover.png"
   );
   const infoIconMaterial = new THREE.MeshBasicMaterial({
     map: infoIconTexture,
     transparent: true,
   });
+
+  const infoIconHoverMaterial = new THREE.MeshBasicMaterial({
+    map: infoIconHoverTexture,
+    transparent: true,
+  });
+
   const infoIconGeometry = new THREE.PlaneGeometry(12, 12);
   infoIconMesh = new THREE.Mesh(infoIconGeometry, infoIconMaterial);
 
@@ -1281,7 +1291,7 @@ function init() {
         mesh = hotspotMesh.clone();
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.4, 0.4, 0.4);
+        mesh.scale.set(0.3, 0.3, 0.3);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
@@ -1313,6 +1323,32 @@ function init() {
 
   //Handles mesh clicks
   renderer.domElement.addEventListener("click", onDocumentClick);
+  renderer.domElement.addEventListener(
+    "mousemove",
+    function onMouseMove(event) {
+      const mouse = new THREE.Vector2();
+      const raycaster = new THREE.Raycaster();
+
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+
+      let intersectsHotspotMesh = raycaster.intersectObjects(hotspotMeshes);
+
+      if (intersectsHotspotMesh.length > 0) {
+        if (intersectsHotspotMesh[0].object.userData.iconType === "infoIcon") {
+          intersectedInfoIcon = intersectsHotspotMesh[0].object;
+          intersectedInfoIcon.material = infoIconHoverMaterial;
+        }
+      } else {
+        // reset the texture
+        if (intersectedInfoIcon) {
+          intersectedInfoIcon.material = infoIconMaterial;
+          intersectedInfoIcon = null;
+        }
+      }
+    }
+  );
 
   composer = new EffectComposer(renderer);
   renderTarget1 = new THREE.WebGLRenderTarget(
@@ -1522,7 +1558,7 @@ function selectImage(currentIndex) {
         mesh = hotspotMesh.clone();
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.4, 0.4, 0.4);
+        mesh.scale.set(0.3, 0.3, 0.3);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
