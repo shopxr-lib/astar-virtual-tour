@@ -55,6 +55,7 @@ const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-49.jpg?v=1731439433171",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-50.jpg?v=1731439435313",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-51.jpg?v=1731439437458",
+  "https://cdn.glitch.global/d021f2bf-ff20-45ae-b204-68044d42d68c/astar-360-26-side-compressed.jpg?v=1738863696674",
 ];
 
 const hotSpotInfo = [
@@ -704,11 +705,10 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 25,
+    spotIndex: 51,
     visible: [25],
-    pos: { x: 10, y: -8, z: -30 },
-    iconType: "infoIcon",
-    tag: "BATTERYSWAP",
+    pos: { x: -110, y: -100, z: -60 },
+    iconType: "hotspot",
   },
   {
     spotIndex: 25,
@@ -1145,6 +1145,21 @@ const hotSpotInfo = [
     pos: { x: 0, y: -100, z: -335 },
     iconType: "hotspot",
   },
+
+  // hotspot index 51
+  {
+    spotIndex: 25,
+    visible: [51],
+    pos: { x: -20, y: -100, z: -100 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 51,
+    visible: [51],
+    pos: { x: -20, y: 4, z: -10 },
+    iconType: "infoIcon",
+    tag: "BATTERYSWAP",
+  },
 ];
 
 const TransitionShader = {
@@ -1209,7 +1224,7 @@ let isUserInteracting = false,
   pinchStartFov = 0;
 
 const MIN_ZOOM = 60;
-const MAX_ZOOM = 65;
+const MAX_ZOOM = 80;
 const DEFAULT_ZOOM = MAX_ZOOM;
 
 init();
@@ -1452,9 +1467,9 @@ function update() {
 
     // Set the progress of the transition in the shader
     transitionPass.uniforms.progress.value = transitionProgress;
-    console.log(transitionProgress);
+    // console.log(transitionProgress);
     if (transitionProgress < 0.5) {
-      camera.fov = THREE.MathUtils.lerp(MAX_ZOOM, MIN_ZOOM, transitionProgress);
+      camera.fov = THREE.MathUtils.lerp(80, 60, transitionProgress);
     } else {
       camera.fov = DEFAULT_ZOOM;
     }

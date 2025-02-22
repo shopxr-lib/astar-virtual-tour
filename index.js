@@ -358,6 +358,23 @@ const hostspotLocations = [
       },
     ],
   },
+
+  {
+    tag: 21,
+    title: "EV Section (2)",
+    top: "38%",
+    left: "38%",
+    contents: [
+      {
+        id: "BATTERYSWAP",
+        title: "Battery Swapping Station",
+        subtitle: "Ideation, Design, Engineering",
+        description:
+          "Battery Charging and Swapping Station (BCSS) that incorporate the use of solar power.",
+        video: "https://youtube.com/embed/13nHtDnlAag",
+      },
+    ],
+  },
 ];
 
 const floorPlanContainer = document.querySelector(
@@ -457,6 +474,7 @@ function populateHotspotCard(event) {
   const locationTag = sphereToLocation[Number(sphereRaw)];
   const location = hostspotLocations.find((l) => l.tag == locationTag);
   const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
+  console.log("location", location);
   if (!location) {
     hotspotCard.innerHTML = "";
     return;
@@ -474,6 +492,8 @@ function populateHotspotCard(event) {
   ) {
     contentId = url.searchParams.get("contentId");
   }
+
+  console.log("contentId", contentId);
 
   let content;
 

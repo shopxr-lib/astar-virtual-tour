@@ -32,6 +32,7 @@ export const sphereToLocation = {
   21: 18,
   0: 19,
   3: 20,
+  51: 21,
 };
 
 /**
