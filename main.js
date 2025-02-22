@@ -932,6 +932,13 @@ const hotSpotInfo = [
     pos: { x: -300, y: -100, z: -30 },
     iconType: "hotspot",
   },
+  {
+    spotIndex: 36,
+    visible: [36],
+    pos: { x: 10, y: 0, z: -50 },
+    iconType: "infoIcon",
+    tag: "COWORKINGDESK",
+  },
   //hotspot index 37
   {
     spotIndex: 36,

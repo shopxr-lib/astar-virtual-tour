@@ -368,6 +368,21 @@ const hostspotLocations = [
     ],
     hideLocationIcon: true,
   },
+  {
+    tag: 22,
+    title: "Co-Working Desks",
+    top: "38%",
+    left: "38%",
+    contents: [
+      {
+        id: "COWORKINGDESK",
+        title: "Co-Working Desks",
+        description:
+          "As part of your IF Membership benefit, enjoy complimentary access to our co-working desks, designed for productivity and collaboration.",
+      },
+    ],
+    hideLocationIcon: true,
+  },
 ];
 
 const floorPlanContainer = document.querySelector(
