@@ -455,7 +455,7 @@ const hotSpotInfo = [
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -30, y: 0, z: -20 },
+    pos: { x: -42, y: 0, z: -20 },
     iconType: "infoIcon",
     tag: "ANALYSER",
   },
@@ -968,7 +968,7 @@ const hotSpotInfo = [
   {
     spotIndex: 38,
     visible: [38],
-    pos: { x: 30, y: 0, z: -15 },
+    pos: { x: 50, y: 10, z: 30 },
     iconType: "infoIcon",
     tag: "ROPLUS",
   },
