@@ -40,7 +40,7 @@ const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-34.jpg?v=1731439397408",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-35.jpg?v=1731439399500",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-36.jpg?v=1731439402486",
-  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-37.jpg?v=1731439403707",
+  "https://cdn.glitch.global/d021f2bf-ff20-45ae-b204-68044d42d68c/astar-360-37-edited-compressed.jpg?v=1738863715731",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-38.jpg?v=1731439406182",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-39.jpg?v=1731439407864",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-40.jpg?v=1731439409895",
@@ -923,13 +923,13 @@ const hotSpotInfo = [
   {
     spotIndex: 35,
     visible: [36],
-    pos: { x: -80, y: -100, z: -250 },
+    pos: { x: 200, y: -100, z: 0 },
     iconType: "hotspot",
   },
   {
     spotIndex: 37,
     visible: [36],
-    pos: { x: 70, y: -100, z: 180 },
+    pos: { x: -300, y: -100, z: -30 },
     iconType: "hotspot",
   },
   //hotspot index 37
