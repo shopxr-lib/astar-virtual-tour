@@ -1216,6 +1216,8 @@ let intersectedInfoIcon;
 let isUserInteracting = false,
   onPointerDownMouseX = 0,
   onPointerDownMouseY = 0,
+  onPointerUpMouseX = 0,
+  onPointerUpMouseY = 0,
   lon = 220,
   onPointerDownLon = 0,
   lat = 0,
@@ -1228,6 +1230,11 @@ let isUserInteracting = false,
 const MIN_ZOOM = 60;
 const MAX_ZOOM = 80;
 const DEFAULT_ZOOM = MAX_ZOOM;
+
+const hotspotScale = 4;
+const hotspotOpacity = 0;
+
+const CLICK_THRESHOLD = 5; // Threshold to distinguish between click and pan
 
 init();
 animate();
@@ -1289,6 +1296,8 @@ function init() {
       let mesh;
       if (e.iconType === "hotspot") {
         mesh = hotspotMesh.clone();
+        mesh.scale.set(hotspotScale, hotspotScale, hotspotScale);
+        mesh.material.opacity = hotspotOpacity;
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
         mesh.scale.set(0.3, 0.3, 0.3);
@@ -1299,7 +1308,6 @@ function init() {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      mesh.visible = true;
       scene.add(mesh);
       hotspotMeshes.push(mesh);
     }
@@ -1321,8 +1329,6 @@ function init() {
 
   window.addEventListener("resize", onWindowResize);
 
-  //Handles mesh clicks
-  renderer.domElement.addEventListener("click", onDocumentClick);
   renderer.domElement.addEventListener(
     "mousemove",
     function onMouseMove(event) {
@@ -1446,15 +1452,25 @@ function onPointerMove(event) {
   lat = (event.clientY - onPointerDownMouseY) * 0.1 + onPointerDownLat;
 }
 
-function onPointerUp() {
+function onPointerUp(event) {
   if (event.isPrimary === false) return;
 
   isUserInteracting = false;
 
+  onPointerUpMouseX = event.clientX;
+  onPointerUpMouseY = event.clientY;
+
+  clock.elapsedTime = 0;
+
   document.removeEventListener("pointermove", onPointerMove);
   document.removeEventListener("pointerup", onPointerUp);
 
-  clock.elapsedTime = 0;
+  const deltaX = Math.abs(onPointerUpMouseX - onPointerDownMouseX);
+  const deltaY = Math.abs(onPointerUpMouseY - onPointerDownMouseY);
+
+  if (deltaX < CLICK_THRESHOLD && deltaY < CLICK_THRESHOLD) {
+    onClick(event);
+  }
 }
 
 function onDocumentMouseWheel(event) {
@@ -1504,7 +1520,6 @@ function update() {
 
     // Set the progress of the transition in the shader
     transitionPass.uniforms.progress.value = transitionProgress;
-    // console.log(transitionProgress);
     if (transitionProgress < 0.5) {
       camera.fov = THREE.MathUtils.lerp(80, 60, transitionProgress);
     } else {
@@ -1556,6 +1571,8 @@ function selectImage(currentIndex) {
       let mesh;
       if (e.iconType === "hotspot") {
         mesh = hotspotMesh.clone();
+        mesh.scale.set(hotspotScale, hotspotScale, hotspotScale);
+        mesh.material.opacity = hotspotOpacity;
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
         mesh.scale.set(0.3, 0.3, 0.3);
@@ -1566,7 +1583,6 @@ function selectImage(currentIndex) {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      mesh.visible = true;
       scene.add(mesh);
       hotspotMeshes.push(mesh);
     }
@@ -1607,7 +1623,7 @@ function showIconContent(intersectedMesh) {
 }
 
 // Function to handle click events on the document
-function onDocumentClick(event) {
+function onClick(event) {
   const mouse = new THREE.Vector2();
   const raycaster = new THREE.Raycaster();
 
@@ -1666,6 +1682,8 @@ window.addEventListener("popstate", (event) => {
       let mesh;
       if (e.iconType === "hotspot") {
         mesh = hotspotMesh.clone();
+        mesh.scale.set(hotspotScale, hotspotScale, hotspotScale);
+        mesh.material.opacity = hotspotOpacity;
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
         mesh.scale.set(0.4, 0.4, 0.4);
@@ -1676,7 +1694,6 @@ window.addEventListener("popstate", (event) => {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      mesh.visible = true;
       scene.add(mesh);
       hotspotMeshes.push(mesh);
     }
