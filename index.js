@@ -544,7 +544,14 @@ function renderAccordion(content, open) {
           <button class="accordion-button ${
             !open ? "collapsed" : ""
           }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="${open}" aria-controls="collapseOne">
-            ${content.title}
+            <div class="d-flex flex-column gap-1 align-items-start">
+              <span class="fs-4">${content.title}</span>
+              ${
+                content.subtitle
+                  ? `<span class="text-secondary">${content.subtitle}</span>`
+                  : ""
+              }
+            </div>
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse ${
