@@ -13,6 +13,7 @@ import { locationToSphere, sphereToLocation } from "./constants.js";
  * @property {Boolean} hideLocationIcon - Whether the location icon should be hidden.
  * @property {Boolean} showInFloating - Whether the location should be shown in the floating container.
  * @property {Boolean} showInfoImmediately - Whether the location information should be shown immediately.
+ * @property {string} popupType - "accordion" | "modal". Default: "accordion"
  * @property {Array<Object>} contents - An array of content objects related to the location.
  * @property {string} contents.title - The title of the content.
  * @property {string} contents.subtitle - The subtitle of the content.
@@ -354,9 +355,10 @@ const hostspotLocations = [
       {
         id: "IFBOOKLET",
         title: "Innovation Factory Booklet",
-        description: `<p><a href="https://drive.google.com/file/d/18-xOQfBjuMXS4tn6SsZn7PYbS6jm7GvB/view?usp=sharing" target="_blank">Download</a></p>`,
+        pdf: "/files/IFBooklet.pdf",
       },
     ],
+    popupType: "modal",
   },
 
   {
@@ -514,7 +516,14 @@ function populateHotspotCard(event) {
   }
 
   if (content) {
-    renderAccordion(content, location.showInfoImmediately || contentId);
+    if (location.popupType === "modal") {
+      const modal = renderModal(content);
+      if (event && event.state && event.state.source === "show-icon-content") {
+        modal.show();
+      }
+    } else {
+      renderAccordion(content, location.showInfoImmediately || contentId);
+    }
   }
 }
 
@@ -533,7 +542,7 @@ function renderAccordion(content, open) {
           open ? "show" : ""
         }" data-bs-parent="#accordion">
           <div class="accordion-body">
-            <p>${content.description}</p>
+            ${content.description ? `<p>${content.description}</p>` : ""}
             ${
               content.video
                 ? `<div class="ratio ratio-16x9">
@@ -559,6 +568,68 @@ function renderAccordion(content, open) {
       iframe.src = temp;
     }
   });
+}
+
+function renderModal(content) {
+  const modalHTML = `
+    <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="d-flex flex-column" style="gap:1rem;">
+              <h5 class="modal-title" id="hotspot-detail-modal-label">${
+                content.title
+              }</h5>
+              ${
+                content.subtitle
+                  ? `<h6 class="card-subtitle mb-2 text-body-secondary">${content.subtitle}</h6>`
+                  : ""
+              }
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ${content.description ? `<p>${content.description}</p>` : ""}
+            ${
+              content.video
+                ? `<div class="ratio ratio-16x9">
+                     <iframe data-container="youtube-embed" src="${content.video}" title="YouTube video" allowfullscreen></iframe>
+                   </div>`
+                : ""
+            }
+            ${
+              content.pdf
+                ? isMobile()
+                  ? `<div><a href="${content.pdf}">Download PDF</a></div>`
+                  : `<div class="w-100" style="height:80vh;">
+                    <object class="w-100 h-100" data="${content.pdf}" type="application/pdf">
+                      <a href="${content.pdf}" target="_blank">Download PDF</a>
+                    </object>
+                  </div>`
+                : ""
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const modalContainer = document.querySelector("[data-container='modal']");
+  modalContainer.innerHTML = modalHTML;
+
+  const modalElement = document.getElementById("hotspot-detail-modal");
+  const modal = new bootstrap.Modal(modalElement);
+
+  modalElement.addEventListener("hidden.bs.modal", () => {
+    const iframe = document.querySelector("[data-container='youtube-embed']");
+    if (iframe) {
+      // Reset the iframe src to stop the video from playing
+      const temp = iframe.src;
+      iframe.src = temp;
+    }
+  });
+
+  return modal;
 }
 
 populateHotspotCard();
