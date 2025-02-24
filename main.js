@@ -1327,11 +1327,9 @@ function init() {
   container.addEventListener("touchmove", onTouchMove);
   container.addEventListener("touchend", onTouchEnd);
 
-  window.addEventListener("resize", onWindowResize);
-
-  renderer.domElement.addEventListener(
-    "mousemove",
-    function onMouseMove(event) {
+  if (!("ontouchstart" in window || navigator.maxTouchPoints > 0)) {
+    // mouse events only
+    container.addEventListener("mousemove", function onMouseMove(event) {
       const mouse = new THREE.Vector2();
       const raycaster = new THREE.Raycaster();
 
@@ -1353,8 +1351,10 @@ function init() {
           intersectedInfoIcon = null;
         }
       }
-    }
-  );
+    });
+  }
+
+  window.addEventListener("resize", onWindowResize);
 
   composer = new EffectComposer(renderer);
   renderTarget1 = new THREE.WebGLRenderTarget(
