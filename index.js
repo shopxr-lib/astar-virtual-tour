@@ -614,10 +614,10 @@ function renderModal(content) {
             ${
               content.pdf
                 ? isMobile()
-                  ? `<div><a href="${content.pdf}">Download PDF</a></div>`
+                  ? `<div><a href="${content.pdf}" download>Download PDF</a></div>`
                   : `<div class="w-100" style="height:80vh;">
                     <object class="w-100 h-100" data="${content.pdf}" type="application/pdf">
-                      <a href="${content.pdf}" target="_blank">Download PDF</a>
+                      <a href="${content.pdf}" download>Download PDF</a>
                     </object>
                   </div>`
                 : ""
