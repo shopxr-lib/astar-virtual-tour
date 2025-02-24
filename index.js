@@ -507,12 +507,21 @@ function populateHotspotCard(event) {
     contentId = url.searchParams.get("contentId");
   }
 
-  let content;
+  if (
+    event &&
+    event.state &&
+    event.state.source === "hotspot-change-location"
+  ) {
+    clearAccordion();
+  }
 
-  if (contentId) {
-    content = location.contents.find((content) => content.id === contentId);
-  } else if (location.contents) {
-    content = location.contents[0];
+  let content;
+  if (location) {
+    if (contentId) {
+      content = location.contents.find((content) => content.id === contentId);
+    } else if (location.contents) {
+      content = location.contents[0];
+    }
   }
 
   if (content) {
@@ -568,6 +577,11 @@ function renderAccordion(content, open) {
       iframe.src = temp;
     }
   });
+}
+
+function clearAccordion() {
+  const container = document.querySelector('[data-container="accordion"]');
+  container.innerHTML = "";
 }
 
 function renderModal(content) {
