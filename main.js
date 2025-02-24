@@ -1244,7 +1244,7 @@ const MAX_ZOOM = 80;
 const DEFAULT_ZOOM = MAX_ZOOM;
 
 const hotspotScale = 4;
-const hotspotOpacity = 1;
+const hotspotOpacity = 0;
 
 const CLICK_THRESHOLD = 5; // Threshold to distinguish between click and pan
 
