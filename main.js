@@ -1595,6 +1595,7 @@ function selectImage(currentIndex) {
 function showLocationContent(sphereIndex) {
   const url = new URL(window.location.href);
   url.searchParams.set("sphere", sphereIndex);
+  url.searchParams.delete("contentId");
   history.pushState({}, "", url);
   dispatchEvent(
     new PopStateEvent("popstate", {
