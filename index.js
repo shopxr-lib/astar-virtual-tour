@@ -31,7 +31,7 @@ const hostspotLocations = [
         title: "RoPlus Intelligent Hybrid Robotic Gripping Solution",
         subtitle: "Engineering and Application",
         description:
-          "Industrial-grade adaptive motor control box that can be communicated with most of the commercial robotic arms and interfaced to the versatile adaptive end-effector",
+          "An industrial-grade adaptive motor control box compatible with most commercial robotic arms, seamlessly interfacing with versatile adaptive end-effectors.",
       },
     ],
   },
@@ -45,7 +45,7 @@ const hostspotLocations = [
         title: "Build Lab",
         subtitle: "",
         description:
-          "We support Additive Manufacturing engineers in improving their manufacturing processes with top-tier 3D printers and simulation technology. Our experienced team minimise the runway to find build configurations that succeed and customise technology to integrate seamlessly into your process chain.",
+          "We support Additive Manufacturing engineers to optimize their processes with cutting-edge 3D printers and advanced simulation technology. Our experienced team streamlines the path to successful build configurations and customizes solutions to seamlessly integrate into your production workflow.",
       },
     ],
     showInFloating: true,
@@ -61,7 +61,7 @@ const hostspotLocations = [
         title: "Material Lab",
         subtitle: "",
         description:
-          "We enable partners to explore a wealth of knowledge in materials. We hold space for creativity and interdisciplinary study, pushing the envelope in material exploration.",
+          "We empower partners to explore diverse material knowledge, fostering creativity and interdisciplinary study to push the boundaries of material exploration.",
       },
     ],
     showInFloating: true,
@@ -77,7 +77,7 @@ const hostspotLocations = [
         title: "IFinity",
         subtitle: "",
         description:
-          "A premium private meeting space ideal for meetings, project discussions, and networking.  [Table 12 pax; Backbenchers 15 pax] ",
+          "A premium private meeting space perfect for meetings, discussions, and networking. (Table: 12 pax; Backbenchers: 15 pax)",
       },
     ],
     showInFloating: true,
@@ -94,7 +94,7 @@ const hostspotLocations = [
         title: "Lamp Post EV Charger",
         subtitle: "Ideation, Design, Engineering",
         description:
-          "A built-in EV charging module for Singapore's lamp posts.",
+          "A built-in EV charging module integrated into lamp posts, providing seamless and accessible electric vehicle charging.",
         video: "https://www.youtube.com/embed/KaxFRmfwSF8",
       },
     ],
@@ -109,7 +109,7 @@ const hostspotLocations = [
         title: "Impression Sunrise",
         subtitle: "",
         description:
-          "A meeting space for casual discussions in the heart of IF. [10 pax]",
+          "Casual meeting space in the heart of IF, seats 12 comfortably.",
       },
     ],
     showInfoImmediately: true,
@@ -125,7 +125,7 @@ const hostspotLocations = [
         title: "Crunch Cutlery",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "Edible fork and spoon that helps to reduce plastic waste.",
+          "Edible forks and spoons designed to minimize plastic waste, offering a sustainable alternative for eco-friendly dining.",
         video: "https://youtube.com/embed/HWfLoyJQK5Y",
       },
       {
@@ -133,7 +133,7 @@ const hostspotLocations = [
         title: "Vertical Automation System",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "Automated machine that enables Crunch Cutlery to be freshly baked on-demand by the clients, further reducing plastic packaging waste",
+          "An automated machine bakes Crunch Cutlery on-demand, reducing plastic waste and carbon emissions from transport.",
       },
     ],
   },
@@ -148,7 +148,7 @@ const hostspotLocations = [
         title: "Smooder",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "Singapore's first counter-top smoothie maker that blends fruits directly in a cup and self-cleans.",
+          "Singapore's first counter-top smoothie maker blends fruits directly in a cup and features a self-cleaning function.",
         video: "https://youtube.com/embed/2cH4qVf_V9g",
       },
     ],
@@ -196,7 +196,7 @@ const hostspotLocations = [
         title: "Rebee Rehabilitation Wearable",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "Wearable sensors to remotely detect and track patients doing physiotherapy.",
+          "Wearable sensors remotely monitor and track physiotherapy patient progress effectively.",
         video: "https://www.youtube.com/embed/xMCh1L3MqCA?si=og5qK8XlpKpKiog1",
       },
     ],
@@ -227,7 +227,7 @@ const hostspotLocations = [
         title: "I4DEAs Milk Analyzer",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "I4DEAs is an A*STAR spin off selling the milk analyzer which can identify the authenticity of baby formula through a smart optical technology developed by A*STAR.",
+          "I4DEAs, an A*STAR spin-off, offers a milk analyzer using smart optical technology to authenticate baby formula with precision.",
         video: "https://www.youtube.com/embed/1VJdwHLbuGo?si=lYLTQyZM_sFqjolp",
       },
     ],
@@ -243,7 +243,7 @@ const hostspotLocations = [
         title: "SHRED-AM Plastic Recycler",
         subtitle: "Ideation, Design, Engineering, Application",
         description:
-          "An all-in-one grinder, extruder and winder machine designed to turn Type 7 plastic waste and into 3D printing filaments.",
+          "An integrated machine that combines grinding, extrusion, and winding functions to transform Type 7 plastic waste into 3D printing filaments.",
       },
     ],
   },
@@ -256,7 +256,7 @@ const hostspotLocations = [
       {
         title: "Mechanical Lab",
         description:
-          "We develop robotics and automation solutions, including 2D and 3D lidar navigation and vision-based lost recovery. We also explore robotic systems in manipulation, mobility, perception, intelligence, and mechatronics.",
+          "The Mechanical Lab is fully equipped for electromechanical, robotics, and automation projects, supporting mechanical design, electrical routing, PCB collaboration, prototyping, and showcasing devices like UVC LED systems on display.",
       },
     ],
     showInFloating: true,
@@ -272,7 +272,7 @@ const hostspotLocations = [
         title: "KKH In-Bed Child Cot Concept",
         subtitle: "Ideation and Design",
         description:
-          "PoC design reconfigure general hospital bed for adult or child use, saving space, and expanding hospital bed resources.",
+          "A proof-of-concept design that reconfigures a general hospital bed for both adult and child use, optimizing space and expanding the availability of hospital bed resources.",
         video: "https://www.youtube.com/embed/rVH8JFZp1Pk?si=8Nxrr0xnELGbnij5",
       },
       {
@@ -280,21 +280,21 @@ const hostspotLocations = [
         title: "PARI Nebulizer",
         subtitle: "Ideation and Design",
         description:
-          "New generation portable nebulizer system with enhanced design and UIUX.",
+          "A next-generation portable nebulizer system featuring an enhanced design and improved UI/UX for better user experience and functionality.",
       },
       {
         id: "AASD",
         title: "BTI Automated Aseptic Sampling Device",
         subtitle: "Design and Engineering",
         description:
-          "Device for aseptically and automatically extracting small volumes (below 1ml) of liquid samples for cell therapy manufacturing monitoring.",
+          "A device designed for the aseptic and automatic extraction of small liquid sample volumes (under 1ml) for monitoring in cell therapy manufacturing.",
       },
       {
         id: "CONNECTOR",
         title: "BTI Multi-Use Aseptic Connector",
         subtitle: "Engineering",
         description:
-          "A multiple-use aseptic connector technology to replace single-use sterile connectors in bioprocessing and cell manufacturing.",
+          "A multi-use aseptic connector technology designed to replace single-use sterile connectors in bioprocessing and cell manufacturing, offering enhanced sustainability and cost-efficiency.",
       },
     ],
   },
@@ -323,7 +323,7 @@ const hostspotLocations = [
       {
         title: "IF Auditorium",
         description:
-          "An open concept meeting and event space that flows seamlessly into IF's showroom. [30 pax]",
+          "An Open-concept meeting and event space, designed to flow seamlessly into IF's showroom, accommodating up to 30 guests.",
       },
     ],
     showInFloating: true,
@@ -370,7 +370,7 @@ const hostspotLocations = [
         title: "Battery Swapping Station",
         subtitle: "Ideation, Design, Engineering",
         description:
-          "Battery Charging and Swapping Station (BCSS) that incorporate the use of solar power.",
+          "A solar-powered battery charging and swapping station provides sustainable energy solutions for efficient EV charging and replacement.",
         video: "https://youtube.com/embed/13nHtDnlAag",
       },
     ],
