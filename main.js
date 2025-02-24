@@ -475,7 +475,7 @@ const hotSpotInfo = [
   {
     spotIndex: 14,
     visible: [14],
-    pos: { x: -30, y: 0, z: -16 },
+    pos: { x: -40, y: 1, z: -15 },
     iconType: "infoIcon",
     tag: "REBEE",
   },
