@@ -435,6 +435,7 @@ hostspotLocations.forEach((hotspot) => {
     }
     const sphereIndex = sphereIndexes[0];
     url.searchParams.set("sphere", sphereIndex);
+    url.searchParams.delete("contentId");
     history.pushState({}, "", url);
     dispatchEvent(
       new PopStateEvent("popstate", {
