@@ -1244,7 +1244,7 @@ const MAX_ZOOM = 80;
 const DEFAULT_ZOOM = MAX_ZOOM;
 
 const hotspotScale = 4;
-const hotspotOpacity = 0;
+const hotspotOpacity = 1;
 
 const CLICK_THRESHOLD = 5; // Threshold to distinguish between click and pan
 
@@ -1533,9 +1533,7 @@ function update() {
     // Set the progress of the transition in the shader
     transitionPass.uniforms.progress.value = transitionProgress;
     if (transitionProgress < 0.5) {
-      camera.fov = THREE.MathUtils.lerp(80, 60, transitionProgress);
-    } else {
-      camera.fov = DEFAULT_ZOOM;
+      camera.fov = THREE.MathUtils.lerp(80, 75, transitionProgress);
     }
 
     camera.updateProjectionMatrix();
