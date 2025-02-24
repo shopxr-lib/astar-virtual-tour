@@ -1157,7 +1157,7 @@ const hotSpotInfo = [
   {
     spotIndex: 51,
     visible: [51],
-    pos: { x: -20, y: 4, z: -10 },
+    pos: { x: -40, y: 7, z: -18 },
     iconType: "infoIcon",
     tag: "BATTERYSWAP",
   },
