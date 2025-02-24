@@ -78,16 +78,6 @@ body {
   }
 }
 
-@media (min-width: 768px) {
-  #hotspot-detail-modal {
-    left: 0.5rem;
-  }
-
-  #hotspot-detail-modal .modal-dialog {
-    margin: 0;
-  }
-}
-
 @keyframes upDown {
   0%,
   100% {

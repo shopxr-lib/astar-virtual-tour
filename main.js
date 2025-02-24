@@ -1589,15 +1589,6 @@ function selectImage(currentIndex) {
   });
 
   showLocationContent(currentIndex);
-
-  // remove modal if any is shown
-  const modalElement = document.getElementById("hotspot-detail-modal");
-  if (modalElement) {
-    const modalInstance = bootstrap.Modal.getInstance(modalElement);
-    if (modalInstance) {
-      modalInstance.hide();
-    }
-  }
 }
 
 //Function for showing the content of the respective locations
