@@ -545,15 +545,9 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 26,
+    spotIndex: 51,
     visible: [18],
-    pos: { x: 110, y: -100, z: 250 },
-    iconType: "hotspot",
-  },
-  {
-    spotIndex: 35,
-    visible: [18],
-    pos: { x: 270, y: -80, z: 330 },
+    pos: { x: 50, y: -100, z: 150 },
     iconType: "hotspot",
   },
   //hotspot index 19
@@ -687,12 +681,6 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 26,
-    visible: [25],
-    pos: { x: -210, y: -100, z: 0 },
-    iconType: "hotspot",
-  },
-  {
     spotIndex: 34,
     visible: [25],
     pos: { x: -180, y: -100, z: 250 },
@@ -707,7 +695,7 @@ const hotSpotInfo = [
   {
     spotIndex: 51,
     visible: [25],
-    pos: { x: -110, y: -100, z: -60 },
+    pos: { x: -80, y: -50, z: -40 },
     iconType: "hotspot",
   },
   {
@@ -724,12 +712,12 @@ const hotSpotInfo = [
     pos: { x: -50, y: -100, z: -280 },
     iconType: "hotspot",
   },
-  {
-    spotIndex: 25,
-    visible: [26],
-    pos: { x: 150, y: -100, z: -60 },
-    iconType: "hotspot",
-  },
+  // {
+  //   spotIndex: 25,
+  //   visible: [26],
+  //   pos: { x: 150, y: -100, z: -60 },
+  //   iconType: "hotspot",
+  // },
   {
     spotIndex: 27,
     visible: [26],
@@ -746,6 +734,12 @@ const hotSpotInfo = [
     spotIndex: 35,
     visible: [26],
     pos: { x: 220, y: -100, z: 230 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 51,
+    visible: [26],
+    pos: { x: 40, y: -80, z: -50 },
     iconType: "hotspot",
   },
   //hotspot index 27
@@ -877,7 +871,7 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 26,
+    spotIndex: 51,
     visible: [34],
     pos: { x: -120, y: -100, z: -250 },
     iconType: "hotspot",
@@ -902,7 +896,7 @@ const hotSpotInfo = [
     iconType: "hotspot",
   },
   {
-    spotIndex: 26,
+    spotIndex: 51,
     visible: [35],
     pos: { x: -240, y: -100, z: -350 },
     iconType: "hotspot",
@@ -1152,6 +1146,24 @@ const hotSpotInfo = [
     spotIndex: 25,
     visible: [51],
     pos: { x: -20, y: -100, z: -100 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 26,
+    visible: [51],
+    pos: { x: 30, y: -100, z: 150 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 18,
+    visible: [51],
+    pos: { x: -110, y: -100, z: 100 },
+    iconType: "hotspot",
+  },
+  {
+    spotIndex: 34,
+    visible: [51],
+    pos: { x: 180, y: -100, z: -80 },
     iconType: "hotspot",
   },
   {
