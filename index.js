@@ -12,6 +12,7 @@ import { locationToSphere, sphereToLocation } from "./constants.js";
  * @property {string} left - The left position of the location as a percentage.
  * @property {Boolean} hideLocationIcon - Whether the location icon should be hidden.
  * @property {Boolean} showInFloating - Whether the location should be shown in the floating container.
+ * @property {Boolean} showInfoImmediately - Whether the location information should be shown immediately.
  * @property {Array<Object>} contents - An array of content objects related to the location.
  * @property {string} contents.title - The title of the content.
  * @property {string} contents.subtitle - The subtitle of the content.
@@ -48,6 +49,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 13,
@@ -63,6 +65,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 12,
@@ -78,6 +81,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 16,
@@ -108,6 +112,7 @@ const hostspotLocations = [
           "A meeting space for casual discussions in the heart of IF. [10 pax]",
       },
     ],
+    showInfoImmediately: true,
   },
   {
     tag: 17,
@@ -178,6 +183,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 7,
@@ -306,6 +312,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 1,
@@ -320,6 +327,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 19,
@@ -382,6 +390,7 @@ const hostspotLocations = [
       },
     ],
     hideLocationIcon: true,
+    showInfoImmediately: true,
   },
 ];
 
@@ -482,11 +491,6 @@ function populateHotspotCard(event) {
   const sphereRaw = url.searchParams.get("sphere") || "0";
   const locationTag = sphereToLocation[Number(sphereRaw)];
   const location = hostspotLocations.find((l) => l.tag == locationTag);
-  const hotspotCard = document.querySelector('[data-container="hotspot-card"]');
-  if (!location) {
-    hotspotCard.innerHTML = "";
-    return;
-  }
 
   // if the event is triggered by hotspot change location, then do not respect the contentId in the url yet.
   // The contentId is only respected when the user clicks on the (i) icon.
@@ -505,67 +509,31 @@ function populateHotspotCard(event) {
 
   if (contentId) {
     content = location.contents.find((content) => content.id === contentId);
-    if (content) {
-      const modal = renderModal(content);
-      modal.show();
-    }
   } else if (location.contents) {
     content = location.contents[0];
-    renderModal(content);
   }
 
-  const shouldShowInfoIcon =
-    location.contents &&
-    location.contents.length == 1 &&
-    !location.hideInfoIcon;
-
-  const infoIconImg = document.createElement("img");
-  infoIconImg.src = "images/information-icon.png";
-  infoIconImg.classList.add("img-fluid");
-  infoIconImg.style.width = "20px";
-  infoIconImg.style.height = "20px";
-  infoIconImg.style.cursor = "pointer";
-  infoIconImg.dataset["bsToggle"] = "modal";
-  infoIconImg.dataset["bsTarget"] = "#hotspot-detail-modal";
-
-  const card = `
-  <div class="card" style="max-width: 18rem;">
-    <div class="card-body">
-      <div class="d-flex align-items-center" style="gap:1rem;">
-        <p class="m-0">${location.title}</p>
-        ${shouldShowInfoIcon ? infoIconImg.outerHTML : ""}
-      </div>
-    </div>
-  </div>
-  `;
-  hotspotCard.innerHTML = card;
+  if (content) {
+    renderAccordion(content, location.showInfoImmediately || contentId);
+  }
 }
 
-function renderModal(content) {
-  const existingModal = document.getElementById("hotspot-detail-modal");
-  if (existingModal) {
-    existingModal.remove();
-  }
-
-  const modalHTML = `
-    <div class="modal fade" id="hotspot-detail-modal" tabindex="-1" aria-labelledby="hotspot-detail-modal-label" aria-hidden="true" data-bs-backdrop="false" style="top: 35%; width:auto; height:auto;">
-      <div class="modal-dialog" style="overflow-y:scroll;max-height:60vh;">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="d-flex flex-column" style="gap:1rem;">
-              <h5 class="modal-title" id="hotspot-detail-modal-label">${
-                content.title
-              }</h5>
-              ${
-                content.subtitle
-                  ? `<h6 class="card-subtitle mb-2 text-body-secondary">${content.subtitle}</h6>`
-                  : ""
-              }
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p class="card-text">${content.description}</p>
+function renderAccordion(content, open) {
+  const accordionHtml = `
+    <div class="accordion" id="accordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button ${
+            !open ? "collapsed" : ""
+          }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="${open}" aria-controls="collapseOne">
+            ${content.title}
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse ${
+          open ? "show" : ""
+        }" data-bs-parent="#accordion">
+          <div class="accordion-body">
+            <p>${content.description}</p>
             ${
               content.video
                 ? `<div class="ratio ratio-16x9">
@@ -579,19 +547,11 @@ function renderModal(content) {
     </div>
   `;
 
-  const hotspotCardContainer = document.querySelector(
-    "[data-container='hotspot-card']"
-  );
-  hotspotCardContainer.insertAdjacentHTML("afterend", modalHTML);
+  const container = document.querySelector('[data-container="accordion"]');
+  container.innerHTML = accordionHtml;
 
-  const modalElement = document.getElementById("hotspot-detail-modal");
-  const modal = new bootstrap.Modal(modalElement);
-
-  modalElement.addEventListener("hidden.bs.modal", () => {
-    const url = new URL(window.location);
-    url.searchParams.delete("contentId");
-    history.pushState({}, "", url);
-
+  const accordionElement = document.querySelector("#accordion");
+  accordionElement.addEventListener("hidden.bs.collapse", () => {
     const iframe = document.querySelector("[data-container='youtube-embed']");
     if (iframe) {
       // Reset the iframe src to stop the video from playing
@@ -599,7 +559,6 @@ function renderModal(content) {
       iframe.src = temp;
     }
   });
-  return modal;
 }
 
 populateHotspotCard();

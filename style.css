@@ -107,3 +107,10 @@ body {
     min-width: 30vw;
   }
 }
+
+[data-container="accordion"] {
+  width: 50%;
+  @media screen and (min-width: 768px) {
+    width: 30%;
+  }
+}
