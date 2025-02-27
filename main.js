@@ -1237,7 +1237,8 @@ let isUserInteracting = false,
   phi = 0,
   theta = 0,
   pinchStartDistance = 0,
-  pinchStartFov = 0;
+  pinchStartFov = 0,
+  infoIconScaledDown = false;
 
 const MIN_ZOOM = 60;
 const MAX_ZOOM = 80;
@@ -1246,7 +1247,25 @@ const DEFAULT_ZOOM = MAX_ZOOM;
 const hotspotScale = 4;
 const hotspotOpacity = 0;
 
+const infoIconScale = 0.3;
+
 const CLICK_THRESHOLD = 5; // Threshold to distinguish between click and pan
+
+const infoIconTexture = new THREE.TextureLoader().load(
+  "/images/information-icon.png"
+);
+const infoIconHoverTexture = new THREE.TextureLoader().load(
+  "/images/information-icon-hover.png"
+);
+const infoIconMaterial = new THREE.MeshBasicMaterial({
+  map: infoIconTexture,
+  transparent: true,
+});
+
+const infoIconHoverMaterial = new THREE.MeshBasicMaterial({
+  map: infoIconHoverTexture,
+  transparent: true,
+});
 
 init();
 animate();
@@ -1284,22 +1303,6 @@ function init() {
   const hotspotGeometry = new THREE.PlaneGeometry(40, 20);
   hotspotMesh = new THREE.Mesh(hotspotGeometry, hotspotMaterial);
 
-  const infoIconTexture = new THREE.TextureLoader().load(
-    "/images/information-icon.png"
-  );
-  const infoIconHoverTexture = new THREE.TextureLoader().load(
-    "/images/information-icon-hover.png"
-  );
-  const infoIconMaterial = new THREE.MeshBasicMaterial({
-    map: infoIconTexture,
-    transparent: true,
-  });
-
-  const infoIconHoverMaterial = new THREE.MeshBasicMaterial({
-    map: infoIconHoverTexture,
-    transparent: true,
-  });
-
   const infoIconGeometry = new THREE.PlaneGeometry(12, 12);
   infoIconMesh = new THREE.Mesh(infoIconGeometry, infoIconMaterial);
 
@@ -1312,7 +1315,7 @@ function init() {
         mesh.material.opacity = hotspotOpacity;
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.3, 0.3, 0.3);
+        mesh.scale.set(infoIconScale, infoIconScale, infoIconScale);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
@@ -1342,6 +1345,10 @@ function init() {
   if (!("ontouchstart" in window || navigator.maxTouchPoints > 0)) {
     // mouse events only
     container.addEventListener("mousemove", function onMouseMove(event) {
+      if (isUserInteracting) {
+        return;
+      }
+
       const mouse = new THREE.Vector2();
       const raycaster = new THREE.Raycaster();
 
@@ -1429,6 +1436,34 @@ function onTouchMove(event) {
   }
 }
 
+function scaleDownHotspotHandler(sphereIdx) {
+  const visibleInfoIcons = hotspotMeshes.filter(
+    (mesh) =>
+      mesh.userData.iconType === "infoIcon" &&
+      mesh.userData.visibleSpheres.includes(sphereIdx)
+  );
+  visibleInfoIcons.forEach((mesh) => {
+    mesh.scale.set(
+      infoIconScale * 0.8,
+      infoIconScale * 0.8,
+      infoIconScale * 0.8
+    );
+  });
+}
+
+function scaleUpHotspotHandler(sphereIdx) {
+  const visibleInfoIcons = hotspotMeshes.filter(
+    (mesh) =>
+      mesh.userData.iconType === "infoIcon" &&
+      mesh.userData.visibleSpheres.includes(sphereIdx)
+  );
+
+  visibleInfoIcons.forEach((mesh) => {
+    mesh.material = infoIconMaterial;
+    mesh.scale.set(infoIconScale, infoIconScale, infoIconScale);
+  });
+}
+
 function onTouchEnd(event) {
   if (event.touches.length < 2) {
     isUserInteracting = false;
@@ -1462,6 +1497,11 @@ function onPointerMove(event) {
 
   lon = (onPointerDownMouseX - event.clientX) * 0.1 + onPointerDownLon;
   lat = (event.clientY - onPointerDownMouseY) * 0.1 + onPointerDownLat;
+
+  if (!infoIconScaledDown) {
+    scaleDownHotspotHandler(currentSphereIndex);
+    infoIconScaledDown = true;
+  }
 }
 
 function onPointerUp(event) {
@@ -1479,6 +1519,9 @@ function onPointerUp(event) {
 
   const deltaX = Math.abs(onPointerUpMouseX - onPointerDownMouseX);
   const deltaY = Math.abs(onPointerUpMouseY - onPointerDownMouseY);
+
+  scaleUpHotspotHandler(currentSphereIndex);
+  infoIconScaledDown = false;
 
   if (deltaX < CLICK_THRESHOLD && deltaY < CLICK_THRESHOLD) {
     onClick(event);
@@ -1585,7 +1628,7 @@ function selectImage(currentIndex) {
         mesh.material.opacity = hotspotOpacity;
       } else if (e.iconType === "infoIcon") {
         mesh = infoIconMesh.clone();
-        mesh.scale.set(0.3, 0.3, 0.3);
+        mesh.scale.set(infoIconScale, infoIconScale, infoIconScale);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
       mesh.lookAt(camera.position);
@@ -1726,4 +1769,16 @@ function loadSphere(image, index) {
   scene.add(sphere);
 
   return sphere;
+}
+
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      timeout = null;
+      func.apply(context, args);
+    }, wait);
+  };
 }
