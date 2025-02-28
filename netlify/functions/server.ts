@@ -3,6 +3,7 @@ import serverless from "serverless-http";
 import cookieParser from "cookie-parser";
 import { createClient } from "redis";
 import path from "path";
+import bcrypt from "bcrypt";
 
 declare global {
   namespace Express {
@@ -46,10 +47,10 @@ const authMiddleware = async (
 
 const creds = {
   public: {
-    password: "public",
+    password: "$2a$12$pl.gEd0tZshpeZtBQmanbu6ZmKS0HUg4/abeUzwBFExfWl.vYi4PO",
   },
   admin: {
-    password: "admin",
+    password: "$2a$12$EMMWfWD4vU7lzZprNNEwM.wOkgxJQunqb5rLGtE2tgcesOwSkReCi",
   },
 };
 
@@ -59,11 +60,12 @@ router.get("/", authMiddleware, (req, res) => {
   res.render("index", { role: req.role });
 });
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
   const { password } = req.body;
 
   for (const [role, cred] of Object.entries(creds)) {
-    if (cred.password === password) {
+    const match = await bcrypt.compare(password, cred.password);
+    if (match) {
       const sessionID = generateSessionID();
       res.cookie("session_id", sessionID, {
         httpOnly: true,
