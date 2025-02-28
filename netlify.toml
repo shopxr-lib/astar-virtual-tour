@@ -2,7 +2,8 @@
   external_node_modules = ["express", "ejs"]
   node_bundler = "esbuild"
   included_files = [
-    "./netlify/functions/views/**/*"
+    "./netlify/functions/views/**/*",
+    "./netlify/functions/static/**/*",
   ]
 
 
