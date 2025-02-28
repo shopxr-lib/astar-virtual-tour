@@ -51,3 +51,8 @@ for (const [sphere, location] of Object.entries(sphereToLocation)) {
   locationToSphere[location].push(parseInt(sphere));
   locationToSphere[location].sort();
 }
+
+export const ROLE = {
+  PUBLIC: "public",
+  ADMIN: "admin",
+};

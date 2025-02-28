@@ -2,6 +2,7 @@ import * as THREE from "https://cdn.skypack.dev/three@0.123.0";
 import { EffectComposer } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/RenderPass.js";
 import { ShaderPass } from "https://cdn.skypack.dev/three@0.123.0/examples/jsm/postprocessing/ShaderPass.js";
+import { ROLE } from "./constants.js";
 
 const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-1.jpg?v=1731402007481",
@@ -1323,8 +1324,16 @@ function init() {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      scene.add(mesh);
-      hotspotMeshes.push(mesh);
+
+      if (e.iconType === "infoIcon") {
+        if (role === ROLE.ADMIN) {
+          scene.add(mesh);
+          hotspotMeshes.push(mesh);
+        }
+      } else {
+        scene.add(mesh);
+        hotspotMeshes.push(mesh);
+      }
     }
   });
 
@@ -1636,8 +1645,16 @@ function selectImage(currentIndex) {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      scene.add(mesh);
-      hotspotMeshes.push(mesh);
+
+      if (e.iconType === "infoIcon") {
+        if (role === ROLE.ADMIN) {
+          scene.add(mesh);
+          hotspotMeshes.push(mesh);
+        }
+      } else {
+        scene.add(mesh);
+        hotspotMeshes.push(mesh);
+      }
     }
   });
 

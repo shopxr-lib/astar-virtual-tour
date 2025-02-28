@@ -4,6 +4,14 @@ import cookieParser from "cookie-parser";
 import { createClient } from "redis";
 import path from "path";
 
+declare global {
+  namespace Express {
+    interface Request {
+      role?: string;
+    }
+  }
+}
+
 const redisClient = createClient({
   url: process.env.REDIS_URL || "redis://localhost:6379",
 });
@@ -32,7 +40,7 @@ const authMiddleware = async (
     return;
   }
 
-  console.log("Role:", role);
+  req.role = role;
   next();
 };
 
@@ -47,8 +55,8 @@ const creds = {
 
 const router = Router();
 
-router.get("/", authMiddleware, (_, res) => {
-  res.sendFile(path.resolve("netlify/functions/static", "index.html"));
+router.get("/", authMiddleware, (req, res) => {
+  res.render("index", { role: req.role });
 });
 
 router.post("/login", (req, res) => {

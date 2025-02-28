@@ -1,4 +1,4 @@
-import { locationToSphere, sphereToLocation } from "./constants.js";
+import { locationToSphere, ROLE, sphereToLocation } from "./constants.js";
 
 /**
  * An array of objects representing the positions and details of various locations.
@@ -531,7 +531,9 @@ function populateHotspotCard(event) {
         modal.show();
       }
     } else {
-      renderAccordion(content, location.showInfoImmediately || contentId);
+      if (location.showInfoImmediately || role === ROLE.ADMIN) {
+        renderAccordion(content, location.showInfoImmediately || contentId);
+      }
     }
   }
 }
