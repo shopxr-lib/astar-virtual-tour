@@ -71,24 +71,20 @@ router.post("/login", (req, res) => {
     }
   }
 
-  renderLoginPage(res, 401);
+  res.render("login", { errorMessage: "Invalid credentials" });
 });
 
 router.get("/login", (_, res) => {
-  renderLoginPage(res, 200);
+  res.render("login");
 });
-
-function renderLoginPage(res: Response, status = 401) {
-  return res
-    .status(status)
-    .sendFile(path.resolve("netlify/functions/static", "login.html"));
-}
 
 function generateSessionID() {
   return Math.random().toString(36).substring(2, 15);
 }
 
 const api = express();
+api.set("view engine", "ejs");
+api.set("views", path.resolve("netlify/functions/views"));
 api.use(cookieParser());
 api.use(express.json());
 api.use(express.urlencoded({ extended: true }));
