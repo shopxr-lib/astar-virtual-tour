@@ -1252,10 +1252,10 @@ const infoIconScale = 0.3;
 const CLICK_THRESHOLD = 5; // Threshold to distinguish between click and pan
 
 const infoIconTexture = new THREE.TextureLoader().load(
-  "/images/information-icon.png"
+  "/assets/images/information-icon.png"
 );
 const infoIconHoverTexture = new THREE.TextureLoader().load(
-  "/images/information-icon-hover.png"
+  "/assets/images/information-icon-hover.png"
 );
 const infoIconMaterial = new THREE.MeshBasicMaterial({
   map: infoIconTexture,

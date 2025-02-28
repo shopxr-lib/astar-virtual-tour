@@ -355,7 +355,7 @@ const hostspotLocations = [
       {
         id: "IFBOOKLET",
         title: "Innovation Factory Booklet",
-        pdf: "/files/IFBooklet.pdf",
+        pdf: "/assets/files/IFBooklet.pdf",
       },
     ],
     popupType: "modal",
@@ -418,8 +418,8 @@ hostspotLocations.forEach((hotspot) => {
   img.title = hotspot.title;
   img.dataset.tag = hotspot.tag;
   img.src = isActive
-    ? "images/location-icon-active.png"
-    : "images/location-icon.png";
+    ? "/assets/images/location-icon-active.png"
+    : "/assets/images/location-icon.png";
 
   if (isActive) {
     img.classList.add("location-icon-active");
@@ -663,10 +663,10 @@ window.addEventListener("popstate", function () {
   this.document.querySelectorAll('[data-id="location-icon"]').forEach((img) => {
     if (img.dataset.tag == locationTag) {
       img.classList.add("location-icon-active");
-      img.src = "images/location-icon-active.png";
+      img.src = "/assets/images/location-icon-active.png";
     } else {
       img.classList.remove("location-icon-active");
-      img.src = "images/location-icon.png";
+      img.src = "/assets/images/location-icon.png";
     }
   });
 });
