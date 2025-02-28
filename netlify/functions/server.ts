@@ -1,9 +1,10 @@
 import express, { Router, Request, Response, NextFunction } from "express";
 import serverless from "serverless-http";
 import cookieParser from "cookie-parser";
-import { createClient } from "redis";
+import Redis from "ioredis";
 import path from "path";
 import bcrypt from "bcrypt";
+import crypto from "crypto";
 
 declare global {
   namespace Express {
@@ -13,15 +14,14 @@ declare global {
   }
 }
 
-const redisClient = createClient({
-  url: process.env.REDIS_URL || "redis://localhost:6379",
-});
+const redisClient = new Redis(
+  process.env.REDIS_URL || "redis://localhost:6379"
+);
 redisClient.on("error", (err) => console.error("Redis Client Error", err));
-(async () => {
-  await redisClient.connect();
-})();
 
-const EXPIRATION = 60 * 60 * 24; // 24 hours
+const EXPIRATION = 7 * 60 * 60 * 24; // 7 days
+
+const sessionIdName = "session_id";
 
 const authMiddleware = async (
   req: Request,
@@ -29,13 +29,13 @@ const authMiddleware = async (
   next: NextFunction
 ) => {
   const cookies = req.cookies;
-  const sessionID = cookies.session_id;
-  if (!sessionID) {
+  const sessionId = cookies.session_id;
+  if (!sessionId) {
     res.redirect(302, "/login");
     return;
   }
 
-  const role = await redisClient.get(sessionID);
+  const role = await redisClient.get(`${sessionIdName}:${sessionId}`);
   if (!role) {
     res.redirect(302, "/login");
     return;
@@ -66,15 +66,13 @@ router.post("/login", async (req, res) => {
   for (const [role, cred] of Object.entries(creds)) {
     const match = await bcrypt.compare(password, cred.password);
     if (match) {
-      const sessionID = generateSessionID();
-      res.cookie("session_id", sessionID, {
+      const sessionId = generateSessionID();
+      res.cookie(sessionIdName, sessionId, {
         httpOnly: true,
         expires: new Date(Date.now() + EXPIRATION * 1000),
       });
 
-      redisClient.set(sessionID, role, {
-        EX: EXPIRATION,
-      });
+      redisClient.set(`${sessionIdName}:${sessionId}`, role, "EX", EXPIRATION);
 
       res.redirect(302, "/");
       return;
@@ -89,7 +87,7 @@ router.get("/login", (_, res) => {
 });
 
 function generateSessionID() {
-  return Math.random().toString(36).substring(2, 15);
+  return crypto.randomBytes(16).toString("hex");
 }
 
 const api = express();
@@ -106,12 +104,12 @@ export const handler = serverless(api);
 // Graceful shutdown
 process.on("SIGINT", async () => {
   console.log("SIGINT signal received: closing Redis client");
-  await redisClient.disconnect();
+  redisClient.quit();
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
   console.log("SIGTERM signal received: closing Redis client");
-  await redisClient.disconnect();
+  redisClient.quit();
   process.exit(0);
 });
