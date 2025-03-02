@@ -19,7 +19,7 @@ const redisClient = new Redis(
 );
 redisClient.on("error", (err) => console.error("Redis Client Error", err));
 
-const EXPIRATION = 7 * 60 * 60 * 24; // 7 days
+const EXPIRATION = 1 * 60 * 60 * 24; // 1 day
 
 const sessionIdName = "session_id";
 
