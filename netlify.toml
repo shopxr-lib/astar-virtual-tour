@@ -1,0 +1,21 @@
+[functions]
+  external_node_modules = ["express", "ejs"]
+  node_bundler = "esbuild"
+  included_files = [
+    "./netlify/functions/views/**/*",
+    "./netlify/functions/static/**/*",
+  ]
+
+
+# Non text-file should come here
+[[redirects]]
+  force = true
+  from = "/assets/*"
+  status = 200
+  to = "/assets/:splat"
+
+[[redirects]]
+  force = true
+  from = "/*"
+  status = 200
+  to = "/.netlify/functions/server/:splat"

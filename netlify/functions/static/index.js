@@ -1,4 +1,4 @@
-import { locationToSphere, sphereToLocation } from "./constants.js";
+import { locationToSphere, ROLE, sphereToLocation } from "./constants.js";
 
 /**
  * An array of objects representing the positions and details of various locations.
@@ -355,7 +355,7 @@ const hostspotLocations = [
       {
         id: "IFBOOKLET",
         title: "Innovation Factory Booklet",
-        pdf: "/files/IFBooklet.pdf",
+        pdf: "/assets/files/IFBooklet.pdf",
       },
     ],
     popupType: "modal",
@@ -418,8 +418,8 @@ hostspotLocations.forEach((hotspot) => {
   img.title = hotspot.title;
   img.dataset.tag = hotspot.tag;
   img.src = isActive
-    ? "images/location-icon-active.png"
-    : "images/location-icon.png";
+    ? "/assets/images/location-icon-active.png"
+    : "/assets/images/location-icon.png";
 
   if (isActive) {
     img.classList.add("location-icon-active");
@@ -531,7 +531,9 @@ function populateHotspotCard(event) {
         modal.show();
       }
     } else {
-      renderAccordion(content, location.showInfoImmediately || contentId);
+      if (location.showInfoImmediately || role === ROLE.ADMIN) {
+        renderAccordion(content, location.showInfoImmediately || contentId);
+      }
     }
   }
 }
@@ -663,10 +665,10 @@ window.addEventListener("popstate", function () {
   this.document.querySelectorAll('[data-id="location-icon"]').forEach((img) => {
     if (img.dataset.tag == locationTag) {
       img.classList.add("location-icon-active");
-      img.src = "images/location-icon-active.png";
+      img.src = "/assets/images/location-icon-active.png";
     } else {
       img.classList.remove("location-icon-active");
-      img.src = "images/location-icon.png";
+      img.src = "/assets/images/location-icon.png";
     }
   });
 });
