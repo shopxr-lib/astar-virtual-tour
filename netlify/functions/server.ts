@@ -45,6 +45,24 @@ const authMiddleware = async (
   next();
 };
 
+const guestMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const cookies = req.cookies;
+  const sessionId = cookies.session_id;
+  if (sessionId) {
+    const role = await redisClient.get(`${sessionIdName}:${sessionId}`);
+    if (role) {
+      res.redirect(302, "/");
+      return;
+    }
+  }
+
+  next();
+};
+
 const creds = {
   public: {
     password: "$2a$12$pl.gEd0tZshpeZtBQmanbu6ZmKS0HUg4/abeUzwBFExfWl.vYi4PO",
@@ -82,7 +100,7 @@ router.post("/login", async (req, res) => {
   res.render("login", { errorMessage: "Invalid credentials" });
 });
 
-router.get("/login", (_, res) => {
+router.get("/login", guestMiddleware, (_, res) => {
   res.render("login");
 });
 
