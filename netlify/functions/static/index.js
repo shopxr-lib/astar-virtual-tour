@@ -216,6 +216,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 6,
@@ -261,6 +262,7 @@ const hostspotLocations = [
       },
     ],
     showInFloating: true,
+    showInfoImmediately: true,
   },
   {
     tag: 3,
@@ -507,14 +509,6 @@ function populateHotspotCard(event) {
     contentId = url.searchParams.get("contentId");
   }
 
-  if (
-    event &&
-    event.state &&
-    event.state.source === "hotspot-change-location"
-  ) {
-    clearAccordion();
-  }
-
   let content;
   if (location) {
     if (contentId) {
@@ -524,6 +518,7 @@ function populateHotspotCard(event) {
     }
   }
 
+  clearAccordion();
   if (content) {
     if (location.popupType === "modal") {
       const modal = renderModal(content);
