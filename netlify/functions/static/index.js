@@ -540,7 +540,7 @@ function renderAccordion(content, open) {
         <h2 class="accordion-header">
           <button class="accordion-button ${
             !open ? "collapsed" : ""
-          }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="${open}" aria-controls="collapseOne">
+          }" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="${open}" aria-controls="collapseOne" style="background-color: #2595b9; color: white;">
             <div class="d-flex flex-column gap-1 align-items-start">
               <span class="fs-4">${content.title}</span>
               ${
