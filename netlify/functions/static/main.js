@@ -1750,8 +1750,15 @@ window.addEventListener("popstate", (event) => {
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
-      scene.add(mesh);
-      hotspotMeshes.push(mesh);
+      if (e.iconType === "infoIcon") {
+        if (role === ROLE.ADMIN) {
+          scene.add(mesh);
+          hotspotMeshes.push(mesh);
+        }
+      } else {
+        scene.add(mesh);
+        hotspotMeshes.push(mesh);
+      }
     }
   });
 });
