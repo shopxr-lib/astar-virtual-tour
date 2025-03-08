@@ -1787,15 +1787,3 @@ function loadSphere(image, index) {
 
   return sphere;
 }
-
-function debounce(func, wait) {
-  let timeout;
-  return function (...args) {
-    const context = this;
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      timeout = null;
-      func.apply(context, args);
-    }, wait);
-  };
-}
