@@ -52,8 +52,8 @@ const panoramas = [
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-45.jpg?v=1731439419825",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-46.jpg?v=1731439422029",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-47.jpg?v=1731439431505",
-  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-48.jpg?v=1731439432155",
-  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-49.jpg?v=1731439433171",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/material-lab-edited-compressed.jpg?v=1741872538692",
+  "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/iFinity-edited-compressed.jpg?v=1741872533173",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-50.jpg?v=1731439435313",
   "https://cdn.glitch.global/8c57fbb6-e387-4013-9f06-518f8f497bac/astar-360-compressed-51.jpg?v=1731439437458",
   "https://cdn.glitch.global/d021f2bf-ff20-45ae-b204-68044d42d68c/astar-360-26-side-compressed.jpg?v=1738863696674",
@@ -64,13 +64,13 @@ const hotSpotInfo = [
   {
     spotIndex: 1, // when clicked, goes to this parorama image - index number
     visible: [0], // on which panorama index, will this hotspot will be shown
-    pos: { x: -220, y: -100, z: -150 },
+    pos: { x: -220, y: -120, z: -100 },
     iconType: "hotspot",
   },
   {
     spotIndex: 0,
     visible: [0],
-    pos: { x: -65, y: 12, z: 30 },
+    pos: { x: -65, y: -40, z: 30 },
     iconType: "infoIcon",
     tag: "IF",
   },
@@ -152,7 +152,7 @@ const hotSpotInfo = [
   {
     spotIndex: 3,
     visible: [3],
-    pos: { x: -40, y: -8, z: 43 },
+    pos: { x: -40, y: -28, z: 23 },
     iconType: "infoIcon",
     tag: "IFBOOKLET",
   },
@@ -240,28 +240,28 @@ const hotSpotInfo = [
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: -35, z: 24 },
+    pos: { x: -30, y: -45, z: 24 },
     iconType: "infoIcon",
     tag: "KKH",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: -30, z: 5 },
+    pos: { x: -30, y: -40, z: 5 },
     iconType: "infoIcon",
     tag: "PARI",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: -30, z: -12 },
+    pos: { x: -30, y: -40, z: -12 },
     iconType: "infoIcon",
     tag: "AASD",
   },
   {
     spotIndex: 6,
     visible: [6],
-    pos: { x: -30, y: -30, z: -28 },
+    pos: { x: -30, y: -40, z: -28 },
     iconType: "infoIcon",
     tag: "CONNECTOR",
   },
@@ -456,7 +456,7 @@ const hotSpotInfo = [
   {
     spotIndex: 13,
     visible: [13],
-    pos: { x: -42, y: -40, z: -15 },
+    pos: { x: -42, y: -55, z: -20 },
     iconType: "infoIcon",
     tag: "ANALYSER",
   },
@@ -476,7 +476,7 @@ const hotSpotInfo = [
   {
     spotIndex: 14,
     visible: [14],
-    pos: { x: -40, y: -35, z: -15 },
+    pos: { x: -40, y: -50, z: -15 },
     iconType: "infoIcon",
     tag: "REBEE",
   },
@@ -528,7 +528,7 @@ const hotSpotInfo = [
   {
     spotIndex: 17,
     visible: [17],
-    pos: { x: -8, y: 6, z: 30 },
+    pos: { x: -8, y: -80, z: 30 },
     iconType: "infoIcon",
     tag: "AIRLEO",
   },
@@ -611,7 +611,7 @@ const hotSpotInfo = [
   {
     spotIndex: 21,
     visible: [21],
-    pos: { x: 25, y: 5, z: 20 },
+    pos: { x: 25, y: -70, z: 30 },
     iconType: "infoIcon",
     tag: "SMOODER",
   },
@@ -650,14 +650,14 @@ const hotSpotInfo = [
   {
     spotIndex: 23,
     visible: [23],
-    pos: { x: -30, y: 5, z: -33 },
+    pos: { x: -30, y: -35, z: -23 },
     iconType: "infoIcon",
     tag: "CRUNCH",
   },
   {
     spotIndex: 23,
     visible: [23],
-    pos: { x: -30, y: -10, z: 0 },
+    pos: { x: -30, y: -35, z: 10 },
     iconType: "infoIcon",
     tag: "VERTICALAUTOMATION",
   },
@@ -702,7 +702,7 @@ const hotSpotInfo = [
   {
     spotIndex: 25,
     visible: [25],
-    pos: { x: 30, y: -20, z: -35 },
+    pos: { x: 40, y: -70, z: -40 },
     iconType: "infoIcon",
     tag: "LAMPPOST",
   },
@@ -848,7 +848,7 @@ const hotSpotInfo = [
   {
     spotIndex: 50,
     visible: [32],
-    pos: { x: -20, y: -100, z: -80 },
+    pos: { x: -20, y: -70, z: -130 },
     iconType: "hotspot",
   },
   //hotspot index 33
@@ -930,7 +930,7 @@ const hotSpotInfo = [
   {
     spotIndex: 36,
     visible: [36],
-    pos: { x: 10, y: 0, z: -50 },
+    pos: { x: 10, y: -50, z: -50 },
     iconType: "infoIcon",
     tag: "COWORKINGDESK",
   },
@@ -963,7 +963,7 @@ const hotSpotInfo = [
   {
     spotIndex: 38,
     visible: [38],
-    pos: { x: 50, y: 10, z: 30 },
+    pos: { x: 50, y: -60, z: 20 },
     iconType: "infoIcon",
     tag: "ROPLUS",
   },
@@ -1126,13 +1126,13 @@ const hotSpotInfo = [
   {
     spotIndex: 32,
     visible: [50],
-    pos: { x: 5, y: -100, z: 75 },
+    pos: { x: 5, y: -70, z: 130 },
     iconType: "hotspot",
   },
   {
     spotIndex: 49,
     visible: [50],
-    pos: { x: 0, y: -100, z: -335 },
+    pos: { x: 0, y: -100, z: -200 },
     iconType: "hotspot",
   },
 
@@ -1164,7 +1164,7 @@ const hotSpotInfo = [
   {
     spotIndex: 51,
     visible: [51],
-    pos: { x: -40, y: 7, z: -18 },
+    pos: { x: -40, y: -45, z: -5 },
     iconType: "infoIcon",
     tag: "BATTERYSWAP",
   },
@@ -1239,7 +1239,7 @@ const MIN_ZOOM = 60;
 const MAX_ZOOM = 80;
 const DEFAULT_ZOOM = MAX_ZOOM;
 
-const hotspotScale = 4;
+const hotspotScale = 6;
 const hotspotOpacity = 0;
 
 const infoIconScale = 0.3;
