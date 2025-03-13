@@ -349,7 +349,7 @@ const hotSpotInfo = [
   {
     spotIndex: 9,
     visible: [9],
-    pos: { x: -30, y: 3, z: -6 },
+    pos: { x: -25, y: -40, z: -5 },
     iconType: "infoIcon",
     tag: "SHRED",
   },
