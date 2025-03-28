@@ -1220,13 +1220,69 @@ let clock = new THREE.Clock();
 let hotspotMesh, infoIconMesh;
 let intersectedInfoIcon;
 
+// Panorama Coordinates to change camera direction
+const panoramaCoordinates = [
+  { lon: 160, lat: 0 }, // for panorama index 0
+  { lon: 220, lat: 0 }, // for panorama index 1
+  { lon: 220, lat: 0 }, // for panorama index 2
+  { lon: 220, lat: 0 }, // for panorama index 3
+  { lon: 220, lat: 0 }, // for panorama index 4
+  { lon: 220, lat: 0 }, // for panorama index 5
+  { lon: 175, lat: -21 }, // for panorama index 6
+  { lon: 220, lat: 0 }, // for panorama index 7
+  { lon: 220, lat: 0 }, // for panorama index 8
+  { lon: 160, lat: -30 }, // for panorama index 9
+  { lon: 220, lat: 0 }, // for panorama index 10
+  { lon: 220, lat: 0 }, // for panorama index 11
+  { lon: 220, lat: 0 }, // for panorama index 12
+  { lon: 175, lat: -22 }, // for panorama index 13
+  { lon: 180, lat: -20 }, // for panorama index 14
+  { lon: 220, lat: 0 }, // for panorama index 15
+  { lon: 220, lat: 0 }, // for panorama index 16
+  { lon: 85, lat: -33 }, // for panorama index 17
+  { lon: 220, lat: 0 }, // for panorama index 18
+  { lon: 220, lat: 0 }, // for panorama index 19
+  { lon: 220, lat: 0 }, // for panorama index 20
+  { lon: 70, lat: -27 }, // for panorama index 21
+  { lon: 220, lat: 0 }, // for panorama index 22
+  { lon: 180, lat: -19 }, // for panorama index 23
+  { lon: 220, lat: 0 }, // for panorama index 24
+  { lon: 270, lat: -25 }, // for panorama index 25
+  { lon: 220, lat: 0 }, // for panorama index 26
+  { lon: 220, lat: 0 }, // for panorama index 27
+  { lon: 220, lat: 0 }, // for panorama index 28
+  { lon: 220, lat: 0 }, // for panorama index 29
+  { lon: 220, lat: 0 }, // for panorama index 30
+  { lon: 220, lat: 0 }, // for panorama index 31
+  { lon: 220, lat: 0 }, // for panorama index 32
+  { lon: 220, lat: 0 }, // for panorama index 33
+  { lon: 220, lat: 0 }, // for panorama index 34
+  { lon: 352, lat: 0 }, // for panorama index 35
+  { lon: 280, lat: -15 }, // for panorama index 36
+  { lon: 220, lat: 0 }, // for panorama index 37
+  { lon: 360, lat: -20 }, // for panorama index 38
+  { lon: 220, lat: 0 }, // for panorama index 39
+  { lon: 220, lat: 0 }, // for panorama index 40
+  { lon: 220, lat: 0 }, // for panorama index 41
+  { lon: 220, lat: 0 }, // for panorama index 42
+  { lon: 220, lat: 0 }, // for panorama index 43
+  { lon: 220, lat: 0 }, // for panorama index 44
+  { lon: 220, lat: 0 }, // for panorama index 45
+  { lon: 220, lat: 0 }, // for panorama index 46
+  { lon: 220, lat: 0 }, // for panorama index 47
+  { lon: 220, lat: 0 }, // for panorama index 48
+  { lon: 220, lat: 0 }, // for panorama index 49
+  { lon: 220, lat: 0 }, // for panorama index 50
+  { lon: 200, lat: -23 }, // for panorama index 51
+];
+
 let isUserInteracting = false,
   onPointerDownMouseX = 0,
   onPointerDownMouseY = 0,
   onPointerUpMouseX = 0,
   onPointerUpMouseY = 0,
-  lon = 220,
   onPointerDownLon = 0,
+  lon = 220,
   lat = 0,
   onPointerDownLat = 0,
   phi = 0,
@@ -1280,6 +1336,15 @@ function init() {
   const sphereRaw = url.searchParams.get("sphere") || "0";
   currentSphereIndex = parseInt(sphereRaw);
 
+  // Set initial lon and lat based on the current panorama index
+  if (
+    currentSphereIndex >= 0 &&
+    currentSphereIndex < panoramaCoordinates.length
+  ) {
+    lon = panoramaCoordinates[currentSphereIndex].lon;
+    lat = panoramaCoordinates[currentSphereIndex].lat;
+  }
+
   if (currentSphereIndex >= 0 && currentSphereIndex < panoramas.length) {
     const sphere = loadSphere(
       panoramas[currentSphereIndex],
@@ -1313,11 +1378,14 @@ function init() {
         mesh.scale.set(infoIconScale, infoIconScale, infoIconScale);
       }
       mesh.position.set(e.pos.x, e.pos.y, e.pos.z);
+
       mesh.lookAt(camera.position);
       mesh.userData.spotIndex = e.spotIndex;
       mesh.userData.visibleSpheres = e.visible;
       mesh.userData.iconType = e.iconType;
       mesh.userData.tag = e.tag;
+
+      // camera.rotation.y -= 0.52;
 
       if (e.iconType === "infoIcon") {
         if (role === ROLE.ADMIN) {
@@ -1615,6 +1683,26 @@ function selectImage(currentIndex) {
   transitioning = true;
   transitionProgress = 0.0;
 
+  // Update lon and lat for the new panorama
+
+  // Update lon and lat for the new panorama
+  if (currentIndex >= 0 && currentIndex < panoramaCoordinates.length) {
+    if (
+      [0, 6, 9, 13, 14, 17, 21, 23, 25, 35, 36, 38, 51].includes(currentIndex)
+    ) {
+      lon = panoramaCoordinates[currentIndex].lon;
+      lat = panoramaCoordinates[currentIndex].lat;
+    }
+  }
+
+  // if (currentIndex >= 0 && currentIndex < panoramaCoordinates.length) {
+  //   lon = panoramaCoordinates[currentIndex].lon;
+  //   lat = panoramaCoordinates[currentIndex].lat;
+  // }
+
+  // Log the current panorama index
+  console.log(`Current Panorama Index: ${currentIndex}`);
+
   hotspotMeshes.forEach((mesh) => {
     scene.remove(mesh);
     if (mesh.geometry) mesh.geometry.dispose();
@@ -1682,6 +1770,7 @@ function showIconContent(intersectedMesh) {
 function onClick(event) {
   const mouse = new THREE.Vector2();
   const raycaster = new THREE.Raycaster();
+  console.log(currentSphere, currentSphereIndex);
 
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
