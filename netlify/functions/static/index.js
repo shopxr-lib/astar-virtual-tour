@@ -616,7 +616,7 @@ function renderModal(content) {
                 ? isMobile()
                   ? `<div><a href="${content.pdf}" download>Download PDF</a></div>`
                   : `<div class="w-100" style="height:80vh;">
-                    <object class="w-100 h-100" data="${content.pdf}" type="application/pdf">
+                    <object class="w-100 h-100" data="${content.pdf}#toolbar=0" type="application/pdf">
                       <a href="${content.pdf}" download>Download PDF</a>
                     </object>
                   </div>`
