@@ -17,6 +17,7 @@
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "ioredis": "^5.5.0",
+    "netlify-cli": "^19.0.3",
     "serverless-http": "^3.2.0"
   },
   "devDependencies": {
