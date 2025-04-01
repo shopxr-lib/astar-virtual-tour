@@ -1684,8 +1684,6 @@ function selectImage(currentIndex) {
   transitionProgress = 0.0;
 
   // Update lon and lat for the new panorama
-
-  // Update lon and lat for the new panorama
   if (currentIndex >= 0 && currentIndex < panoramaCoordinates.length) {
     if (
       [0, 6, 9, 13, 14, 17, 21, 23, 25, 35, 36, 38, 51].includes(currentIndex)
@@ -1694,14 +1692,6 @@ function selectImage(currentIndex) {
       lat = panoramaCoordinates[currentIndex].lat;
     }
   }
-
-  // if (currentIndex >= 0 && currentIndex < panoramaCoordinates.length) {
-  //   lon = panoramaCoordinates[currentIndex].lon;
-  //   lat = panoramaCoordinates[currentIndex].lat;
-  // }
-
-  // Log the current panorama index
-  console.log(`Current Panorama Index: ${currentIndex}`);
 
   hotspotMeshes.forEach((mesh) => {
     scene.remove(mesh);
