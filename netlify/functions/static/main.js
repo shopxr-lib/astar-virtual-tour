@@ -1254,12 +1254,12 @@ const panoramaCoordinates = [
   { lon: 220, lat: 0 }, // for panorama index 29
   { lon: 220, lat: 0 }, // for panorama index 30
   { lon: 220, lat: 0 }, // for panorama index 31
-  { lon: 220, lat: 0 }, // for panorama index 32
-  { lon: 220, lat: 0 }, // for panorama index 33
+  { lon: 260, lat: 0 }, // for panorama index 32
+  { lon: 350, lat: 0 }, // for panorama index 33
   { lon: 220, lat: 0 }, // for panorama index 34
   { lon: 352, lat: 0 }, // for panorama index 35
   { lon: 280, lat: -15 }, // for panorama index 36
-  { lon: 220, lat: 0 }, // for panorama index 37
+  { lon: 80, lat: 0 }, // for panorama index 37
   { lon: 360, lat: -20 }, // for panorama index 38
   { lon: 220, lat: 0 }, // for panorama index 39
   { lon: 220, lat: 0 }, // for panorama index 40
@@ -1686,7 +1686,9 @@ function selectImage(currentIndex) {
   // Update lon and lat for the new panorama
   if (currentIndex >= 0 && currentIndex < panoramaCoordinates.length) {
     if (
-      [0, 6, 9, 13, 14, 17, 21, 23, 25, 35, 36, 38, 51].includes(currentIndex)
+      [0, 6, 9, 13, 14, 17, 21, 23, 25, 32, 33, 35, 36, 37, 38, 51].includes(
+        currentIndex
+      )
     ) {
       lon = panoramaCoordinates[currentIndex].lon;
       lat = panoramaCoordinates[currentIndex].lat;
